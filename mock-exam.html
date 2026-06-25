@@ -138,6 +138,38 @@
   .qcell.current { outline: 2px solid var(--accent-2); outline-offset: 1px; color: var(--ink); }
   .navlegend { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 0.82rem; margin-top: 14px; }
   .swatch { width: 14px; height: 14px; border-radius: 4px; display: inline-block; vertical-align: -2px; margin-right: 5px; }
+
+  /* flagged questions */
+  .qcell.flagged { position: relative; }
+  .qcell.flagged::after {
+    content: ""; position: absolute; top: 3px; right: 3px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--warn);
+  }
+  #flagBtn.on { background: rgba(251,191,36,0.16); border-color: var(--warn); color: var(--warn); }
+
+  /* floating 4-function calculator */
+  #calc {
+    position: fixed; right: 18px; bottom: 18px; z-index: 120; width: 240px;
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--line); border-radius: 14px; padding: 12px;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.55);
+  }
+  #calc .calc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; cursor: move; }
+  #calc .calc-head .t { font-size: 0.8rem; color: var(--muted); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  #calcDisplay {
+    width: 100%; text-align: right; font-variant-numeric: tabular-nums;
+    background: #0c161e; border: 1px solid var(--line); border-radius: 8px;
+    color: var(--ink); font-size: 1.4rem; font-weight: 700; padding: 8px 10px; margin-bottom: 8px;
+    overflow-x: auto; white-space: nowrap; min-height: 44px;
+  }
+  .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+  .calc-grid button { padding: 12px 0; border-radius: 9px; background: var(--panel-2); border: 1px solid var(--line); color: var(--ink); font-weight: 700; font-size: 1rem; }
+  .calc-grid button:hover { border-color: var(--accent); }
+  .calc-grid button.op { color: var(--accent); }
+  .calc-grid button.eq { background: linear-gradient(135deg, var(--accent), #2563eb); color: #fff; border: none; }
+  .calc-grid button.fn { color: var(--warn); }
+  .calc-grid button.wide { grid-column: span 2; }
+  #calcToggle { position: fixed; right: 18px; bottom: 18px; z-index: 110; }
 </style>
 </head>
 <body>
@@ -198,6 +230,7 @@
         <span class="badge" id="examModeBadge">Full Mock</span>
         <div class="sub" id="qCounter" style="margin-top:6px;">Question 1 of 40</div>
         <button class="btn-ghost" style="padding:6px 12px; font-size:0.85rem; margin-top:8px;" onclick="openNav()">▦ All questions</button>
+        <button class="btn-ghost" style="padding:6px 12px; font-size:0.85rem; margin-top:8px;" onclick="toggleCalc()">🖩 Calculator</button>
       </div>
       <div style="text-align:right;">
         <div class="timer" id="timer">80:00</div>
@@ -210,6 +243,7 @@
 
     <div class="navbar">
       <button class="btn-ghost" id="prevBtn" onclick="goPrev()">← Previous</button>
+      <button class="btn-ghost" id="flagBtn" onclick="toggleFlag()">⚑ Flag</button>
       <button class="btn-primary" id="nextBtn" onclick="goNext()">Next →</button>
     </div>
   </section>
@@ -261,6 +295,40 @@
 
   <p class="footer-note">AP Physics 1 Mock Exam · weighted to the official College Board blueprint · for study use.</p>
 
+  <!-- ===================== 4-FUNCTION CALCULATOR ===================== -->
+  <div id="calc" class="hidden">
+    <div class="calc-head" id="calcHead">
+      <span class="t">Calculator</span>
+      <button class="btn-ghost" style="padding:3px 9px; font-size:0.8rem;" onclick="toggleCalc()">✕</button>
+    </div>
+    <div id="calcDisplay">0</div>
+    <div class="calc-grid">
+      <button onclick="calcClear()" class="fn">C</button>
+      <button onclick="calcBack()" class="fn">⌫</button>
+      <button onclick="calcInput('%')" class="fn">%</button>
+      <button onclick="calcInput('/')" class="op">÷</button>
+
+      <button onclick="calcInput('7')">7</button>
+      <button onclick="calcInput('8')">8</button>
+      <button onclick="calcInput('9')">9</button>
+      <button onclick="calcInput('*')" class="op">×</button>
+
+      <button onclick="calcInput('4')">4</button>
+      <button onclick="calcInput('5')">5</button>
+      <button onclick="calcInput('6')">6</button>
+      <button onclick="calcInput('-')" class="op">−</button>
+
+      <button onclick="calcInput('1')">1</button>
+      <button onclick="calcInput('2')">2</button>
+      <button onclick="calcInput('3')">3</button>
+      <button onclick="calcInput('+')" class="op">+</button>
+
+      <button onclick="calcInput('0')" class="wide">0</button>
+      <button onclick="calcInput('.')">.</button>
+      <button onclick="calcEquals()" class="eq">=</button>
+    </div>
+  </div>
+
   <!-- ===================== QUESTION NAVIGATOR MODAL ===================== -->
   <div id="navModal" class="modal hidden" onclick="if(event.target===this) closeNav()">
     <div class="modal-card">
@@ -274,6 +342,7 @@
         <span><span class="swatch" style="background:rgba(56,189,248,0.18);border:1px solid var(--accent)"></span>Answered</span>
         <span><span class="swatch" style="background:var(--panel-2);border:1px solid var(--line)"></span>Unanswered</span>
         <span><span class="swatch" style="background:var(--panel-2);outline:2px solid var(--accent-2)"></span>Current</span>
+        <span><span class="swatch" style="background:var(--warn)"></span>Flagged</span>
       </div>
     </div>
   </div>
@@ -349,6 +418,7 @@ function startExam(mode){
   session = {
     mode, questions,
     answers: new Array(questions.length).fill(null),
+    flagged: new Array(questions.length).fill(false),
     index: 0,
     startMs: performance.now(),
     durationS,
@@ -422,6 +492,16 @@ function renderQuestion(){
   document.getElementById("prevBtn").style.visibility = session.index === 0 ? "hidden" : "visible";
   const nextBtn = document.getElementById("nextBtn");
   nextBtn.textContent = (session.index === session.questions.length - 1) ? "Finish ✓" : "Next →";
+
+  const fb = document.getElementById("flagBtn");
+  const flagged = session.flagged[session.index];
+  fb.classList.toggle("on", flagged);
+  fb.textContent = flagged ? "⚑ Flagged" : "⚑ Flag";
+}
+
+function toggleFlag(){
+  session.flagged[session.index] = !session.flagged[session.index];
+  renderQuestion();
 }
 
 function choose(i){
@@ -443,12 +523,16 @@ function openNav(){
   if (!session) return;
   const grid = document.getElementById("navGrid");
   const answered = session.answers.filter(a => a !== null).length;
-  document.getElementById("navSummary").textContent =
-    `${answered} of ${session.questions.length} answered — tap a number to go there.`;
+  const flaggedCount = session.flagged.filter(Boolean).length;
+  document.getElementById("navSummary").innerHTML =
+    `${answered} of ${session.questions.length} answered` +
+    (flaggedCount ? ` · <span style="color:var(--warn)">${flaggedCount} flagged</span>` : "") +
+    ` — tap a number to go there.`;
   let cells = "";
   session.questions.forEach((q, i) => {
     let cls = "qcell";
     if (session.answers[i] !== null) cls += " answered";
+    if (session.flagged[i]) cls += " flagged";
     if (i === session.index) cls += " current";
     cells += `<button class="${cls}" onclick="jumpTo(${i})">${i + 1}</button>`;
   });
@@ -457,6 +541,91 @@ function openNav(){
 }
 function closeNav(){ document.getElementById("navModal").classList.add("hidden"); }
 function jumpTo(i){ session.index = i; renderQuestion(); closeNav(); window.scrollTo(0,0); }
+
+/* ------------------------------------------------------------------ *
+ * 4-function calculator (deterministic, with operator precedence)
+ * ------------------------------------------------------------------ */
+let calcExpr = "";
+function toggleCalc(){ document.getElementById("calc").classList.toggle("hidden"); }
+function calcRender(){
+  document.getElementById("calcDisplay").textContent =
+    calcExpr ? calcExpr.replace(/\*/g,"×").replace(/\//g,"÷").replace(/-/g,"−") : "0";
+}
+function calcInput(ch){
+  const last = calcExpr.slice(-1);
+  if ("+-*/".includes(ch)){
+    if (calcExpr === ""){ if (ch === "-") calcExpr = "-"; return calcRender(); } // allow leading minus
+    if ("+-*/".includes(last)) calcExpr = calcExpr.slice(0, -1);                  // replace a trailing operator
+    calcExpr += ch;
+  } else if (ch === "."){
+    const cur = calcExpr.match(/(\d*\.?\d*)$/)[0];
+    if (cur.includes(".")) return;                  // only one decimal per number
+    calcExpr += (cur === "" ? "0." : ".");
+  } else if (ch === "%"){
+    const m = calcExpr.match(/(\d*\.?\d+)$/);
+    if (!m) return;
+    calcExpr = calcExpr.slice(0, m.index) + String(parseFloat(m[0]) / 100);
+  } else {                                          // a digit
+    calcExpr += ch;
+  }
+  calcRender();
+}
+function calcClear(){ calcExpr = ""; calcRender(); }
+function calcBack(){ calcExpr = calcExpr.slice(0, -1); calcRender(); }
+function calcEquals(){
+  const e = calcExpr.replace(/[+\-*/]$/, "");       // drop a dangling operator
+  if (e === "" || e === "-"){ return; }
+  const r = calcEvaluate(e);
+  if (r === null || !isFinite(r)){
+    document.getElementById("calcDisplay").textContent = "Error"; calcExpr = ""; return;
+  }
+  calcExpr = Number.isInteger(r) ? String(r) : String(parseFloat(r.toPrecision(10)));
+  calcRender();
+}
+// Deterministic evaluation: handle * and / before + and - (no eval()).
+function calcEvaluate(expr){
+  const tokens = expr.match(/(\d*\.?\d+|[+\-*/])/g);
+  if (!tokens) return null;
+  let vals = [], ops = [];
+  for (const t of tokens){
+    if ("+-*/".includes(t)){ ops.push(t); continue; }
+    let v = parseFloat(t);
+    if (isNaN(v)) return null;
+    const top = ops[ops.length - 1];
+    if (top === "*" || top === "/"){
+      ops.pop();
+      const a = vals.pop();
+      v = (top === "*") ? a * v : a / v;
+    }
+    vals.push(v);
+  }
+  if (vals.length === 0) return null;
+  let result = vals[0];
+  for (let i = 0; i < ops.length; i++){
+    result = (ops[i] === "+") ? result + vals[i + 1] : result - vals[i + 1];
+  }
+  return result;
+}
+// Let the calculator be dragged by its header.
+(function makeCalcDraggable(){
+  const calc = document.getElementById("calc"), head = document.getElementById("calcHead");
+  let dx = 0, dy = 0, dragging = false;
+  head.addEventListener("pointerdown", e => {
+    if (e.target.tagName === "BUTTON") return;     // don't start a drag from the ✕ button
+    dragging = true;
+    const r = calc.getBoundingClientRect();
+    dx = e.clientX - r.left; dy = e.clientY - r.top;
+    calc.style.right = "auto"; calc.style.bottom = "auto";
+    calc.style.left = r.left + "px"; calc.style.top = r.top + "px";
+    head.setPointerCapture(e.pointerId);
+  });
+  head.addEventListener("pointermove", e => {
+    if (!dragging) return;
+    calc.style.left = (e.clientX - dx) + "px";
+    calc.style.top = (e.clientY - dy) + "px";
+  });
+  head.addEventListener("pointerup", () => { dragging = false; });
+})();
 
 function confirmFinish(){
   const unanswered = session.answers.filter(a => a === null).length;
@@ -576,6 +745,7 @@ function goHome(){
   session = null;
   closePractice();
   closeNav();
+  document.getElementById("calc").classList.add("hidden");
   show("home");
   window.scrollTo(0, 0);
 }
