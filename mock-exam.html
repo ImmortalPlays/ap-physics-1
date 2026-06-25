@@ -159,6 +159,14 @@
   }
   #flagBtn.on { background: rgba(251,191,36,0.16); border-color: var(--warn); color: var(--warn); }
 
+  /* formula sheet */
+  .sheet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+  @media (max-width: 560px){ .sheet-grid { grid-template-columns: 1fr; } }
+  .sheet-sec { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .sheet-sec h3 { font-size: 0.9rem; color: var(--accent-2); margin-bottom: 8px; letter-spacing: 0.01em; }
+  .sheet-eq { font-size: 1rem; padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); }
+  .sheet-eq:last-child { border-bottom: none; }
+
   /* floating 4-function calculator */
   #calc {
     position: fixed; right: 18px; bottom: 18px; z-index: 120; width: 240px;
@@ -232,6 +240,7 @@
       <p class="sub">Unit weightings from the College Board AP Physics 1 Course &amp; Exam Description (effective Fall 2024). Each full mock samples this spread.</p>
       <table id="blueprint"></table>
       <p class="sub" style="margin-top:10px;">Bank: <b id="bankCount"></b> questions total. Format mirrors the real exam: 40 MCQ, 80 min, 50% of the score (the 4 free-response questions are not included in this MCQ trainer).</p>
+      <button class="btn-ghost" style="margin-top:12px;" onclick="openSheet()">📋 View formula sheet</button>
     </div>
   </section>
 
@@ -243,6 +252,7 @@
         <div class="sub" id="qCounter" style="margin-top:6px;">Question 1 of 40</div>
         <button class="btn-ghost" style="padding:6px 12px; font-size:0.85rem; margin-top:8px;" onclick="openNav()">▦ All questions</button>
         <button class="btn-ghost" style="padding:6px 12px; font-size:0.85rem; margin-top:8px;" onclick="toggleCalc()">🖩 Calculator</button>
+        <button class="btn-ghost" style="padding:6px 12px; font-size:0.85rem; margin-top:8px;" onclick="openSheet()">📋 Formulas</button>
       </div>
       <div style="text-align:right;">
         <div class="timer" id="timer">80:00</div>
@@ -338,6 +348,18 @@
       <button onclick="calcInput('0')" class="wide">0</button>
       <button onclick="calcInput('.')">.</button>
       <button onclick="calcEquals()" class="eq">=</button>
+    </div>
+  </div>
+
+  <!-- ===================== FORMULA SHEET MODAL ===================== -->
+  <div id="sheetModal" class="modal hidden" onclick="if(event.target===this) closeSheet()">
+    <div class="modal-card" style="max-width:660px;">
+      <div class="modal-head">
+        <h2>AP Physics 1 — Formula Sheet</h2>
+        <button class="btn-ghost" style="padding:6px 12px;" onclick="closeSheet()">✕ Close</button>
+      </div>
+      <div class="sub">Mirrors the official AP equation sheet. Note: this mock uses g = 10 m/s² for clean arithmetic.</div>
+      <div class="sheet-grid" id="sheetBody"></div>
     </div>
   </div>
 
@@ -555,6 +577,85 @@ function closeNav(){ document.getElementById("navModal").classList.add("hidden")
 function jumpTo(i){ session.index = i; renderQuestion(); closeNav(); window.scrollTo(0,0); }
 
 /* ------------------------------------------------------------------ *
+ * Formula sheet (rendered with the same math formatter)
+ * ------------------------------------------------------------------ */
+const SHEET = [
+  { title: "Constants & values", items: [
+    "g = 9.8 m/s^2  (~10 used here)",
+    "G = 6.67 × 10^-11 N*m^2/kg^2",
+    "rho_water = 1000 kg/m^3",
+    "P_atm = 1.0 × 10^5 Pa"
+  ]},
+  { title: "Kinematics", items: [
+    "v = v0 + a*t",
+    "x = x0 + v0*t + (1/2)*a*t^2",
+    "v^2 = v0^2 + 2*a*(x - x0)",
+    "Projectile: x- and y-motion are independent"
+  ]},
+  { title: "Forces & Dynamics", items: [
+    "a = F_net / m",
+    "F_g = m*g   (weight)",
+    "F_f ≤ mu*F_n   (friction)",
+    "a_c = v^2 / r   (centripetal)",
+    "F_grav = G*m1*m2 / r^2",
+    "F_s = k*x   (spring force)"
+  ]},
+  { title: "Energy & Power", items: [
+    "K = (1/2)*m*v^2",
+    "delta U_g = m*g*delta h",
+    "U_s = (1/2)*k*x^2",
+    "W = F*d*cos(theta)",
+    "P = delta E / delta t = F*v"
+  ]},
+  { title: "Momentum", items: [
+    "p = m*v",
+    "delta p = F*delta t   (impulse)",
+    "Σp conserved if F_net,ext = 0"
+  ]},
+  { title: "Rotational motion", items: [
+    "omega = omega_0 + alpha*t",
+    "theta = theta_0 + omega_0*t + (1/2)*alpha*t^2",
+    "v = r*omega",
+    "tau = r*F*sin(theta)",
+    "tau_net = I*alpha",
+    "I = Σ m*r^2",
+    "K_rot = (1/2)*I*omega^2",
+    "L = I*omega"
+  ]},
+  { title: "Simple Harmonic Motion", items: [
+    "T = 1 / f",
+    "T_spring = 2*pi*sqrt(m/k)",
+    "T_pendulum = 2*pi*sqrt(L/g)",
+    "x = A*cos(2*pi*f*t)"
+  ]},
+  { title: "Fluids", items: [
+    "rho = m / V",
+    "P = F / A",
+    "P = P0 + rho*g*h",
+    "F_b = rho*V*g   (buoyancy)",
+    "A1*v1 = A2*v2   (continuity)",
+    "P + rho*g*y + (1/2)*rho*v^2 = const"
+  ]},
+  { title: "Geometry", items: [
+    "Circle:  A = pi*r^2,  C = 2*pi*r",
+    "Triangle:  A = (1/2)*b*h",
+    "Sphere:  V = (4/3)*pi*r^3",
+    "Cylinder:  V = pi*r^2*L"
+  ]}
+];
+function renderSheet(){
+  const body = document.getElementById("sheetBody");
+  if (body.dataset.built) return;
+  body.innerHTML = SHEET.map(sec =>
+    `<div class="sheet-sec"><h3>${sec.title}</h3>` +
+    sec.items.map(eq => `<div class="sheet-eq">${fmt(eq)}</div>`).join("") +
+    `</div>`).join("");
+  body.dataset.built = "1";
+}
+function openSheet(){ renderSheet(); document.getElementById("sheetModal").classList.remove("hidden"); }
+function closeSheet(){ document.getElementById("sheetModal").classList.add("hidden"); }
+
+/* ------------------------------------------------------------------ *
  * 4-function calculator (deterministic, with operator precedence)
  * ------------------------------------------------------------------ */
 let calcExpr = "";
@@ -757,6 +858,7 @@ function goHome(){
   session = null;
   closePractice();
   closeNav();
+  closeSheet();
   document.getElementById("calc").classList.add("hidden");
   show("home");
   window.scrollTo(0, 0);
@@ -766,9 +868,11 @@ function goHome(){
  * Keyboard support: A–D to answer, arrows to navigate
  * ------------------------------------------------------------------ */
 document.addEventListener("keydown", (e) => {
-  // If the navigator is open, only Escape matters.
-  if (!document.getElementById("navModal").classList.contains("hidden")){
-    if (e.key === "Escape") closeNav();
+  // If any modal is open, only Escape matters.
+  const navOpen = !document.getElementById("navModal").classList.contains("hidden");
+  const sheetOpen = !document.getElementById("sheetModal").classList.contains("hidden");
+  if (navOpen || sheetOpen){
+    if (e.key === "Escape"){ closeNav(); closeSheet(); }
     return;
   }
   if (document.getElementById("exam").classList.contains("hidden")) return;
