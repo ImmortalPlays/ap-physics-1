@@ -113,6 +113,31 @@
   .legend { display:flex; gap:16px; flex-wrap:wrap; color:var(--muted); font-size:0.85rem; margin-top:6px;}
   .footer-note { color: var(--muted); font-size: 0.8rem; margin-top: 26px; text-align: center; }
   .hidden { display: none !important; }
+
+  /* question navigator modal */
+  .modal {
+    position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+    background: rgba(4,9,14,0.7); backdrop-filter: blur(3px); padding: 18px;
+  }
+  .modal-card {
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--line); border-radius: 14px; padding: 20px;
+    width: 100%; max-width: 520px; max-height: 84vh; overflow: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .qgrid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; margin-top: 14px; }
+  @media (max-width: 460px){ .qgrid { grid-template-columns: repeat(6, 1fr); } }
+  .qcell {
+    aspect-ratio: 1 / 1; border-radius: 8px; border: 1px solid var(--line);
+    background: var(--panel-2); color: var(--muted); font-weight: 700; font-size: 0.9rem;
+    display: grid; place-items: center; cursor: pointer;
+  }
+  .qcell:hover { border-color: var(--accent); color: var(--ink); }
+  .qcell.answered { background: rgba(56,189,248,0.18); border-color: var(--accent); color: var(--ink); }
+  .qcell.current { outline: 2px solid var(--accent-2); outline-offset: 1px; color: var(--ink); }
+  .navlegend { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 0.82rem; margin-top: 14px; }
+  .swatch { width: 14px; height: 14px; border-radius: 4px; display: inline-block; vertical-align: -2px; margin-right: 5px; }
 </style>
 </head>
 <body>
@@ -172,6 +197,7 @@
       <div>
         <span class="badge" id="examModeBadge">Full Mock</span>
         <div class="sub" id="qCounter" style="margin-top:6px;">Question 1 of 40</div>
+        <button class="btn-ghost" style="padding:6px 12px; font-size:0.85rem; margin-top:8px;" onclick="openNav()">▦ All questions</button>
       </div>
       <div style="text-align:right;">
         <div class="timer" id="timer">80:00</div>
@@ -234,6 +260,23 @@
   </section>
 
   <p class="footer-note">AP Physics 1 Mock Exam · weighted to the official College Board blueprint · for study use.</p>
+
+  <!-- ===================== QUESTION NAVIGATOR MODAL ===================== -->
+  <div id="navModal" class="modal hidden" onclick="if(event.target===this) closeNav()">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Jump to a question</h2>
+        <button class="btn-ghost" style="padding:6px 12px;" onclick="closeNav()">✕ Close</button>
+      </div>
+      <div class="sub" id="navSummary"></div>
+      <div class="qgrid" id="navGrid"></div>
+      <div class="navlegend">
+        <span><span class="swatch" style="background:rgba(56,189,248,0.18);border:1px solid var(--accent)"></span>Answered</span>
+        <span><span class="swatch" style="background:var(--panel-2);border:1px solid var(--line)"></span>Unanswered</span>
+        <span><span class="swatch" style="background:var(--panel-2);outline:2px solid var(--accent-2)"></span>Current</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="questions.js"></script>
@@ -364,8 +407,9 @@ function renderQuestion(){
       Answer: <b>${LETTERS[q.answer]}</b>. ${escapeHtml(q.explanation)}</div>`;
   }
 
+  // Note: unit & difficulty are intentionally hidden during the exam so they
+  // don't hint at the topic/answer. They reappear in the post-exam review.
   document.getElementById("qCard").innerHTML = `
-    <div class="qmeta">Unit ${q.unit}: ${UNITS[q.unit].name} · ${q.difficulty}</div>
     <div class="qtext">${escapeHtml(q.question)}</div>
     ${choicesHtml}
     ${explainHtml}
@@ -391,6 +435,28 @@ function goNext(){
   else { confirmFinish(); }
 }
 function goPrev(){ if (session.index > 0){ session.index--; renderQuestion(); } }
+
+/* ------------------------------------------------------------------ *
+ * Question navigator (jump to any question)
+ * ------------------------------------------------------------------ */
+function openNav(){
+  if (!session) return;
+  const grid = document.getElementById("navGrid");
+  const answered = session.answers.filter(a => a !== null).length;
+  document.getElementById("navSummary").textContent =
+    `${answered} of ${session.questions.length} answered — tap a number to go there.`;
+  let cells = "";
+  session.questions.forEach((q, i) => {
+    let cls = "qcell";
+    if (session.answers[i] !== null) cls += " answered";
+    if (i === session.index) cls += " current";
+    cells += `<button class="${cls}" onclick="jumpTo(${i})">${i + 1}</button>`;
+  });
+  grid.innerHTML = cells;
+  document.getElementById("navModal").classList.remove("hidden");
+}
+function closeNav(){ document.getElementById("navModal").classList.add("hidden"); }
+function jumpTo(i){ session.index = i; renderQuestion(); closeNav(); window.scrollTo(0,0); }
 
 function confirmFinish(){
   const unanswered = session.answers.filter(a => a === null).length;
@@ -509,6 +575,7 @@ function goHome(){
   if (session && session.timerId) clearInterval(session.timerId);
   session = null;
   closePractice();
+  closeNav();
   show("home");
   window.scrollTo(0, 0);
 }
@@ -517,6 +584,11 @@ function goHome(){
  * Keyboard support: A–D to answer, arrows to navigate
  * ------------------------------------------------------------------ */
 document.addEventListener("keydown", (e) => {
+  // If the navigator is open, only Escape matters.
+  if (!document.getElementById("navModal").classList.contains("hidden")){
+    if (e.key === "Escape") closeNav();
+    return;
+  }
   if (document.getElementById("exam").classList.contains("hidden")) return;
   const k = e.key.toUpperCase();
   if (["A","B","C","D"].includes(k)){
