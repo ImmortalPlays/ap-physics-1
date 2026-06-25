@@ -102,6 +102,17 @@
     border-left: 3px solid var(--accent); background: rgba(56,189,248,0.07);
     padding: 11px 14px; border-radius: 6px; margin-top: 6px; font-size: 0.95rem; color: #d7e7f1;
   }
+
+  /* inline math rendering */
+  .frac {
+    display: inline-flex; flex-direction: column; vertical-align: -0.45em;
+    text-align: center; line-height: 1.05; margin: 0 2px; font-size: 0.88em;
+  }
+  .frac > .num { border-bottom: 1.3px solid currentColor; padding: 0 3px; }
+  .frac > .den { padding: 0 3px; }
+  .rad { border-top: 1.3px solid currentColor; padding: 0 1px; margin-left: 1px; }
+  .qtext sup, .choice sup, .explain sup,
+  .qtext sub, .choice sub, .explain sub { font-size: 0.72em; line-height: 0; }
   .navbar { display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; }
 
   /* results */
@@ -468,19 +479,19 @@ function renderQuestion(){
     }
     const dis = (isPractice && answered) ? "disabled" : "";
     choicesHtml += `<button class="${cls}" ${dis} onclick="choose(${i})">
-        <span class="key">${LETTERS[i]}</span><span>${escapeHtml(c)}</span></button>`;
+        <span class="key">${LETTERS[i]}</span><span>${fmt(c)}</span></button>`;
   });
 
   let explainHtml = "";
   if (isPractice && answered){
     explainHtml = `<div class="explain"><b>${chosen === q.answer ? "Correct." : "Not quite."}</b>
-      Answer: <b>${LETTERS[q.answer]}</b>. ${escapeHtml(q.explanation)}</div>`;
+      Answer: <b>${LETTERS[q.answer]}</b>. ${fmt(q.explanation)}</div>`;
   }
 
   // Note: unit & difficulty are intentionally hidden during the exam so they
   // don't hint at the topic/answer. They reappear in the post-exam review.
   document.getElementById("qCard").innerHTML = `
-    <div class="qtext">${escapeHtml(q.question)}</div>
+    <div class="qtext">${fmt(q.question)}</div>
     ${choicesHtml}
     ${explainHtml}
   `;
@@ -717,14 +728,14 @@ function reviewAnswers(){
       let cls = "choice";
       if (j === q.answer) cls += " correct";
       else if (j === chosen) cls += " wrong";
-      choices += `<div class="${cls}"><span class="key">${LETTERS[j]}</span><span>${escapeHtml(c)}</span></div>`;
+      choices += `<div class="${cls}"><span class="key">${LETTERS[j]}</span><span>${fmt(c)}</span></div>`;
     });
     html += `<div class="card">
       <div class="qmeta">Q${i+1} · Unit ${q.unit}: ${UNITS[q.unit].name} · ${q.difficulty}
         · <span style="color:${ok ? 'var(--good)' : 'var(--bad)'}">${ok ? 'Correct' : (chosen === null ? 'Skipped' : 'Incorrect')}</span></div>
-      <div class="qtext">${escapeHtml(q.question)}</div>
+      <div class="qtext">${fmt(q.question)}</div>
       ${choices}
-      <div class="explain"><b>Answer ${LETTERS[q.answer]}.</b> ${escapeHtml(q.explanation)}</div>
+      <div class="explain"><b>Answer ${LETTERS[q.answer]}.</b> ${fmt(q.explanation)}</div>
     </div>`;
   });
   document.getElementById("reviewList").innerHTML = html;
@@ -775,6 +786,69 @@ function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c => ({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   }[c]));
+}
+
+/* ------------------------------------------------------------------ *
+ * fmt(): turn the bank's ASCII math notation into nice inline HTML.
+ *   v^2 -> v²   (1/2) -> stacked fraction   sqrt(x) -> radical
+ *   rho/theta/omega/... -> Greek   * -> ·   ~ -> ≈   30 degrees -> 30°
+ * Applied to questions, choices and explanations. Deterministic.
+ * ------------------------------------------------------------------ */
+function fmt(s){
+  s = escapeHtml(String(s));
+
+  // radicals: sqrt(...) -> √ with an overline (handles nested parentheses)
+  s = renderSqrt(s);
+
+  // parenthesized integer fractions: (1/2) -> stacked fraction
+  s = s.replace(/\((\d+)\/(\d+)\)/g, (m, a, b) => fracHTML(a, b));
+  // bare integer fractions used as answers/coefficients: 2/7 -> stacked
+  s = s.replace(/\b(\d+)\/(\d+)\b/g, (m, a, b) => fracHTML(a, b));
+
+  // exponents: ^(...) or ^number / ^word  ->  superscript
+  s = s.replace(/\^\(([^)]*)\)/g, '<sup>$1</sup>');
+  s = s.replace(/\^(-?\d+(?:\.\d+)?|[A-Za-z]+)/g, '<sup>$1</sup>');
+
+  // Greek + symbols
+  s = s.replace(/\b[Dd]elta\s*/g, 'Δ');                    // "delta p" -> "Δp"
+  s = s.replace(/\bmu(?=_|\b)/g, 'μ');
+  const greek = { rho:'ρ', theta:'θ', omega:'ω', alpha:'α', beta:'β',
+                  tau:'τ', pi:'π', lambda:'λ', sigma:'σ', phi:'φ' };
+  // match the word at a boundary, but also when it's immediately followed by a
+  // subscript underscore (e.g. rho_water, omega_0).
+  s = s.replace(/\b(rho|theta|omega|alpha|beta|tau|pi|lambda|sigma|phi)(?=_|\b)/g, w => greek[w]);
+
+  // subscripts:  explicit  X_y  and adjacent  v0 / m1 / P0
+  s = s.replace(/_([A-Za-z0-9]+)/g, '<sub>$1</sub>');
+  s = s.replace(/\b([A-Za-z])([0-9])\b/g, '$1<sub>$2</sub>');
+
+  // operators & relations
+  s = s.replace(/\*/g, '·');
+  s = s.replace(/\+\/-/g, '±').replace(/->/g, '→')
+       .replace(/>=/g, '≥').replace(/<=/g, '≤').replace(/~/g, '≈');
+  s = s.replace(/\s*degrees/g, '°');
+
+  return s;
+}
+function fracHTML(a, b){
+  return `<span class="frac"><span class="num">${a}</span><span class="den">${b}</span></span>`;
+}
+// sqrt(...) -> radical, scanning for the matching ) so nested parens work.
+function renderSqrt(str){
+  let out = "", i = 0;
+  while (i < str.length){
+    const idx = str.indexOf("sqrt(", i);
+    if (idx === -1){ out += str.slice(i); break; }
+    out += str.slice(i, idx);
+    let depth = 0, j = idx + 4;           // j starts at the '('
+    for (; j < str.length; j++){
+      if (str[j] === "(") depth++;
+      else if (str[j] === ")"){ depth--; if (depth === 0) break; }
+    }
+    out += '√<span class="rad">' + str.slice(idx + 5, j) + '</span>';
+    i = j + 1;
+  }
+  return out;
 }
 
 /* ------------------------------------------------------------------ *
