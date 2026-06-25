@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AP Physics 1 — Mock Exam</title>
+<style>
+  :root {
+    --bg: #0a1118;
+    --panel: #111c27;
+    --panel-2: #16242f;
+    --ink: #e8f1f8;
+    --muted: #9bb4c4;
+    --line: #243744;
+    --accent: #38bdf8;
+    --accent-2: #5eead4;
+    --good: #34d399;
+    --bad: #f87171;
+    --warn: #fbbf24;
+    --purple: #a78bfa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: radial-gradient(1200px 600px at 50% -10%, #14243200, #0a1118), var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 24px 18px 80px; }
+  a { color: var(--accent); }
+  h1 { font-size: 1.7rem; letter-spacing: -0.02em; }
+  h2 { font-size: 1.2rem; margin-bottom: 4px; }
+  .sub { color: var(--muted); font-size: 0.95rem; }
+  .card {
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px;
+    margin-top: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  }
+  .badge {
+    display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--accent-2);
+    background: rgba(94,234,212,0.1); border: 1px solid rgba(94,234,212,0.25);
+    padding: 3px 9px; border-radius: 999px;
+  }
+  button, .btn {
+    font: inherit; cursor: pointer; border: none; border-radius: 10px;
+    padding: 12px 18px; font-weight: 600; transition: transform .05s ease, filter .15s ease;
+  }
+  button:active { transform: translateY(1px); }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), #2563eb); color: #fff; }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-ghost { background: var(--panel-2); color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--accent); }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px){ .grid2 { grid-template-columns: 1fr; } }
+
+  /* mode cards */
+  .mode {
+    text-align: left; width: 100%; display: block;
+    background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px; padding: 18px;
+  }
+  .mode:hover { border-color: var(--accent); }
+  .mode .t { font-size: 1.05rem; font-weight: 700; }
+  .mode .d { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+
+  /* weighting table */
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 10px; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; }
+  td.num, th.num { text-align: center; }
+
+  /* exam header / progress */
+  .examhead { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .timer { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 1.1rem; }
+  .timer.low { color: var(--bad); }
+  .progress { height: 6px; background: var(--panel-2); border-radius: 999px; overflow: hidden; margin-top: 14px; }
+  .progress > i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); width: 0%; transition: width .25s ease; }
+
+  /* question */
+  .qmeta { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+  .qtext { font-size: 1.12rem; font-weight: 500; margin-bottom: 16px; white-space: pre-wrap; }
+  .choice {
+    display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: left;
+    background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 13px 15px; margin-bottom: 10px; color: var(--ink);
+  }
+  .choice:hover { border-color: var(--accent); }
+  .choice .key {
+    flex: 0 0 26px; height: 26px; border-radius: 7px; background: #1f3340; color: var(--accent-2);
+    display: grid; place-items: center; font-weight: 700; font-size: 0.85rem;
+  }
+  .choice.selected { border-color: var(--accent); background: rgba(56,189,248,0.12); }
+  .choice.correct { border-color: var(--good); background: rgba(52,211,153,0.14); }
+  .choice.wrong { border-color: var(--bad); background: rgba(248,113,113,0.14); }
+  .choice[disabled] { cursor: default; }
+  .explain {
+    border-left: 3px solid var(--accent); background: rgba(56,189,248,0.07);
+    padding: 11px 14px; border-radius: 6px; margin-top: 6px; font-size: 0.95rem; color: #d7e7f1;
+  }
+  .navbar { display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; }
+
+  /* results */
+  .score-big { font-size: 3.4rem; font-weight: 800; letter-spacing: -0.03em; }
+  .ap5 { display: inline-grid; place-items: center; width: 64px; height: 64px; border-radius: 14px;
+         font-size: 2rem; font-weight: 800; }
+  .pill { font-size: 0.78rem; padding: 2px 10px; border-radius: 999px; font-weight: 700; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .legend { display:flex; gap:16px; flex-wrap:wrap; color:var(--muted); font-size:0.85rem; margin-top:6px;}
+  .footer-note { color: var(--muted); font-size: 0.8rem; margin-top: 26px; text-align: center; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============================ HOME ============================ -->
+  <section id="home">
+    <span class="badge">2025 Redesigned Exam · Official Blueprint</span>
+    <h1 style="margin-top:10px;">AP Physics 1 — Mock Exam</h1>
+    <p class="sub" style="margin-top:6px;">
+      Questions are drawn at random and weighted to match the real College Board exam.
+      Choose a mode to begin.
+    </p>
+
+    <div class="card">
+      <div class="grid2">
+        <button class="mode" onclick="startExam('full')">
+          <div class="t">🎯 Full Timed Mock Exam</div>
+          <div class="d">40 weighted multiple-choice questions · 80-minute timer · scored like the real thing with an estimated 1–5.</div>
+        </button>
+        <button class="mode" onclick="openPractice()">
+          <div class="t">⚡ Quick Practice</div>
+          <div class="d">Untimed. Pick a unit (or all units) and get instant feedback with worked explanations after every question.</div>
+        </button>
+      </div>
+
+      <!-- practice options -->
+      <div id="practiceOpts" class="hidden" style="margin-top:16px; border-top:1px solid var(--line); padding-top:16px;">
+        <h2>Quick Practice</h2>
+        <p class="sub">Choose what to practice and how many questions.</p>
+        <div class="row" style="margin-top:12px;">
+          <select id="practiceUnit" class="btn-ghost" style="flex:1; min-width:200px;"></select>
+          <select id="practiceCount" class="btn-ghost">
+            <option value="5">5 questions</option>
+            <option value="10" selected>10 questions</option>
+            <option value="20">20 questions</option>
+          </select>
+        </div>
+        <div class="row" style="margin-top:12px;">
+          <button class="btn-primary" onclick="startExam('practice')">Start practice</button>
+          <button class="btn-ghost" onclick="closePractice()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Official Exam Blueprint</h2>
+      <p class="sub">Unit weightings from the College Board AP Physics 1 Course &amp; Exam Description (effective Fall 2024). Each full mock samples this spread.</p>
+      <table id="blueprint"></table>
+      <p class="sub" style="margin-top:10px;">Bank: <b id="bankCount"></b> questions total. Format mirrors the real exam: 40 MCQ, 80 min, 50% of the score (the 4 free-response questions are not included in this MCQ trainer).</p>
+    </div>
+  </section>
+
+  <!-- ============================ EXAM ============================ -->
+  <section id="exam" class="hidden">
+    <div class="examhead">
+      <div>
+        <span class="badge" id="examModeBadge">Full Mock</span>
+        <div class="sub" id="qCounter" style="margin-top:6px;">Question 1 of 40</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="timer" id="timer">80:00</div>
+        <button class="btn-ghost" style="padding:6px 12px; font-size:0.85rem; margin-top:6px;" onclick="confirmQuit()">Quit</button>
+      </div>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+
+    <div class="card" id="qCard"></div>
+
+    <div class="navbar">
+      <button class="btn-ghost" id="prevBtn" onclick="goPrev()">← Previous</button>
+      <button class="btn-primary" id="nextBtn" onclick="goNext()">Next →</button>
+    </div>
+  </section>
+
+  <!-- ============================ RESULTS ============================ -->
+  <section id="results" class="hidden">
+    <div class="card" style="text-align:center;">
+      <span class="badge" id="resultBadge">Mock Exam Complete</span>
+      <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-top:14px; flex-wrap:wrap;">
+        <div>
+          <div class="score-big" id="scorePct">—</div>
+          <div class="sub" id="scoreFrac">— / —</div>
+        </div>
+        <div id="apBox" class="hidden" style="text-align:center;">
+          <div class="ap5" id="apScore">—</div>
+          <div class="sub" style="margin-top:6px;">Est. AP Score</div>
+        </div>
+      </div>
+      <div class="sub" id="timeUsed" style="margin-top:10px;"></div>
+      <div class="row" style="justify-content:center; margin-top:18px;">
+        <button class="btn-primary" onclick="reviewAnswers()">Review answers</button>
+        <button class="btn-ghost" onclick="goHome()">Back to menu</button>
+      </div>
+    </div>
+
+    <div class="card" id="unitBreakdown">
+      <h2>Performance by Unit</h2>
+      <div class="sub">Where you’re strong and where to focus.</div>
+      <table id="breakdownTable"></table>
+    </div>
+  </section>
+
+  <!-- ============================ REVIEW ============================ -->
+  <section id="review" class="hidden">
+    <div class="examhead">
+      <h2>Answer Review</h2>
+      <button class="btn-ghost" onclick="backToResults()">← Back to results</button>
+    </div>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--good)"></span> Correct</span>
+      <span><span class="dot" style="background:var(--bad)"></span> Your wrong answer</span>
+      <span><span class="dot" style="background:var(--accent)"></span> Correct answer</span>
+    </div>
+    <div id="reviewList"></div>
+    <div class="row" style="justify-content:center; margin-top:18px;">
+      <button class="btn-ghost" onclick="backToResults()">← Back to results</button>
+    </div>
+  </section>
+
+  <p class="footer-note">AP Physics 1 Mock Exam · weighted to the official College Board blueprint · for study use.</p>
+</div>
+
+<script src="questions.js"></script>
+<script>
+/* ------------------------------------------------------------------ *
+ * State
+ * ------------------------------------------------------------------ */
+const LETTERS = ["A","B","C","D"];
+let session = null;        // { mode, questions[], answers[], index, startMs, durationS, timerId }
+
+/* ------------------------------------------------------------------ *
+ * Utilities
+ * ------------------------------------------------------------------ */
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function byUnit(u){ return QUESTIONS.filter(q => q.unit === u); }
+function sampleN(arr, n){ return shuffle(arr).slice(0, Math.min(n, arr.length)); }
+
+/* Build a weighted 40-question exam matching the official blueprint. */
+function buildFullExam(){
+  let out = [];
+  Object.keys(UNITS).forEach(u => {
+    out = out.concat(sampleN(byUnit(Number(u)), UNITS[u].examCount));
+  });
+  return shuffle(out); // mix the units so it doesn't go unit-by-unit
+}
+
+/* ------------------------------------------------------------------ *
+ * Home / setup
+ * ------------------------------------------------------------------ */
+function renderBlueprint(){
+  const t = document.getElementById("blueprint");
+  let rows = "<tr><th>Unit</th><th>Topic</th><th class='num'>Weight</th><th class='num'>Q’s</th></tr>";
+  Object.keys(UNITS).forEach(u => {
+    rows += `<tr><td class='num'>${u}</td><td>${UNITS[u].name}</td>
+             <td class='num'>${UNITS[u].official}</td><td class='num'>${UNITS[u].examCount}</td></tr>`;
+  });
+  rows += `<tr><td></td><td><b>Total</b></td><td class='num'>100%</td><td class='num'><b>40</b></td></tr>`;
+  t.innerHTML = rows;
+  document.getElementById("bankCount").textContent = QUESTIONS.length;
+
+  const sel = document.getElementById("practiceUnit");
+  let opts = `<option value="all">All units (mixed)</option>`;
+  Object.keys(UNITS).forEach(u => { opts += `<option value="${u}">Unit ${u}: ${UNITS[u].name}</option>`; });
+  sel.innerHTML = opts;
+}
+function openPractice(){ document.getElementById("practiceOpts").classList.remove("hidden"); }
+function closePractice(){ document.getElementById("practiceOpts").classList.add("hidden"); }
+
+/* ------------------------------------------------------------------ *
+ * Start an exam / practice
+ * ------------------------------------------------------------------ */
+function startExam(mode){
+  let questions, durationS = 0;
+  if (mode === "full"){
+    questions = buildFullExam();
+    durationS = 80 * 60;
+  } else {
+    const u = document.getElementById("practiceUnit").value;
+    const n = Number(document.getElementById("practiceCount").value);
+    const pool = (u === "all") ? QUESTIONS : byUnit(Number(u));
+    questions = sampleN(pool, n);
+  }
+  session = {
+    mode, questions,
+    answers: new Array(questions.length).fill(null),
+    index: 0,
+    startMs: performance.now(),
+    durationS,
+    timerId: null
+  };
+  show("exam");
+  document.getElementById("examModeBadge").textContent = (mode === "full") ? "Full Mock" : "Practice";
+  if (durationS > 0) startTimer();
+  else document.getElementById("timer").textContent = "Practice";
+  renderQuestion();
+}
+
+/* ------------------------------------------------------------------ *
+ * Timer
+ * ------------------------------------------------------------------ */
+function startTimer(){
+  const el = document.getElementById("timer");
+  function tick(){
+    const elapsed = (performance.now() - session.startMs) / 1000;
+    const left = Math.max(0, session.durationS - elapsed);
+    const m = Math.floor(left / 60), s = Math.floor(left % 60);
+    el.textContent = `${m}:${String(s).padStart(2,"0")}`;
+    el.classList.toggle("low", left <= 300);
+    if (left <= 0){ clearInterval(session.timerId); finishExam(true); }
+  }
+  tick();
+  session.timerId = setInterval(tick, 1000);
+}
+
+/* ------------------------------------------------------------------ *
+ * Render a question
+ * ------------------------------------------------------------------ */
+function renderQuestion(){
+  const q = session.questions[session.index];
+  const chosen = session.answers[session.index];
+  const isPractice = session.mode === "practice";
+  const answered = chosen !== null;
+
+  let choicesHtml = "";
+  q.choices.forEach((c, i) => {
+    let cls = "choice";
+    if (isPractice && answered){
+      if (i === q.answer) cls += " correct";
+      else if (i === chosen) cls += " wrong";
+    } else if (i === chosen){
+      cls += " selected";
+    }
+    const dis = (isPractice && answered) ? "disabled" : "";
+    choicesHtml += `<button class="${cls}" ${dis} onclick="choose(${i})">
+        <span class="key">${LETTERS[i]}</span><span>${escapeHtml(c)}</span></button>`;
+  });
+
+  let explainHtml = "";
+  if (isPractice && answered){
+    explainHtml = `<div class="explain"><b>${chosen === q.answer ? "Correct." : "Not quite."}</b>
+      Answer: <b>${LETTERS[q.answer]}</b>. ${escapeHtml(q.explanation)}</div>`;
+  }
+
+  document.getElementById("qCard").innerHTML = `
+    <div class="qmeta">Unit ${q.unit}: ${UNITS[q.unit].name} · ${q.difficulty}</div>
+    <div class="qtext">${escapeHtml(q.question)}</div>
+    ${choicesHtml}
+    ${explainHtml}
+  `;
+
+  document.getElementById("qCounter").textContent =
+    `Question ${session.index + 1} of ${session.questions.length}`;
+  document.getElementById("progressBar").style.width =
+    `${((session.index + 1) / session.questions.length) * 100}%`;
+  document.getElementById("prevBtn").style.visibility = session.index === 0 ? "hidden" : "visible";
+  const nextBtn = document.getElementById("nextBtn");
+  nextBtn.textContent = (session.index === session.questions.length - 1) ? "Finish ✓" : "Next →";
+}
+
+function choose(i){
+  session.answers[session.index] = i;
+  if (session.mode === "practice"){ renderQuestion(); }   // reveal feedback
+  else { renderQuestion(); }                              // just mark selection
+}
+
+function goNext(){
+  if (session.index < session.questions.length - 1){ session.index++; renderQuestion(); }
+  else { confirmFinish(); }
+}
+function goPrev(){ if (session.index > 0){ session.index--; renderQuestion(); } }
+
+function confirmFinish(){
+  const unanswered = session.answers.filter(a => a === null).length;
+  let msg = "Submit and see your results?";
+  if (unanswered > 0) msg = `You have ${unanswered} unanswered question(s). Submit anyway?`;
+  if (confirm(msg)) finishExam(false);
+}
+function confirmQuit(){
+  if (confirm("Quit this exam? Your progress will be lost.")){
+    if (session.timerId) clearInterval(session.timerId);
+    goHome();
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Finish & score
+ * ------------------------------------------------------------------ */
+function finishExam(timedOut){
+  if (session.timerId) clearInterval(session.timerId);
+  const total = session.questions.length;
+  let correct = 0;
+  session.questions.forEach((q, i) => { if (session.answers[i] === q.answer) correct++; });
+  const pct = Math.round((correct / total) * 100);
+
+  document.getElementById("scorePct").textContent = pct + "%";
+  document.getElementById("scoreFrac").textContent = `${correct} / ${total} correct`;
+  document.getElementById("resultBadge").textContent =
+    timedOut ? "Time’s up — submitted" : (session.mode === "full" ? "Mock Exam Complete" : "Practice Complete");
+
+  // AP 1–5 estimate (full mock only). Bands approximate recent MCQ-to-score mappings.
+  const apBox = document.getElementById("apBox");
+  if (session.mode === "full"){
+    apBox.classList.remove("hidden");
+    const ap = estimateAP(pct);
+    const el = document.getElementById("apScore");
+    el.textContent = ap.score;
+    el.style.background = ap.bg; el.style.color = ap.fg;
+  } else {
+    apBox.classList.add("hidden");
+  }
+
+  const elapsed = (performance.now() - session.startMs) / 1000;
+  const m = Math.floor(elapsed / 60), s = Math.floor(elapsed % 60);
+  document.getElementById("timeUsed").textContent =
+    session.mode === "full" ? `Time used: ${m} min ${s} s` : "";
+
+  renderBreakdown();
+  show("results");
+}
+
+function estimateAP(pct){
+  // Approximate, MCQ-only. Real scoring also includes FRQ; treat as a rough guide.
+  if (pct >= 72) return { score: 5, bg: "rgba(52,211,153,0.18)", fg: "#34d399" };
+  if (pct >= 58) return { score: 4, bg: "rgba(56,189,248,0.18)", fg: "#38bdf8" };
+  if (pct >= 43) return { score: 3, bg: "rgba(251,191,36,0.18)", fg: "#fbbf24" };
+  if (pct >= 30) return { score: 2, bg: "rgba(248,113,113,0.16)", fg: "#f87171" };
+  return { score: 1, bg: "rgba(248,113,113,0.22)", fg: "#f87171" };
+}
+
+function renderBreakdown(){
+  const stats = {};
+  session.questions.forEach((q, i) => {
+    if (!stats[q.unit]) stats[q.unit] = { c: 0, t: 0 };
+    stats[q.unit].t++;
+    if (session.answers[i] === q.answer) stats[q.unit].c++;
+  });
+  let rows = "<tr><th>Unit</th><th class='num'>Correct</th><th class='num'>%</th></tr>";
+  Object.keys(stats).sort((a,b)=>a-b).forEach(u => {
+    const s = stats[u];
+    const p = Math.round((s.c / s.t) * 100);
+    const color = p >= 70 ? "var(--good)" : p >= 45 ? "var(--warn)" : "var(--bad)";
+    rows += `<tr><td>U${u}: ${UNITS[u].name}</td>
+              <td class='num'>${s.c}/${s.t}</td>
+              <td class='num'><span class='pill' style='background:${color}22;color:${color}'>${p}%</span></td></tr>`;
+  });
+  document.getElementById("breakdownTable").innerHTML = rows;
+}
+
+/* ------------------------------------------------------------------ *
+ * Review
+ * ------------------------------------------------------------------ */
+function reviewAnswers(){
+  let html = "";
+  session.questions.forEach((q, i) => {
+    const chosen = session.answers[i];
+    const ok = chosen === q.answer;
+    let choices = "";
+    q.choices.forEach((c, j) => {
+      let cls = "choice";
+      if (j === q.answer) cls += " correct";
+      else if (j === chosen) cls += " wrong";
+      choices += `<div class="${cls}"><span class="key">${LETTERS[j]}</span><span>${escapeHtml(c)}</span></div>`;
+    });
+    html += `<div class="card">
+      <div class="qmeta">Q${i+1} · Unit ${q.unit}: ${UNITS[q.unit].name} · ${q.difficulty}
+        · <span style="color:${ok ? 'var(--good)' : 'var(--bad)'}">${ok ? 'Correct' : (chosen === null ? 'Skipped' : 'Incorrect')}</span></div>
+      <div class="qtext">${escapeHtml(q.question)}</div>
+      ${choices}
+      <div class="explain"><b>Answer ${LETTERS[q.answer]}.</b> ${escapeHtml(q.explanation)}</div>
+    </div>`;
+  });
+  document.getElementById("reviewList").innerHTML = html;
+  show("review");
+  window.scrollTo(0, 0);
+}
+function backToResults(){ show("results"); window.scrollTo(0,0); }
+
+/* ------------------------------------------------------------------ *
+ * Navigation between screens
+ * ------------------------------------------------------------------ */
+function show(id){
+  ["home","exam","results","review"].forEach(s =>
+    document.getElementById(s).classList.toggle("hidden", s !== id));
+}
+function goHome(){
+  if (session && session.timerId) clearInterval(session.timerId);
+  session = null;
+  closePractice();
+  show("home");
+  window.scrollTo(0, 0);
+}
+
+/* ------------------------------------------------------------------ *
+ * Keyboard support: A–D to answer, arrows to navigate
+ * ------------------------------------------------------------------ */
+document.addEventListener("keydown", (e) => {
+  if (document.getElementById("exam").classList.contains("hidden")) return;
+  const k = e.key.toUpperCase();
+  if (["A","B","C","D"].includes(k)){
+    const idx = LETTERS.indexOf(k);
+    const q = session.questions[session.index];
+    if (idx < q.choices.length){
+      if (!(session.mode === "practice" && session.answers[session.index] !== null)) choose(idx);
+    }
+  } else if (e.key === "ArrowRight"){ goNext(); }
+  else if (e.key === "ArrowLeft"){ goPrev(); }
+});
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+/* ------------------------------------------------------------------ *
+ * Boot
+ * ------------------------------------------------------------------ */
+if (typeof QUESTIONS === "undefined"){
+  document.querySelector(".wrap").innerHTML =
+    "<div class='card'><h2>Could not load questions</h2><p class='sub'>Make sure <b>questions.js</b> is in the same folder as this page.</p></div>";
+} else {
+  renderBlueprint();
+}
+</script>
+</body>
+</html>
