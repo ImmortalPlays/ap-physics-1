@@ -13,6 +13,41 @@
   button, a, input, summary { transition: background-color .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease, transform .1s ease; }
   button:active { transform: translateY(1px) scale(.998); }
   ::selection { background: rgba(56,189,248,.25); }
+  /* wide display equations scroll inside their box instead of overflowing the page */
+  .katex-display { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding-bottom: 2px; }
+  canvas, img { max-width: 100%; }
+  /* let grid cells shrink so wide content (equations) scrolls instead of overflowing */
+  div[style*="grid-template-columns"] > div { min-width: 0; }
+
+  /* ---- mobile / responsive (inline styles overridden via attribute selectors) ---- */
+  @media (max-width: 760px) {
+    #phys-content { padding-left: 16px !important; padding-right: 16px !important; }
+    h1 { font-size: 30px !important; line-height: 1.1 !important; }
+    #hero-scene { height: 280px !important; }
+    /* NOTE: the runtime renders template styles as "prop: value" (with a space);
+       lessons.html is injected raw as "prop:value". Cover both formats. */
+    /* collapse all multi-column grids to a single column */
+    [style*="grid-template-columns: 1.05fr"], [style*="grid-template-columns:1.05fr"],
+    [style*="grid-template-columns: repeat(3"], [style*="grid-template-columns:repeat(3"],
+    [style*="grid-template-columns: 1fr 1fr"], [style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    /* tighten oversized padding */
+    [style*="padding: 42px 38px"], [style*="padding:42px 38px"] { padding: 24px 20px !important; }
+    [style*="padding: 26px 32px"], [style*="padding:26px 32px"] { padding: 20px 18px !important; }
+    [style*="padding: 18px 24px"], [style*="padding:18px 24px"] { padding: 16px 16px !important; }
+    /* bottom prev/next unit nav: wrap the row + group, let long titles break */
+    [style*="margin-top: 28px"], [style*="margin-top:28px"],
+    [style*="margin-top: 28px"] > div, [style*="margin-top:28px"] > div { flex-wrap: wrap !important; }
+    [style*="margin-top: 28px"] button, [style*="margin-top:28px"] button {
+      display: inline-block !important; white-space: normal !important;
+      min-width: 0 !important; max-width: 100% !important; text-align: left;
+    }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 26px !important; }
+    .lesson section { padding: 14px 14px !important; }
+  }
 </style>
 </head>
 <body>
