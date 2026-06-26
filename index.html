@@ -644,23 +644,7 @@
 
         <!-- ============ UNIT 3: ENERGY ============ -->
         <sc-if value="{{isUnit3}}">
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">1. Work &amp; the work–energy theorem</h2>
-            <p style="margin:0 0 8px;">Work is force times distance along the motion: \(W = Fd\cos\theta\). Push along the motion and \(W\) is positive; oppose it (like friction) and \(W\) is negative.</p>
-            <p style="margin:0;">The net work done on an object equals its change in kinetic energy: \(W_{net} = \Delta KE\).</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">2. Kinetic &amp; potential energy</h2>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-              <div style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$KE = \tfrac12 m v^2$$</div>
-              <div style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$PE_g = mgh$$</div>
-            </div>
-            <p style="margin:10px 0 0;">A compressed or stretched spring stores \(PE_s = \tfrac12 k x^2\).</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">3. Conservation of energy &amp; power</h2>
-            <p style="margin:0;">With no friction, mechanical energy is conserved: \(KE + PE = \text{constant}\). Energy just trades between the two forms — exactly what the skate-park sim shows. <strong>Power</strong> is how fast work is done: \(P = \dfrac{W}{t}\).</p>
-          </section>
+          <div class="lesson" data-lesson="3-concepts" style="--ua:{{activeColor}};"></div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
           <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Watch kinetic and potential energy trade off as the ball rolls. Add friction to drain the total.</p>
@@ -679,25 +663,12 @@
           </div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 1 — Speed at the bottom of a ramp</span></summary><p style="margin:2px 0 8px;">A cart starts from rest and drops \(h = 5\ \text{m}\) down a frictionless track. Find its speed at the bottom.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Energy conservation: \(mgh = \tfrac12 m v^2\) (mass cancels).</li><li style="margin-bottom:6px;">Solve: \(v = \sqrt{2gh} = \sqrt{2(9.8)(5)}\).</li><li>Answer: \(v = \sqrt{98} \approx \boxed{9.9\ \text{m/s}}\).</li></ol></details>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 2 — Power to climb stairs</span></summary><p style="margin:2px 0 8px;">A \(60\ \text{kg}\) student climbs \(4\ \text{m}\) in \(8\ \text{s}\). Find the average power.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Work against gravity: \(W = mgh = 60(9.8)(4) = 2352\ \text{J}\).</li><li style="margin-bottom:6px;">Power: \(P = \dfrac{W}{t} = \dfrac{2352}{8}\).</li><li>Answer: \(\boxed{294\ \text{W}}\).</li></ol></details>
+          <div class="lesson" data-lesson="3-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
         <!-- ============ UNIT 4: MOMENTUM ============ -->
         <sc-if value="{{isUnit4}}">
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">1. Momentum &amp; impulse</h2>
-            <p style="margin:0 0 8px;">Momentum is mass in motion: \(\vec p = m\vec v\) (a vector). To change it you apply an <strong>impulse</strong> — a force over time:</p>
-            <p style="margin:0;">$$\vec J = \vec F\,\Delta t = \Delta \vec p$$</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">2. Conservation of momentum</h2>
-            <p style="margin:0;">If no external force acts, the total momentum of a system is unchanged — before a collision equals after: \(\sum \vec p_i = \sum \vec p_f\). This holds even when kinetic energy is lost.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">3. Elastic vs. inelastic</h2>
-            <p style="margin:0;"><strong>Elastic:</strong> objects bounce and kinetic energy is conserved. <strong>Inelastic:</strong> KE is lost to heat/sound; in a <em>perfectly</em> inelastic collision the objects stick together. Momentum is conserved in <em>both</em> cases.</p>
-          </section>
+          <div class="lesson" data-lesson="4-concepts" style="--ua:{{activeColor}};"></div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
           <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Collide two carts. Watch total momentum stay fixed while kinetic energy changes with the bounciness.</p>
@@ -717,37 +688,12 @@
           </div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 1 — Perfectly inelastic collision</span></summary><p style="margin:2px 0 8px;">A \(2\ \text{kg}\) cart at \(3\ \text{m/s}\) hits a stationary \(1\ \text{kg}\) cart and they stick. Find their common speed.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Momentum before: \(2(3) + 1(0) = 6\ \mathrm{kg{\cdot}m/s}\).</li><li style="margin-bottom:6px;">After, combined mass \(3\ \text{kg}\): \(6 = 3v\).</li><li>Answer: \(v = \boxed{2\ \text{m/s}}\).</li></ol></details>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 2 — Impulse from a force</span></summary><p style="margin:2px 0 8px;">A \(0.5\ \text{kg}\) ball at \(4\ \text{m/s}\) is struck and leaves at \(4\ \text{m/s}\) the other way. The contact lasts \(0.02\ \text{s}\). Find the average force.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Change in momentum: \(\Delta p = 0.5(-4) - 0.5(4) = -4\ \mathrm{kg{\cdot}m/s}\).</li><li style="margin-bottom:6px;">Impulse–momentum: \(F = \dfrac{\Delta p}{\Delta t} = \dfrac{-4}{0.02}\).</li><li>Answer: \(\boxed{-200\ \text{N}}\) (opposing the original motion).</li></ol></details>
+          <div class="lesson" data-lesson="4-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
         <!-- ============ UNIT 5: TORQUE ============ -->
         <sc-if value="{{isUnit5}}">
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">1. Rotational kinematics</h2>
-            <p style="margin:0 0 8px;">Rotation has its own kinematics, exactly mirroring the linear ones — just swap \(x\to\theta\), \(v\to\omega\) (angular velocity), \(a\to\alpha\) (angular acceleration):</p>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-              <div style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$\omega = \omega_0 + \alpha t$$</div>
-              <div style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$\theta = \omega_0 t + \tfrac12 \alpha t^2$$</div>
-            </div>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">2. Connecting linear &amp; rotational motion</h2>
-            <p style="margin:0;">A point a distance \(r\) from the axis moves along an arc, so its linear and angular quantities are linked: \(v = r\omega\) and \(a_t = r\alpha\). The farther out you are, the faster you travel for the same spin rate — which is why the rim of a wheel outruns its hub.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">3. Torque</h2>
-            <p style="margin:0 0 8px;">Torque is the rotational "push" — force times lever arm: \(\tau = rF\sin\theta\). A force far from the pivot, applied perpendicular, twists hardest.</p>
-            <p style="margin:0;">It's a vector: by convention counter-clockwise is positive.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">4. Rotational inertia &amp; Newton's 2nd law</h2>
-            <p style="margin:0;">Rotational inertia \(I\) measures how hard it is to change spin — mass farther from the axis counts more. The rotational version of \(F=ma\) is \(\tau_{net} = I\alpha\), where \(\alpha\) is angular acceleration.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">5. Rotational equilibrium</h2>
-            <p style="margin:0;">An object balances when the torques cancel: \(\sum \tau = 0\) (and \(\sum F = 0\)). That's why a lighter child far from the pivot can balance a heavier one close in.</p>
-          </section>
+          <div class="lesson" data-lesson="5-concepts" style="--ua:{{activeColor}};"></div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
           <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Move the masses in and out — balance the see-saw by matching the torques on each side.</p>
@@ -768,36 +714,12 @@
           </div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 1 — Balance the see-saw</span></summary><p style="margin:2px 0 8px;">A \(30\ \text{kg}\) child sits \(2\ \text{m}\) left of the pivot. How far right must a \(40\ \text{kg}\) child sit to balance?</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Balance means equal torques: \(m_1 g d_1 = m_2 g d_2\) (\(g\) cancels).</li><li style="margin-bottom:6px;">Solve: \(d_2 = \dfrac{m_1 d_1}{m_2} = \dfrac{30(2)}{40}\).</li><li>Answer: \(\boxed{1.5\ \text{m}}\).</li></ol></details>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 2 — Torque from an angled force</span></summary><p style="margin:2px 0 8px;">A \(50\ \text{N}\) force is applied \(0.8\ \text{m}\) from a hinge at \(30^\circ\) to the door. Find the torque.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">\(\tau = rF\sin\theta = 0.8(50)\sin 30^\circ\).</li><li style="margin-bottom:6px;">\(= 40(0.5)\).</li><li>Answer: \(\boxed{20\ \mathrm{N{\cdot}m}}\).</li></ol></details>
+          <div class="lesson" data-lesson="5-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
         <!-- ============ UNIT 6: ROTATIONAL E & p ============ -->
         <sc-if value="{{isUnit6}}">
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">1. Angular momentum</h2>
-            <p style="margin:0;">The rotational analog of momentum: \(L = I\omega\). A fast, spread-out spin carries a lot of it.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">2. Conservation of angular momentum</h2>
-            <p style="margin:0;">With no external torque, \(L\) stays constant. So if \(I\) drops, \(\omega\) must rise to compensate — the figure-skater effect: pull your arms in and you spin faster.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">3. Rotational kinetic energy</h2>
-            <p style="margin:0;">A spinning object stores \(KE_{rot} = \tfrac12 I\omega^2\). Interestingly, when a skater pulls in, \(L\) is conserved but \(KE\) <em>increases</em> — the extra energy comes from the work their muscles do pulling the mass inward.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">4. Rolling without slipping</h2>
-            <p style="margin:0 0 8px;">When a wheel rolls without slipping, its translation and rotation are locked together: \(v = r\omega\). Its energy splits between moving and spinning:</p>
-            <p style="margin:0 0 8px;">$$KE_{total} = \tfrac12 m v^2 + \tfrac12 I\omega^2$$</p>
-            <p style="margin:0;">Because some energy goes into spin, a rolling object accelerates down a ramp <em>slower</em> than a frictionless sliding one — and shapes with more inertia (hoops) lose the race to compact ones (disks). See the rolling-race sim.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">5. Orbiting satellites</h2>
-            <p style="margin:0 0 8px;">A satellite in circular orbit is in free fall — gravity supplies exactly the centripetal force it needs to curve around:</p>
-            <p style="margin:0 0 8px;">$$\frac{G M m}{r^2} = \frac{m v^2}{r} \;\Rightarrow\; v = \sqrt{\frac{GM}{r}}$$</p>
-            <p style="margin:0;">Higher orbits are slower and take longer — the orbital speed falls off as \(1/\sqrt{r}\). Notice the satellite's mass cancels entirely. Try it in the orbit sim.</p>
-          </section>
+          <div class="lesson" data-lesson="6-concepts" style="--ua:{{activeColor}};"></div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
           <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Pull the masses toward the axis. Angular momentum stays fixed — watch the spin rate jump.</p>
@@ -816,28 +738,12 @@
           </div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 1 — Skater pulls in their arms</span></summary><p style="margin:2px 0 8px;">A skater spins at \(\omega_0 = 2\ \text{rad/s}\) with \(I_0 = 6\ \mathrm{kg{\cdot}m}^2\). They pull in to \(I_1 = 2\ \mathrm{kg{\cdot}m}^2\). Find the new spin rate.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Conserve \(L\): \(I_0\omega_0 = I_1\omega_1\).</li><li style="margin-bottom:6px;">\(\omega_1 = \dfrac{I_0\omega_0}{I_1} = \dfrac{6(2)}{2}\).</li><li>Answer: \(\boxed{6\ \text{rad/s}}\) — three times faster.</li></ol></details>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 2 — Rotational kinetic energy</span></summary><p style="margin:2px 0 8px;">A disk with \(I = 0.5\ \mathrm{kg{\cdot}m}^2\) spins at \(\omega = 4\ \text{rad/s}\). Find its rotational KE.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">\(KE_{rot} = \tfrac12 I\omega^2 = \tfrac12(0.5)(4)^2\).</li><li style="margin-bottom:6px;">\(= 0.25(16)\).</li><li>Answer: \(\boxed{4\ \text{J}}\).</li></ol></details>
+          <div class="lesson" data-lesson="6-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
         <!-- ============ UNIT 7: OSCILLATIONS ============ -->
         <sc-if value="{{isUnit7}}">
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">1. Simple harmonic motion</h2>
-            <p style="margin:0;">SHM happens whenever a <strong>restoring force</strong> pulls back toward equilibrium in proportion to the displacement: \(F = -kx\). The result is smooth, repeating back-and-forth motion.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 10px; color:#e7f1f8;">2. Period formulas</h2>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-              <div style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$T_{spring} = 2\pi\sqrt{\tfrac{m}{k}}$$</div>
-              <div style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$T_{pend} = 2\pi\sqrt{\tfrac{L}{g}}$$</div>
-            </div>
-            <p style="margin:10px 0 0;">Notice the pendulum's period depends only on length and gravity — <strong>not</strong> on the mass or (for small swings) the amplitude.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">3. Energy in oscillation</h2>
-            <p style="margin:0;">Energy sloshes between kinetic and potential: fastest (max KE) at the center, momentarily still (max PE) at the turning points. Total stays constant if there's no friction.</p>
-          </section>
+          <div class="lesson" data-lesson="7-concepts" style="--ua:{{activeColor}};"></div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
           <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Lengthen the pendulum and watch the period grow — change the amplitude and notice it barely matters.</p>
@@ -855,37 +761,12 @@
           </div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 1 — Pendulum period</span></summary><p style="margin:2px 0 8px;">Find the period of a \(1\ \text{m}\) pendulum. Use \(g = 9.8\ \text{m/s}^2\).</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">\(T = 2\pi\sqrt{\dfrac{L}{g}} = 2\pi\sqrt{\dfrac{1}{9.8}}\).</li><li style="margin-bottom:6px;">\(= 2\pi(0.319)\).</li><li>Answer: \(\boxed{\approx 2.0\ \text{s}}\).</li></ol></details>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 2 — Spring period</span></summary><p style="margin:2px 0 8px;">A \(0.5\ \text{kg}\) mass on a spring with \(k = 200\ \text{N/m}\). Find the period.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">\(T = 2\pi\sqrt{\dfrac{m}{k}} = 2\pi\sqrt{\dfrac{0.5}{200}}\).</li><li style="margin-bottom:6px;">\(= 2\pi\sqrt{0.0025} = 2\pi(0.05)\).</li><li>Answer: \(\boxed{\approx 0.31\ \text{s}}\).</li></ol></details>
+          <div class="lesson" data-lesson="7-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
         <!-- ============ UNIT 8: FLUIDS ============ -->
         <sc-if value="{{isUnit8}}">
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">1. Density &amp; pressure</h2>
-            <p style="margin:0 0 8px;">Density is how tightly mass is packed: \(\rho = \dfrac{m}{V}\). Pressure is force spread over area: \(P = \dfrac{F}{A}\).</p>
-            <p style="margin:0;">In a fluid, pressure grows with depth: \(P = P_0 + \rho g h\).</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">2. Buoyancy (Archimedes' principle)</h2>
-            <p style="margin:0;">A submerged object feels an upward buoyant force equal to the weight of the fluid it pushes out of the way: \(F_b = \rho_{fluid}\, g\, V_{displaced}\).</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">3. Continuity &amp; conservation of mass</h2>
-            <p style="margin:0 0 8px;">An incompressible fluid can't pile up, so the volume flowing per second is the same everywhere in a pipe — the <strong>continuity equation</strong>:</p>
-            <p style="margin:0 0 8px;">$$A_1 v_1 = A_2 v_2$$</p>
-            <p style="margin:0;">Squeeze the pipe to half the area and the fluid must move twice as fast. It's why a thumb over a hose nozzle makes the water shoot out. See the pipe-flow sim.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">4. Fluids, Newton's laws &amp; Bernoulli</h2>
-            <p style="margin:0 0 8px;">Applying energy conservation to a flowing fluid gives <strong>Bernoulli's equation</strong> — pressure, speed and height trade off along a streamline:</p>
-            <p style="margin:0 0 8px;">$$P + \tfrac12 \rho v^2 + \rho g y = \text{constant}$$</p>
-            <p style="margin:0;">The surprising consequence: where a fluid speeds up, its pressure <em>drops</em>. That low pressure over a faster-moving region is what lifts an airplane wing and curves a spinning ball.</p>
-          </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">5. Floating &amp; sinking</h2>
-            <p style="margin:0;">An object floats if it's less dense than the fluid; the fraction submerged equals \(\dfrac{\rho_{obj}}{\rho_{fluid}}\). If it's denser, the buoyant force can't match its weight and it sinks.</p>
-          </section>
+          <div class="lesson" data-lesson="8-concepts" style="--ua:{{activeColor}};"></div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
           <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Tune the block and fluid densities — see how much sinks below the waterline, or whether it drops to the bottom.</p>
@@ -904,8 +785,7 @@
           </div>
 
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 1 — Fraction of ice submerged</span></summary><p style="margin:2px 0 8px;">Ice (\(917\ \text{kg/m}^3\)) floats in seawater (\(1025\ \text{kg/m}^3\)). What fraction sits below the surface?</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Fraction submerged \(= \dfrac{\rho_{ice}}{\rho_{water}} = \dfrac{917}{1025}\).</li><li>Answer: \(\approx \boxed{0.89}\) — about 89% is underwater.</li></ol></details>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 2 — Buoyant force on a submerged cube</span></summary><p style="margin:2px 0 8px;">A cube of volume \(0.002\ \text{m}^3\) is fully underwater (\(\rho = 1000\ \text{kg/m}^3\)). Find the buoyant force.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">\(F_b = \rho g V = 1000(9.8)(0.002)\).</li><li>Answer: \(\boxed{19.6\ \text{N}}\).</li></ol></details>
+          <div class="lesson" data-lesson="8-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
         <!-- shared prev / next nav -->
@@ -2442,4 +2322,5 @@ class Component extends DCLogic {
 </script>
 
 
+  <script src="lessons-loader.js"></script>
 </body></html>
