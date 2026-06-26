@@ -216,6 +216,10 @@
           <div class="t">⚡ Quick Practice</div>
           <div class="d">Untimed. Pick a unit (or all units) and get instant feedback with worked explanations after every question.</div>
         </button>
+        <button class="mode" onclick="openCustom()">
+          <div class="t">🎛️ Custom Exam</div>
+          <div class="d">Build your own scored exam from the units you choose — perfect for drilling weak spots. Set the length and an optional timer.</div>
+        </button>
       </div>
 
       <!-- practice options -->
@@ -233,6 +237,30 @@
         <div class="row" style="margin-top:12px;">
           <button class="btn-primary" onclick="startExam('practice')">Start practice</button>
           <button class="btn-ghost" onclick="closePractice()">Cancel</button>
+        </div>
+      </div>
+
+      <!-- custom exam options -->
+      <div id="customOpts" class="hidden" style="margin-top:16px; border-top:1px solid var(--line); padding-top:16px;">
+        <h2>Custom Exam</h2>
+        <p class="sub">Choose which units to include, the length, and whether to time it. The exam is scored at the end with a study plan.</p>
+        <div id="customUnitChecks" style="display:grid; grid-template-columns:1fr 1fr; gap:7px 16px; margin:14px 0;"></div>
+        <div class="row" style="align-items:center;">
+          <button class="btn-ghost" onclick="setAllCustomUnits(true)">Select all</button>
+          <button class="btn-ghost" onclick="setAllCustomUnits(false)">Clear</button>
+          <select id="customCount" class="btn-ghost">
+            <option value="10">10 questions</option>
+            <option value="20" selected>20 questions</option>
+            <option value="30">30 questions</option>
+            <option value="40">40 questions</option>
+          </select>
+          <label class="sub" style="display:flex; align-items:center; gap:7px; cursor:pointer;">
+            <input type="checkbox" id="customTimed"> Timed (~1.5 min/question)
+          </label>
+        </div>
+        <div class="row" style="margin-top:12px;">
+          <button class="btn-primary" onclick="startExam('custom')">Start custom exam</button>
+          <button class="btn-ghost" onclick="closeCustom()">Cancel</button>
         </div>
       </div>
     </div>
@@ -289,9 +317,13 @@
       <div class="sub" id="timeUsed" style="margin-top:10px;"></div>
       <div class="row" style="justify-content:center; margin-top:18px;">
         <button class="btn-primary" onclick="reviewAnswers()">Review answers</button>
+        <button class="btn-ghost" onclick="tryAgain()">↻ Try again</button>
+        <button class="btn-ghost" id="focusBtn" onclick="focusMistakes()">🎯 Focus on my mistakes</button>
         <button class="btn-ghost" onclick="goHome()">Back to menu</button>
       </div>
     </div>
+
+    <div class="card" id="studyPlan"></div>
 
     <div class="card" id="unitBreakdown">
       <h2>Performance by Unit</h2>
@@ -415,6 +447,26 @@ function buildFullExam(){
   return shuffle(out); // mix the units so it doesn't go unit-by-unit
 }
 
+/* Build an exam from a chosen set of units (custom mode). */
+function buildCustomExam(units, count){
+  let pool = [];
+  units.forEach(u => { pool = pool.concat(byUnit(Number(u))); });
+  return sampleN(pool, count);
+}
+
+/* Build a retry weighted toward the units the student missed. */
+function buildFocusedExam(missByUnit, length){
+  const units = Object.keys(missByUnit).filter(u => missByUnit[u] > 0);
+  if (!units.length) return buildFullExam();
+  const totalMiss = units.reduce((s, u) => s + missByUnit[u], 0);
+  let out = [];
+  units.forEach(u => {
+    const n = Math.max(1, Math.round(length * missByUnit[u] / totalMiss));
+    out = out.concat(sampleN(byUnit(Number(u)), n));
+  });
+  return shuffle(out).slice(0, length);
+}
+
 /* ------------------------------------------------------------------ *
  * Home / setup
  * ------------------------------------------------------------------ */
@@ -433,24 +485,55 @@ function renderBlueprint(){
   let opts = `<option value="all">All units (mixed)</option>`;
   Object.keys(UNITS).forEach(u => { opts += `<option value="${u}">Unit ${u}: ${UNITS[u].name}</option>`; });
   sel.innerHTML = opts;
+
+  document.getElementById("customUnitChecks").innerHTML = Object.keys(UNITS).map(u =>
+    `<label class="sub" style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+       <input type="checkbox" class="cu" value="${u}" checked> U${u}: ${UNITS[u].name}
+     </label>`).join("");
 }
-function openPractice(){ document.getElementById("practiceOpts").classList.remove("hidden"); }
+function openPractice(){ closeCustom(); document.getElementById("practiceOpts").classList.remove("hidden"); }
 function closePractice(){ document.getElementById("practiceOpts").classList.add("hidden"); }
+function openCustom(){ closePractice(); document.getElementById("customOpts").classList.remove("hidden"); }
+function closeCustom(){ document.getElementById("customOpts").classList.add("hidden"); }
+function readCustomUnits(){ return [...document.querySelectorAll("#customUnitChecks .cu:checked")].map(c => Number(c.value)); }
+function setAllCustomUnits(v){ document.querySelectorAll("#customUnitChecks .cu").forEach(c => c.checked = v); }
 
 /* ------------------------------------------------------------------ *
  * Start an exam / practice
  * ------------------------------------------------------------------ */
-function startExam(mode){
+let lastConfig = null;   // remembers the last exam setup, for "Try again"
+let lastResult = null;   // per-unit results, for the study plan & mistake focus
+
+function startExam(mode, cfg){
+  cfg = cfg || {};
   let questions, durationS = 0;
+
   if (mode === "full"){
     questions = buildFullExam();
     durationS = 80 * 60;
-  } else {
+
+  } else if (mode === "custom"){
+    const units = cfg.units || readCustomUnits();
+    const count = cfg.count || Number(document.getElementById("customCount").value);
+    const timed = (cfg.timed !== undefined) ? cfg.timed : document.getElementById("customTimed").checked;
+    if (!units.length){ alert("Pick at least one unit to include."); return; }
+    questions = buildCustomExam(units, count);
+    durationS = timed ? questions.length * 90 : 0;   // ~1.5 min per question
+    cfg = { units, count, timed };
+
+  } else if (mode === "focus"){
+    questions = buildFocusedExam(cfg.missByUnit || {}, cfg.length || 20);
+
+  } else { // practice
     const u = document.getElementById("practiceUnit").value;
     const n = Number(document.getElementById("practiceCount").value);
     const pool = (u === "all") ? QUESTIONS : byUnit(Number(u));
     questions = sampleN(pool, n);
   }
+
+  if (!questions.length){ alert("No questions available for that selection."); return; }
+  lastConfig = Object.assign({ mode }, cfg);
+
   session = {
     mode, questions,
     answers: new Array(questions.length).fill(null),
@@ -461,9 +544,10 @@ function startExam(mode){
     timerId: null
   };
   show("exam");
-  document.getElementById("examModeBadge").textContent = (mode === "full") ? "Full Mock" : "Practice";
+  const badges = { full: "Full Mock", practice: "Practice", custom: "Custom Exam", focus: "Mistake Focus" };
+  document.getElementById("examModeBadge").textContent = badges[mode] || "Exam";
   if (durationS > 0) startTimer();
-  else document.getElementById("timer").textContent = "Practice";
+  else document.getElementById("timer").textContent = (mode === "practice") ? "Practice" : "Untimed";
   renderQuestion();
 }
 
@@ -762,13 +846,21 @@ function finishExam(timedOut){
   if (session.timerId) clearInterval(session.timerId);
   const total = session.questions.length;
   let correct = 0;
-  session.questions.forEach((q, i) => { if (session.answers[i] === q.answer) correct++; });
+  const stats = {}, missByUnit = {};
+  session.questions.forEach((q, i) => {
+    if (!stats[q.unit]) stats[q.unit] = { c: 0, t: 0 };
+    stats[q.unit].t++;
+    if (session.answers[i] === q.answer){ correct++; stats[q.unit].c++; }
+    else missByUnit[q.unit] = (missByUnit[q.unit] || 0) + 1;
+  });
   const pct = Math.round((correct / total) * 100);
+  lastResult = { stats, missByUnit, total, correct, pct };
 
   document.getElementById("scorePct").textContent = pct + "%";
   document.getElementById("scoreFrac").textContent = `${correct} / ${total} correct`;
+  const labels = { full: "Mock Exam", practice: "Practice", custom: "Custom Exam", focus: "Mistake Focus" };
   document.getElementById("resultBadge").textContent =
-    timedOut ? "Time’s up — submitted" : (session.mode === "full" ? "Mock Exam Complete" : "Practice Complete");
+    timedOut ? "Time’s up — submitted" : (labels[session.mode] || "Exam") + " Complete";
 
   // AP 1–5 estimate (full mock only). Bands approximate recent MCQ-to-score mappings.
   const apBox = document.getElementById("apBox");
@@ -785,10 +877,64 @@ function finishExam(timedOut){
   const elapsed = (performance.now() - session.startMs) / 1000;
   const m = Math.floor(elapsed / 60), s = Math.floor(elapsed % 60);
   document.getElementById("timeUsed").textContent =
-    session.mode === "full" ? `Time used: ${m} min ${s} s` : "";
+    session.durationS > 0 ? `Time used: ${m} min ${s} s` : "";
 
-  renderBreakdown();
+  // "Focus on my mistakes" only makes sense when there were mistakes.
+  document.getElementById("focusBtn").style.display =
+    Object.keys(missByUnit).length ? "" : "none";
+
+  renderStudyPlan(stats, missByUnit);
+  renderBreakdown(stats);
   show("results");
+}
+
+/* ------------------------------------------------------------------ *
+ * Study plan — what to work on, ranked by accuracy × exam weight
+ * ------------------------------------------------------------------ */
+function renderStudyPlan(stats, missByUnit){
+  const el = document.getElementById("studyPlan");
+  const wrong = Object.keys(missByUnit);
+  if (!wrong.length){
+    el.innerHTML = `<h2>Your study plan</h2>
+      <p class="sub">Clean sweep — you didn't miss anything in this set. 🎉 Keep cycling full mocks to stay exam-ready.</p>`;
+    return;
+  }
+  // priority = how much you missed × how heavily the real exam weights that unit
+  const ranked = wrong.map(u => {
+    const s = stats[u], acc = s.c / s.t, weight = UNITS[u].examCount;
+    return { u, miss: missByUnit[u], acc, weight, priority: (1 - acc) * weight };
+  }).sort((a, b) => b.priority - a.priority);
+
+  const tier = w => w >= 8 ? "one of the two highest-weighted units on the exam"
+                  : w >= 5 ? "a high-weight unit"
+                  : "a lower-weight unit";
+
+  const items = ranked.map((r, i) => {
+    const rank = i === 0 ? "★ Top priority" : (i === 1 ? "High priority" : "Next");
+    return `<div class="sheet-eq" style="display:flex; gap:12px; align-items:flex-start;">
+      <span class="pill" style="background:rgba(56,189,248,0.16); color:var(--accent-2); flex:none; white-space:nowrap;">${rank}</span>
+      <span><b>Unit ${r.u}: ${UNITS[r.u].name}</b> — you scored ${Math.round(r.acc * 100)}% (missed ${r.miss}).
+      It's <b>${UNITS[r.u].official}</b> of the exam (${tier(r.weight)}), so improving here pays off most.</span>
+    </div>`;
+  }).join("");
+
+  el.innerHTML = `<h2>Your study plan</h2>
+    <p class="sub">Ranked by your accuracy <em>and</em> how much the real exam weights each unit — work top-down.</p>
+    <div style="margin-top:10px;">${items}</div>
+    <p class="sub" style="margin-top:12px;">Tip: tap <b>🎯 Focus on my mistakes</b> above for a fresh exam built mostly from these units.</p>`;
+}
+
+/* ------------------------------------------------------------------ *
+ * Retry options
+ * ------------------------------------------------------------------ */
+function tryAgain(){
+  if (!lastConfig) return goHome();
+  startExam(lastConfig.mode, lastConfig);
+}
+function focusMistakes(){
+  if (!lastResult || !Object.keys(lastResult.missByUnit).length) return;
+  const len = Math.max(10, Math.min(40, lastResult.total));
+  startExam("focus", { missByUnit: lastResult.missByUnit, length: len });
 }
 
 function estimateAP(pct){
@@ -800,13 +946,7 @@ function estimateAP(pct){
   return { score: 1, bg: "rgba(248,113,113,0.22)", fg: "#f87171" };
 }
 
-function renderBreakdown(){
-  const stats = {};
-  session.questions.forEach((q, i) => {
-    if (!stats[q.unit]) stats[q.unit] = { c: 0, t: 0 };
-    stats[q.unit].t++;
-    if (session.answers[i] === q.answer) stats[q.unit].c++;
-  });
+function renderBreakdown(stats){
   let rows = "<tr><th>Unit</th><th class='num'>Correct</th><th class='num'>%</th></tr>";
   Object.keys(stats).sort((a,b)=>a-b).forEach(u => {
     const s = stats[u];
@@ -859,6 +999,7 @@ function goHome(){
   if (session && session.timerId) clearInterval(session.timerId);
   session = null;
   closePractice();
+  closeCustom();
   closeNav();
   closeSheet();
   document.getElementById("calc").classList.add("hidden");

@@ -139,7 +139,7 @@
 <div style="display:flex; align-items:flex-start; min-height:100vh; background:#0a1118; color:#cdd9e3; font-family:'IBM Plex Sans',sans-serif; line-height:1.6; background-image:linear-gradient(rgba(56,189,248,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.045) 1px,transparent 1px); background-size:28px 28px;">
 
   <!-- nav toggle + backdrop (collapsible sidebar) -->
-  <button onclick="{{toggleNav}}" aria-label="Toggle menu" style="position:fixed; top:14px; left:14px; z-index:60; width:42px; height:42px; border-radius:9px; background:#0b141d; border:1px solid rgba(56,189,248,.3); color:#38bdf8; font-size:18px; line-height:1; cursor:pointer; box-shadow:0 4px 14px -4px rgba(0,0,0,.6);">☰</button>
+  <button onclick="{{toggleNav}}" aria-label="Toggle menu" style="display:{{navBtnDisplay}}; position:fixed; top:14px; left:14px; z-index:60; width:42px; height:42px; border-radius:9px; background:#0b141d; border:1px solid rgba(56,189,248,.3); color:#38bdf8; font-size:18px; line-height:1; cursor:pointer; box-shadow:0 4px 14px -4px rgba(0,0,0,.6);">☰</button>
   <div onclick="{{toggleNav}}" style="position:fixed; inset:0; z-index:40; background:rgba(4,9,14,.55); display:{{navBackdrop}};"></div>
 
   <!-- ===================== SIDEBAR ===================== -->
@@ -220,11 +220,11 @@
 
   <!-- ===================== MAIN ===================== -->
   <div style="flex:1; min-width:0;">
-    <div id="phys-content" style="max-width:920px; margin:0 auto; padding:0 36px 100px;">
+    <div id="phys-content" style="max-width:920px; margin:0 auto; padding:60px 36px 100px;">
 
       <!-- ============ HOME ============ -->
       <sc-if value="{{isHome}}" hint-placeholder-val="{{true}}">
-        <header style="margin:34px 0 0; background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:18px; overflow:hidden; box-shadow:0 24px 60px -34px rgba(0,0,0,.8); background-image:linear-gradient(rgba(56,189,248,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.05) 1px,transparent 1px); background-size:26px 26px;">
+        <header style="margin:0 0 0; background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:18px; overflow:hidden; box-shadow:0 24px 60px -34px rgba(0,0,0,.8); background-image:linear-gradient(rgba(56,189,248,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.05) 1px,transparent 1px); background-size:26px 26px;">
           <div style="display:grid; grid-template-columns:1.05fr .95fr;">
             <div style="padding:42px 38px;">
               <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.16em; color:#38bdf8; margin-bottom:16px;">// ALGEBRA-BASED · 2024 CED · 8 UNITS</div>
@@ -2373,6 +2373,7 @@ class Component extends DCLogic {
       toggleNav: function () { self.setState({ navOpen: !self.state.navOpen }); },
       navT: self.state.navOpen ? 'translateX(0)' : 'translateX(-100%)',
       navBackdrop: self.state.navOpen ? 'block' : 'none',
+      navBtnDisplay: self.state.navOpen ? 'none' : 'block',
       isHome: screen === 'home', isUnit: screen === 'unit', isSimLab: screen === 'simlab', isCheat: screen === 'cheat', isFaq: screen === 'faq', isPractice: screen === 'practice',
       isUnit1: screen === 'unit' && idx === 1,
       isUnit2: screen === 'unit' && idx === 2, isUnit3: screen === 'unit' && idx === 3,
