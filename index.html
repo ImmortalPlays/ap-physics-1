@@ -7,6 +7,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<style id="theme-extras">
+  html, body { background:#eef2f7; }
+  body { -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  button, a, input, summary { transition: background-color .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease, transform .1s ease; }
+  button:active { transform: translateY(1px) scale(.998); }
+  ::selection { background: rgba(56,189,248,.25); }
+</style>
 </head>
 <body>
 <x-dc>
@@ -136,85 +143,85 @@
 </style>
 </helmet>
 
-<div style="display:flex; align-items:flex-start; min-height:100vh; background:#0a1118; color:#cdd9e3; font-family:'IBM Plex Sans',sans-serif; line-height:1.6; background-image:linear-gradient(rgba(56,189,248,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.045) 1px,transparent 1px); background-size:28px 28px;">
+<div style="display:flex; align-items:flex-start; min-height:100vh; background:#eef2f7; color:#334155; font-family:'IBM Plex Sans',sans-serif; line-height:1.6; background-image:linear-gradient(rgba(56,189,248,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.09) 1px,transparent 1px); background-size:28px 28px;">
 
   <!-- nav toggle + backdrop (collapsible sidebar) -->
-  <button onclick="{{toggleNav}}" aria-label="Toggle menu" style="display:{{navBtnDisplay}}; position:fixed; top:14px; left:14px; z-index:60; width:42px; height:42px; border-radius:9px; background:#0b141d; border:1px solid rgba(56,189,248,.3); color:#38bdf8; font-size:18px; line-height:1; cursor:pointer; box-shadow:0 4px 14px -4px rgba(0,0,0,.6);">☰</button>
+  <button onclick="{{toggleNav}}" aria-label="Toggle menu" style="display:{{navBtnDisplay}}; position:fixed; top:14px; left:14px; z-index:60; width:42px; height:42px; border-radius:9px; background:#ffffff; border:1px solid rgba(56,189,248,.3); color:#38bdf8; font-size:18px; line-height:1; cursor:pointer; box-shadow:0 4px 12px -6px rgba(15,23,42,.18);">☰</button>
   <div onclick="{{toggleNav}}" style="position:fixed; inset:0; z-index:40; background:rgba(4,9,14,.55); display:{{navBackdrop}};"></div>
 
   <!-- ===================== SIDEBAR ===================== -->
-  <aside style="position:fixed; top:0; left:0; z-index:50; width:264px; height:100vh; overflow-y:auto; background:#0b141d; border-right:1px solid rgba(56,189,248,.18); padding:20px 14px 30px; box-sizing:border-box; transform:{{navT}}; transition:transform .25s ease; box-shadow:6px 0 24px -10px rgba(0,0,0,.7);">
+  <aside style="position:fixed; top:0; left:0; z-index:50; width:264px; height:100vh; overflow-y:auto; background:#ffffff; border-right:1px solid rgba(56,189,248,.18); padding:20px 14px 30px; box-sizing:border-box; transform:{{navT}}; transition:transform .25s ease; box-shadow:3px 0 18px -14px rgba(15,23,42,.16);">
     <button onclick="{{goHome}}" style="display:flex; align-items:center; gap:11px; width:100%; background:none; border:none; cursor:pointer; padding:6px 8px; margin-bottom:18px;">
-      <span style="width:34px; height:34px; border:1.5px solid #38bdf8; border-radius:7px; color:#38bdf8; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:14px; font-family:'IBM Plex Mono',monospace; box-shadow:0 0 14px -3px rgba(56,189,248,.6);">P1</span>
+      <span style="width:34px; height:34px; border:1.5px solid #38bdf8; border-radius:7px; color:#38bdf8; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:14px; font-family:'IBM Plex Mono',monospace; box-shadow:none;">P1</span>
       <span style="display:flex; flex-direction:column; align-items:flex-start; line-height:1.15;">
-        <span style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:14px; letter-spacing:.06em; color:#e7f1f8;">AP PHYSICS 1</span>
-        <span style="font-size:10.5px; color:#5f7385; font-weight:500; letter-spacing:.04em;">Simulated study guide</span>
+        <span style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:14px; letter-spacing:.06em; color:#0f172a;">AP PHYSICS 1</span>
+        <span style="font-size:10.5px; color:#64748b; font-weight:500; letter-spacing:.04em;">Simulated study guide</span>
       </span>
     </button>
 
     <div style="position:relative; margin-bottom:8px;">
-      <input value="{{query}}" onchange="{{onSearch}}" onkeydown="{{onSearchKey}}" placeholder="Search concepts &amp; sims…" style="width:100%; box-sizing:border-box; padding:9px 28px 9px 30px; border:1px solid rgba(56,189,248,.2); border-radius:8px; background:#091019; font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; font-weight:500; color:#cdd9e3; outline:none;" style-focus="border-color:#38bdf8; box-shadow:0 0 0 3px rgba(56,189,248,.16);">
-      <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#5f7385; font-size:13px; pointer-events:none;">⌕</span>
+      <input value="{{query}}" onchange="{{onSearch}}" onkeydown="{{onSearchKey}}" placeholder="Search concepts &amp; sims…" style="width:100%; box-sizing:border-box; padding:9px 28px 9px 30px; border:1px solid rgba(56,189,248,.2); border-radius:8px; background:#f3f6fb; font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; font-weight:500; color:#334155; outline:none;" style-focus="border-color:#38bdf8; box-shadow:0 0 0 3px rgba(56,189,248,.3);">
+      <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#64748b; font-size:13px; pointer-events:none;">⌕</span>
       <sc-if value="{{searching}}">
-        <button onclick="{{clearSearch}}" style="position:absolute; right:6px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:#5f7385; font-size:12px; padding:3px; line-height:1;" style-hover="color:#cdd9e3;">✕</button>
+        <button onclick="{{clearSearch}}" style="position:absolute; right:6px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:#64748b; font-size:12px; padding:3px; line-height:1;" style-hover="color:#334155;">✕</button>
       </sc-if>
     </div>
 
     <sc-if value="{{searching}}">
-      <div style="margin-bottom:14px; background:#091019; border:1px solid rgba(56,189,248,.2); border-radius:9px; overflow:hidden;">
+      <div style="margin-bottom:14px; background:#f3f6fb; border:1px solid rgba(56,189,248,.2); border-radius:9px; overflow:hidden;">
         <sc-for list="{{results}}" as="r" hint-placeholder-count="3">
           <button onclick="{{r.go}}" style="display:flex; align-items:center; gap:10px; width:100%; text-align:left; border:none; border-bottom:1px solid rgba(56,189,248,.1); cursor:pointer; padding:9px 11px; background:none; font-family:'IBM Plex Sans',sans-serif;" style-hover="background:rgba(56,189,248,.07);">
             <span style="width:7px; height:7px; border-radius:50%; flex:none; background:{{r.dot}};"></span>
             <span style="flex:1; min-width:0;">
-              <span style="display:block; font-size:12.5px; font-weight:600; color:#dbe6ef; line-height:1.25;">{{r.label}}</span>
-              <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#5f7385;">{{r.tag}}</span>
+              <span style="display:block; font-size:12.5px; font-weight:600; color:#1e293b; line-height:1.25;">{{r.label}}</span>
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#64748b;">{{r.tag}}</span>
             </span>
           </button>
         </sc-for>
         <sc-if value="{{noResults}}">
-          <div style="padding:13px 12px; font-size:12px; color:#5f7385; text-align:center; line-height:1.4;">No matches. Try <em>projectile</em>, <em>free fall</em>, or <em>graph</em>.</div>
+          <div style="padding:13px 12px; font-size:12px; color:#64748b; text-align:center; line-height:1.4;">No matches. Try <em>projectile</em>, <em>free fall</em>, or <em>graph</em>.</div>
         </sc-if>
       </div>
     </sc-if>
 
-    <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:.16em; color:#5f7385; padding:8px 10px 8px;">UNITS</div>
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:.16em; color:#64748b; padding:8px 10px 8px;">UNITS</div>
     <div style="display:flex; flex-direction:column; gap:1px;">
       <sc-for list="{{navUnits}}" as="u" hint-placeholder-count="8">
         <button onclick="{{u.go}}" style="display:flex; align-items:center; gap:11px; width:100%; text-align:left; border:none; cursor:pointer; padding:8px 10px; border-radius:8px; background:{{u.abg}}; font-family:'IBM Plex Sans',sans-serif;" style-hover="background:rgba(56,189,248,.07);">
           <span style="width:22px; flex:none; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12px; color:{{u.color}};">{{u.label}}</span>
-          <span style="font-size:12.5px; font-weight:500; color:#bccadb; line-height:1.2;">{{u.title}}</span>
+          <span style="font-size:12.5px; font-weight:500; color:#334155; line-height:1.2;">{{u.title}}</span>
         </button>
       </sc-for>
     </div>
 
-    <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:.16em; color:#5f7385; padding:18px 10px 8px;">RESOURCES</div>
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:.16em; color:#64748b; padding:18px 10px 8px;">RESOURCES</div>
     <div style="display:flex; flex-direction:column; gap:1px;">
       <a href="mock-exam.html" style="display:flex; align-items:center; gap:11px; width:100%; text-align:left; text-decoration:none; cursor:pointer; padding:8px 10px; border-radius:8px; background:rgba(56,189,248,.08); border:1px solid rgba(56,189,248,.22); margin-bottom:3px; font-family:'IBM Plex Sans',sans-serif;" style-hover="background:rgba(56,189,248,.14);">
         <span style="width:11px; height:11px; border-radius:3px; flex:none; background:#38bdf8;"></span>
-        <span style="flex:1; font-size:12.5px; font-weight:600; color:#dbe6ef;">Mock Exam</span>
+        <span style="flex:1; font-size:12.5px; font-weight:600; color:#1e293b;">Mock Exam</span>
         <span style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.08em; color:#0a1118; background:#5eead4; padding:2px 5px; border-radius:4px;">NEW</span>
       </a>
       <button onclick="{{goPractice}}" style="display:flex; align-items:center; gap:11px; width:100%; text-align:left; border:none; cursor:pointer; padding:8px 10px; border-radius:8px; background:{{practiceBg}}; font-family:'IBM Plex Sans',sans-serif;" style-hover="background:rgba(56,189,248,.07);">
         <span style="width:11px; height:11px; border-radius:3px; flex:none; background:#fb7185;"></span>
-        <span style="font-size:12.5px; font-weight:500; color:#bccadb;">Practice</span>
+        <span style="font-size:12.5px; font-weight:500; color:#334155;">Practice</span>
       </button>
       <button onclick="{{goSimLab}}" style="display:flex; align-items:center; gap:11px; width:100%; text-align:left; border:none; cursor:pointer; padding:8px 10px; border-radius:8px; background:{{simBg}}; font-family:'IBM Plex Sans',sans-serif;" style-hover="background:rgba(56,189,248,.07);">
         <span style="width:11px; height:11px; border-radius:3px; flex:none; background:#5eead4;"></span>
-        <span style="font-size:12.5px; font-weight:500; color:#bccadb;">Sim Lab</span>
+        <span style="font-size:12.5px; font-weight:500; color:#334155;">Sim Lab</span>
       </button>
       <button onclick="{{goCheat}}" style="display:flex; align-items:center; gap:11px; width:100%; text-align:left; border:none; cursor:pointer; padding:8px 10px; border-radius:8px; background:{{cheatBg}}; font-family:'IBM Plex Sans',sans-serif;" style-hover="background:rgba(56,189,248,.07);">
         <span style="width:11px; height:11px; border-radius:3px; flex:none; background:#fbbf24;"></span>
-        <span style="font-size:12.5px; font-weight:500; color:#bccadb;">Cheat Sheet</span>
+        <span style="font-size:12.5px; font-weight:500; color:#334155;">Cheat Sheet</span>
       </button>
       <button onclick="{{goFaq}}" style="display:flex; align-items:center; gap:11px; width:100%; text-align:left; border:none; cursor:pointer; padding:8px 10px; border-radius:8px; background:{{faqBg}}; font-family:'IBM Plex Sans',sans-serif;" style-hover="background:rgba(56,189,248,.07);">
         <span style="width:11px; height:11px; border-radius:3px; flex:none; background:#a78bfa;"></span>
-        <span style="font-size:12.5px; font-weight:500; color:#bccadb;">FAQ</span>
+        <span style="font-size:12.5px; font-weight:500; color:#334155;">FAQ</span>
       </button>
     </div>
 
-    <div style="margin-top:22px; padding:13px; background:#091019; border:1px solid rgba(56,189,248,.16); border-radius:10px;">
-      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#5f7385; margin-bottom:5px;">EXAM · MAY</div>
-      <div style="font-size:12px; color:#90a4b2; line-height:1.5;">~3 hrs · 40 MC + 4 free-response, each worth half. <span style="color:#5eead4;">Calculator allowed throughout.</span></div>
+    <div style="margin-top:22px; padding:13px; background:#f3f6fb; border:1px solid rgba(56,189,248,.16); border-radius:10px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#64748b; margin-bottom:5px;">EXAM · MAY</div>
+      <div style="font-size:12px; color:#64748b; line-height:1.5;">~3 hrs · 40 MC + 4 free-response, each worth half. <span style="color:#5eead4;">Calculator allowed throughout.</span></div>
     </div>
   </aside>
 
@@ -224,185 +231,185 @@
 
       <!-- ============ HOME ============ -->
       <sc-if value="{{isHome}}" hint-placeholder-val="{{true}}">
-        <header style="margin:0 0 0; background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:18px; overflow:hidden; box-shadow:0 24px 60px -34px rgba(0,0,0,.8); background-image:linear-gradient(rgba(56,189,248,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.05) 1px,transparent 1px); background-size:26px 26px;">
+        <header style="margin:0 0 0; background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:18px; overflow:hidden; box-shadow:0 14px 34px -20px rgba(15,23,42,.22); background-image:linear-gradient(rgba(56,189,248,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.09) 1px,transparent 1px); background-size:26px 26px;">
           <div style="display:grid; grid-template-columns:1.05fr .95fr;">
             <div style="padding:42px 38px;">
               <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.16em; color:#38bdf8; margin-bottom:16px;">// ALGEBRA-BASED · 2024 CED · 8 UNITS</div>
-              <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:44px; line-height:1.02; margin:0; color:#eaf3fa;">The whole course,<br>drawn to scale.</h1>
-              <div style="width:130px; height:2px; background:#38bdf8; box-shadow:0 0 12px #38bdf8; margin:18px 0 20px;"></div>
-              <p style="font-size:16.5px; color:#9fb3c2; max-width:400px; margin:0 0 28px;">Concepts, step-by-step worked solutions, and a <strong style="color:#cfe2ee;">live simulation for every topic</strong> — laid out like a lab manual you'd actually want to read.</p>
+              <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:44px; line-height:1.02; margin:0; color:#0f172a;">The whole course,<br>drawn to scale.</h1>
+              <div style="width:130px; height:2px; background:#38bdf8; box-shadow:none; margin:18px 0 20px;"></div>
+              <p style="font-size:16.5px; color:#475569; max-width:400px; margin:0 0 28px;">Concepts, step-by-step worked solutions, and a <strong style="color:#1e293b;">live simulation for every topic</strong> — laid out like a lab manual you'd actually want to read.</p>
               <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                <button onclick="{{goUnit1}}" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; color:#0a1118; background:#38bdf8; border:none; padding:13px 24px; border-radius:8px; cursor:pointer; box-shadow:0 0 24px -4px rgba(56,189,248,.7);" style-hover="background:#5fcbfb;">▶ OPEN UNIT 01</button>
-                <a href="mock-exam.html" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; text-decoration:none; color:#0a1118; background:#5eead4; padding:13px 22px; border-radius:8px; box-shadow:0 0 24px -4px rgba(94,234,212,.6);" style-hover="background:#7ff0dd;">📝 MOCK EXAM</a>
-                <button onclick="{{goSimLab}}" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; color:#9fb3c2; background:transparent; border:1px solid rgba(56,189,248,.3); padding:13px 22px; border-radius:8px; cursor:pointer;" style-hover="border-color:#38bdf8; color:#38bdf8;">SIM LAB</button>
+                <button onclick="{{goUnit1}}" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; color:#0a1118; background:#38bdf8; border:none; padding:13px 24px; border-radius:8px; cursor:pointer; box-shadow:0 2px 8px -2px rgba(15,23,42,.14);" style-hover="background:#5fcbfb;">▶ OPEN UNIT 01</button>
+                <a href="mock-exam.html" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; text-decoration:none; color:#0a1118; background:#5eead4; padding:13px 22px; border-radius:8px; box-shadow:0 2px 8px -2px rgba(15,23,42,.14);" style-hover="background:#7ff0dd;">📝 MOCK EXAM</a>
+                <button onclick="{{goSimLab}}" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; color:#475569; background:transparent; border:1px solid rgba(56,189,248,.3); padding:13px 22px; border-radius:8px; cursor:pointer;" style-hover="border-color:#38bdf8; color:#38bdf8;">SIM LAB</button>
               </div>
               <div style="display:flex; gap:30px; margin-top:30px; padding-top:24px; border-top:1px solid rgba(56,189,248,.14);">
-                <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px; color:#38bdf8; line-height:1;">8</div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#5f7385; margin-top:5px;">UNITS</div></div>
-                <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px; color:#5eead4; line-height:1;">21</div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#5f7385; margin-top:5px;">LIVE SIMS</div></div>
-                <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px; color:#fbbf24; line-height:1;">20+</div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#5f7385; margin-top:5px;">WORKED EXAMPLES</div></div>
+                <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px; color:#38bdf8; line-height:1;">8</div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#64748b; margin-top:5px;">UNITS</div></div>
+                <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px; color:#5eead4; line-height:1;">21</div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#64748b; margin-top:5px;">LIVE SIMS</div></div>
+                <div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px; color:#fbbf24; line-height:1;">20+</div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#64748b; margin-top:5px;">WORKED EXAMPLES</div></div>
               </div>
             </div>
             <div style="border-left:1px solid rgba(56,189,248,.18); padding:22px; display:flex; flex-direction:column;">
-              <div style="display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#5f7385; margin-bottom:10px; letter-spacing:.05em;">
-                <span>FIG. A — ORBITAL DYNAMICS</span><span style="display:flex; align-items:center; gap:6px; color:#38bdf8;"><span style="width:6px; height:6px; border-radius:50%; background:#38bdf8; box-shadow:0 0 8px #38bdf8; animation:pulseDot 1.6s ease-in-out infinite;"></span>live</span>
+              <div style="display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#64748b; margin-bottom:10px; letter-spacing:.05em;">
+                <span>FIG. A — ORBITAL DYNAMICS</span><span style="display:flex; align-items:center; gap:6px; color:#38bdf8;"><span style="width:6px; height:6px; border-radius:50%; background:#38bdf8; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>live</span>
               </div>
               <canvas id="hero-scene" style="display:block; width:100%; height:440px;"></canvas>
             </div>
           </div>
         </header>
 
-        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:23px; color:#e7f1f8; margin:46px 0 4px; display:flex; align-items:center; gap:11px;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:23px; color:#0f172a; margin:46px 0 4px; display:flex; align-items:center; gap:11px;">
           <span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Jump straight into a sim
         </h2>
-        <p style="font-size:14.5px; color:#7c91a0; margin:0 0 16px;">Three favorites — or browse all 21 in the <span style="color:#38bdf8; cursor:pointer;" onclick="{{goSimLab}}">Sim Lab</span>.</p>
+        <p style="font-size:14.5px; color:#64748b; margin:0 0 16px;">Three favorites — or browse all 21 in the <span style="color:#38bdf8; cursor:pointer;" onclick="{{goSimLab}}">Sim Lab</span>.</p>
         <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
-          <button onclick="{{openProjectile}}" style="display:flex; flex-direction:column; gap:0; text-align:left; cursor:pointer; padding:0; background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:12px; overflow:hidden;" style-hover="border-color:rgba(56,189,248,.45); transform:translateY(-3px);">
-            <canvas id="home-mini-proj" style="display:block; width:100%; height:120px; background:#091019;"></canvas>
-            <span style="padding:13px 15px;"><span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#38bdf8; margin-bottom:3px;">UNIT 01</span><span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#e7f1f8;">Projectile Launcher</span></span>
+          <button onclick="{{openProjectile}}" style="display:flex; flex-direction:column; gap:0; text-align:left; cursor:pointer; padding:0; background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:12px; overflow:hidden;" style-hover="border-color:rgba(56,189,248,.45); transform:translateY(-3px);">
+            <canvas id="home-mini-proj" style="display:block; width:100%; height:120px; background:#0b1220;"></canvas>
+            <span style="padding:13px 15px;"><span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#38bdf8; margin-bottom:3px;">UNIT 01</span><span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#0f172a;">Projectile Launcher</span></span>
           </button>
-          <button onclick="{{openPendulum}}" style="display:flex; flex-direction:column; gap:0; text-align:left; cursor:pointer; padding:0; background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:12px; overflow:hidden;" style-hover="border-color:rgba(56,189,248,.45); transform:translateY(-3px);">
-            <canvas id="home-mini-pend" style="display:block; width:100%; height:120px; background:#091019;"></canvas>
-            <span style="padding:13px 15px;"><span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#2dd4bf; margin-bottom:3px;">UNIT 07</span><span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#e7f1f8;">Pendulum</span></span>
+          <button onclick="{{openPendulum}}" style="display:flex; flex-direction:column; gap:0; text-align:left; cursor:pointer; padding:0; background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:12px; overflow:hidden;" style-hover="border-color:rgba(56,189,248,.45); transform:translateY(-3px);">
+            <canvas id="home-mini-pend" style="display:block; width:100%; height:120px; background:#0b1220;"></canvas>
+            <span style="padding:13px 15px;"><span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#2dd4bf; margin-bottom:3px;">UNIT 07</span><span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#0f172a;">Pendulum</span></span>
           </button>
-          <button onclick="{{openCollision}}" style="display:flex; flex-direction:column; gap:0; text-align:left; cursor:pointer; padding:0; background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:12px; overflow:hidden;" style-hover="border-color:rgba(56,189,248,.45); transform:translateY(-3px);">
-            <canvas id="home-mini-coll" style="display:block; width:100%; height:120px; background:#091019;"></canvas>
-            <span style="padding:13px 15px;"><span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#fbbf24; margin-bottom:3px;">UNIT 04</span><span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#e7f1f8;">Collision Lab</span></span>
+          <button onclick="{{openCollision}}" style="display:flex; flex-direction:column; gap:0; text-align:left; cursor:pointer; padding:0; background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:12px; overflow:hidden;" style-hover="border-color:rgba(56,189,248,.45); transform:translateY(-3px);">
+            <canvas id="home-mini-coll" style="display:block; width:100%; height:120px; background:#0b1220;"></canvas>
+            <span style="padding:13px 15px;"><span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#fbbf24; margin-bottom:3px;">UNIT 04</span><span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#0f172a;">Collision Lab</span></span>
           </button>
         </div>
 
-        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:23px; color:#e7f1f8; margin:46px 0 14px; display:flex; align-items:center; gap:11px;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:23px; color:#0f172a; margin:46px 0 14px; display:flex; align-items:center; gap:11px;">
           <span style="width:12px; height:12px; border-radius:3px; background:#38bdf8;"></span>What makes this different
         </h2>
-        <p style="font-size:16px; color:#9fb3c2; max-width:680px; margin:0 0 14px;">Most study sites show you a static formula and a worked example. Here, every concept comes with an <strong style="color:#cfe2ee;">interactive simulation</strong> — drag the sliders, change the mass or angle or speed, and watch the physics respond in real time. You build intuition for <em>why</em> the equations behave the way they do, not just how to plug into them.</p>
+        <p style="font-size:16px; color:#475569; max-width:680px; margin:0 0 14px;">Most study sites show you a static formula and a worked example. Here, every concept comes with an <strong style="color:#1e293b;">interactive simulation</strong> — drag the sliders, change the mass or angle or speed, and watch the physics respond in real time. You build intuition for <em>why</em> the equations behave the way they do, not just how to plug into them.</p>
 
-        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:23px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:23px; color:#0f172a; margin:42px 0 16px; display:flex; align-items:center; gap:11px;">
           <span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>How to use it
         </h2>
         <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:12px; padding:20px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:12px; padding:20px;">
             <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#38bdf8; margin-bottom:10px;">STEP 01</div>
-            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; margin-bottom:5px; color:#e7f1f8;">Pick a unit</div>
-            <div style="font-size:13.5px; color:#7c91a0;">Tap the menu (☰, top-left) and pick a unit.</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; margin-bottom:5px; color:#0f172a;">Pick a unit</div>
+            <div style="font-size:13.5px; color:#64748b;">Tap the menu (☰, top-left) and pick a unit.</div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:12px; padding:20px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:12px; padding:20px;">
             <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#5eead4; margin-bottom:10px;">STEP 02</div>
-            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; margin-bottom:5px; color:#e7f1f8;">Play the sim</div>
-            <div style="font-size:13.5px; color:#7c91a0;">Adjust variables and watch it run.</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; margin-bottom:5px; color:#0f172a;">Play the sim</div>
+            <div style="font-size:13.5px; color:#64748b;">Adjust variables and watch it run.</div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:12px; padding:20px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:12px; padding:20px;">
             <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#fbbf24; margin-bottom:10px;">STEP 03</div>
-            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; margin-bottom:5px; color:#e7f1f8;">Work an example</div>
-            <div style="font-size:13.5px; color:#7c91a0;">Follow a solution line by line.</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; margin-bottom:5px; color:#0f172a;">Work an example</div>
+            <div style="font-size:13.5px; color:#64748b;">Follow a solution line by line.</div>
           </div>
         </div>
 
-        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:23px; color:#e7f1f8; margin:46px 0 16px; display:flex; align-items:center; gap:11px;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:23px; color:#0f172a; margin:46px 0 16px; display:flex; align-items:center; gap:11px;">
           <span style="width:12px; height:12px; border-radius:3px; background:#a78bfa;"></span>The exam at a glance
         </h2>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #38bdf8; border-radius:12px; padding:22px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #38bdf8; border-radius:12px; padding:22px;">
             <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; color:#38bdf8;">SECTION I</div>
-            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:4px 0 12px; color:#e7f1f8;">Multiple Choice</div>
-            <div style="font-size:14px; color:#9fb3c2;">40 questions · 80 min · 50% of score</div>
-            <div style="font-size:14px; color:#7c91a0; margin-top:4px;">Single-select questions across all 8 units.</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:4px 0 12px; color:#0f172a;">Multiple Choice</div>
+            <div style="font-size:14px; color:#475569;">40 questions · 80 min · 50% of score</div>
+            <div style="font-size:14px; color:#64748b; margin-top:4px;">Single-select questions across all 8 units.</div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #a78bfa; border-radius:12px; padding:22px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #a78bfa; border-radius:12px; padding:22px;">
             <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; color:#a78bfa;">SECTION II</div>
-            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:4px 0 12px; color:#e7f1f8;">Free Response</div>
-            <div style="font-size:14px; color:#9fb3c2;">4 questions · 100 min · 50% of score</div>
-            <div style="font-size:14px; color:#7c91a0; margin-top:4px;">Includes an experimental-design question.</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:4px 0 12px; color:#0f172a;">Free Response</div>
+            <div style="font-size:14px; color:#475569;">4 questions · 100 min · 50% of score</div>
+            <div style="font-size:14px; color:#64748b; margin-top:4px;">Includes an experimental-design question.</div>
           </div>
         </div>
-        <p style="font-size:13.5px; color:#7c91a0; margin:12px 2px 0;">A graphing calculator is permitted on <strong style="color:#9fb3c2;">both</strong> sections, and a formula sheet is provided. Total time ≈ <strong style="color:#9fb3c2;">3 hours</strong>, held in early-to-mid May.</p>
+        <p style="font-size:13.5px; color:#64748b; margin:12px 2px 0;">A graphing calculator is permitted on <strong style="color:#475569;">both</strong> sections, and a formula sheet is provided. Total time ≈ <strong style="color:#475569;">3 hours</strong>, held in early-to-mid May.</p>
 
-        <div style="margin-top:18px; position:relative; overflow:hidden; background:#0c1722; border:1px solid rgba(94,234,212,.32); border-radius:14px; padding:24px 28px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+        <div style="margin-top:18px; position:relative; overflow:hidden; background:#ffffff; border:1px solid rgba(94,234,212,.32); border-radius:14px; padding:24px 28px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.12em; color:#5eead4; margin-bottom:6px;">// PRACTICE THE REAL THING</div>
-            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:21px; color:#eaf3fa; margin:0 0 5px;">Take a full mock exam</h3>
-            <p style="font-size:14px; color:#9fb3c2; margin:0; max-width:470px;">40 multiple-choice questions, randomly drawn and weighted to the official College Board blueprint, timed like the real thing — with instant scoring, a calculator, and a formula sheet.</p>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:21px; color:#0f172a; margin:0 0 5px;">Take a full mock exam</h3>
+            <p style="font-size:14px; color:#475569; margin:0; max-width:470px;">40 multiple-choice questions, randomly drawn and weighted to the official College Board blueprint, timed like the real thing — with instant scoring, a calculator, and a formula sheet.</p>
           </div>
-          <a href="mock-exam.html" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; text-decoration:none; color:#0a1118; background:#5eead4; padding:13px 24px; border-radius:8px; box-shadow:0 0 24px -4px rgba(94,234,212,.6); flex:none;" style-hover="background:#7ff0dd;">▶ START MOCK EXAM</a>
+          <a href="mock-exam.html" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; text-decoration:none; color:#0a1118; background:#5eead4; padding:13px 24px; border-radius:8px; box-shadow:0 2px 8px -2px rgba(15,23,42,.14); flex:none;" style-hover="background:#7ff0dd;">▶ START MOCK EXAM</a>
         </div>
 
-        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:23px; color:#e7f1f8; margin:48px 0 6px; display:flex; align-items:center; gap:11px;">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:23px; color:#0f172a; margin:48px 0 6px; display:flex; align-items:center; gap:11px;">
           <span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>The 8 units
         </h2>
-        <p style="font-size:14.5px; color:#7c91a0; margin:0 0 16px;">Percentages are the approximate exam weight — spend your time accordingly.</p>
+        <p style="font-size:14.5px; color:#64748b; margin:0 0 16px;">Percentages are the approximate exam weight — spend your time accordingly.</p>
         <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px;">
           <sc-for list="{{navUnits}}" as="u" hint-placeholder-count="8">
-            <button onclick="{{u.go}}" style="position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:7px; text-align:left; cursor:pointer; padding:18px; background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid {{u.color}}; border-radius:12px;" style-hover="border-color:rgba(56,189,248,.4); transform:translateY(-3px);">
+            <button onclick="{{u.go}}" style="position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:7px; text-align:left; cursor:pointer; padding:18px; background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid {{u.color}}; border-radius:12px;" style-hover="border-color:rgba(56,189,248,.4); transform:translateY(-3px);">
               <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; color:{{u.color}}; white-space:nowrap;">UNIT {{u.label}}</span>
-              <span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; color:#e7f1f8; line-height:1.22;">{{u.title}}</span>
-              <span style="font-size:12px; color:#7c91a0;">{{u.short}}</span>
+              <span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; color:#0f172a; line-height:1.22;">{{u.title}}</span>
+              <span style="font-size:12px; color:#64748b;">{{u.short}}</span>
               <sc-if value="{{showWeights}}" hint-placeholder-val="{{true}}">
-                <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#5f7385; margin-top:2px;">{{u.weight}} of exam · sim: {{u.sim}}</span>
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#64748b; margin-top:2px;">{{u.weight}} of exam · sim: {{u.sim}}</span>
               </sc-if>
             </button>
           </sc-for>
         </div>
 
-        <div style="margin-top:48px; position:relative; overflow:hidden; background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:16px; padding:32px 36px; display:flex; align-items:center; justify-content:space-between; gap:24px; background-image:linear-gradient(rgba(56,189,248,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.05) 1px,transparent 1px); background-size:24px 24px;">
+        <div style="margin-top:48px; position:relative; overflow:hidden; background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:16px; padding:32px 36px; display:flex; align-items:center; justify-content:space-between; gap:24px; background-image:linear-gradient(rgba(56,189,248,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.09) 1px,transparent 1px); background-size:24px 24px;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; color:#38bdf8; margin-bottom:8px;">// READY WHEN YOU ARE</div>
-            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:24px; color:#eaf3fa; margin:0 0 6px;">Start with the basics, or just go play.</h3>
-            <p style="font-size:14.5px; color:#9fb3c2; margin:0; max-width:440px;">Unit 1 builds the foundation; the Sim Lab lets you tinker with every concept hands-on.</p>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:24px; color:#0f172a; margin:0 0 6px;">Start with the basics, or just go play.</h3>
+            <p style="font-size:14.5px; color:#475569; margin:0; max-width:440px;">Unit 1 builds the foundation; the Sim Lab lets you tinker with every concept hands-on.</p>
           </div>
           <div style="display:flex; gap:12px; flex:none;">
-            <button onclick="{{goUnit1}}" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; color:#0a1118; background:#38bdf8; border:none; padding:13px 22px; border-radius:8px; cursor:pointer; box-shadow:0 0 24px -4px rgba(56,189,248,.7);" style-hover="background:#5fcbfb;">▶ OPEN UNIT 01</button>
-            <button onclick="{{goSimLab}}" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; color:#9fb3c2; background:transparent; border:1px solid rgba(56,189,248,.3); padding:13px 22px; border-radius:8px; cursor:pointer;" style-hover="border-color:#38bdf8; color:#38bdf8;">SIM LAB</button>
+            <button onclick="{{goUnit1}}" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; color:#0a1118; background:#38bdf8; border:none; padding:13px 22px; border-radius:8px; cursor:pointer; box-shadow:0 2px 8px -2px rgba(15,23,42,.14);" style-hover="background:#5fcbfb;">▶ OPEN UNIT 01</button>
+            <button onclick="{{goSimLab}}" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:.05em; color:#475569; background:transparent; border:1px solid rgba(56,189,248,.3); padding:13px 22px; border-radius:8px; cursor:pointer;" style-hover="border-color:#38bdf8; color:#38bdf8;">SIM LAB</button>
           </div>
         </div>
       </sc-if>
 
       <!-- ============ UNIT ============ -->
       <sc-if value="{{isUnit}}">
-        <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:8px; margin:30px 0 16px; background:#0c1722; border:1px solid rgba(56,189,248,.3); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#9fb3c2; padding:10px 18px;" style-hover="border-color:#38bdf8; color:#38bdf8; background:#0e1c2a;"><span style="font-size:14px;">←</span> ALL UNITS &amp; INDEX</button>
+        <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:8px; margin:30px 0 16px; background:#ffffff; border:1px solid rgba(56,189,248,.3); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#475569; padding:10px 18px;" style-hover="border-color:#38bdf8; color:#38bdf8; background:#e6eef9;"><span style="font-size:14px;">←</span> ALL UNITS &amp; INDEX</button>
 
-        <header style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-left:4px solid {{activeColor}}; border-radius:14px; padding:26px 32px; margin-bottom:24px; background-image:linear-gradient(rgba(56,189,248,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.05) 1px,transparent 1px); background-size:24px 24px;">
+        <header style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-left:4px solid {{activeColor}}; border-radius:14px; padding:26px 32px; margin-bottom:24px; background-image:linear-gradient(rgba(56,189,248,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.09) 1px,transparent 1px); background-size:24px 24px;">
           <div style="display:flex; align-items:center; gap:12px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:{{activeColor}}; letter-spacing:.06em;">
             <span>FIG. {{activeNum}} — UNIT {{activeNum}}</span>
             <sc-if value="{{showWeights}}" hint-placeholder-val="{{true}}">
-              <span style="background:rgba(56,189,248,.14); padding:2px 9px; border-radius:5px; color:#9fb3c2;">{{activeWeight}} of exam</span>
+              <span style="background:rgba(56,189,248,.14); padding:2px 9px; border-radius:5px; color:#475569;">{{activeWeight}} of exam</span>
             </sc-if>
           </div>
-          <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; line-height:1.08; margin:9px 0 0; color:#eaf3fa;">{{activeTitle}}</h1>
+          <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; line-height:1.08; margin:9px 0 0; color:#0f172a;">{{activeTitle}}</h1>
         </header>
 
         <!-- Full content (Unit 1: Kinematics) -->
         <sc-if value="{{isUnit1}}">
 
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;" id="c1">1. What kinematics describes</h2>
-            <p style="margin:0;">Kinematics is the study of <strong style="color:#cfe2ee;">how things move</strong> — position, velocity and acceleration — without yet asking <em>why</em> (that's forces, in Unit 2). The three quantities you track are <strong>position</strong> \(x\), <strong>displacement</strong> \(\Delta x = x_f - x_i\) (a vector — direction matters), and <strong>distance</strong> (the total path length, always positive).</p>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c1">1. What kinematics describes</h2>
+            <p style="margin:0;">Kinematics is the study of <strong style="color:#1e293b;">how things move</strong> — position, velocity and acceleration — without yet asking <em>why</em> (that's forces, in Unit 2). The three quantities you track are <strong>position</strong> \(x\), <strong>displacement</strong> \(\Delta x = x_f - x_i\) (a vector — direction matters), and <strong>distance</strong> (the total path length, always positive).</p>
           </section>
 
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;" id="c2">2. Velocity &amp; speed</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c2">2. Velocity &amp; speed</h2>
             <p style="margin:0 0 9px;"><strong>Average velocity</strong> is displacement over time; <strong>instantaneous velocity</strong> is the velocity at a single instant — the slope of the position–time graph.</p>
             <p style="margin:0 0 9px;">$$v_{avg} = \frac{\Delta x}{\Delta t}$$</p>
             <p style="margin:0;"><strong>Speed</strong> is the magnitude of velocity (no direction). On an \(x\)–\(t\) graph, a steeper slope means a faster object; a negative slope means it's moving backward.</p>
           </section>
 
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;" id="c3">3. Acceleration</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c3">3. Acceleration</h2>
             <p style="margin:0 0 9px;"><strong>Acceleration</strong> is the rate of change of velocity — the slope of the velocity–time graph:</p>
             <p style="margin:0 0 9px;">$$a = \frac{\Delta v}{\Delta t}$$</p>
             <p style="margin:0;">If \(a\) points the same way as \(v\), the object speeds up; if it points opposite, it slows down. A negative acceleration does <em>not</em> always mean "slowing down" — it depends on the direction of motion.</p>
           </section>
 
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 10px; color:#e7f1f8;" id="c4">4. The kinematic equations</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 10px; color:#0f172a;" id="c4">4. The kinematic equations</h2>
             <p style="margin:0 0 10px;">When acceleration is <strong>constant</strong>, these four equations connect displacement, velocity, acceleration and time. Pick the one that's missing the variable you don't have.</p>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-              <div style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$v = v_0 + at$$</div>
-              <div style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$\Delta x = v_0 t + \tfrac{1}{2}a t^2$$</div>
-              <div style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$v^2 = v_0^2 + 2a\,\Delta x$$</div>
-              <div style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$\Delta x = \tfrac{1}{2}(v_0 + v)\,t$$</div>
+              <div style="background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$v = v_0 + at$$</div>
+              <div style="background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$\Delta x = v_0 t + \tfrac{1}{2}a t^2$$</div>
+              <div style="background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$v^2 = v_0^2 + 2a\,\Delta x$$</div>
+              <div style="background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$\Delta x = \tfrac{1}{2}(v_0 + v)\,t$$</div>
             </div>
           </section>
 
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;" id="c5">5. Motion graphs</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c5">5. Motion graphs</h2>
             <ul style="margin:0; padding-left:20px;">
               <li style="margin-bottom:6px;"><strong>Slope of \(x\)–\(t\)</strong> gives velocity.</li>
               <li style="margin-bottom:6px;"><strong>Slope of \(v\)–\(t\)</strong> gives acceleration.</li>
@@ -410,13 +417,13 @@
             </ul>
           </section>
 
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;" id="c6">6. Free fall</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c6">6. Free fall</h2>
             <p style="margin:0;">Near Earth's surface, gravity gives every object the same downward acceleration \(g \approx 9.8\ \text{m/s}^2\), regardless of mass. Going up, gravity slows the object; coming down, it speeds it up. The motion is symmetric: time up equals time down, and speed at a height matches on the way up and the way down.</p>
           </section>
 
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;" id="c7">7. Projectile motion</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c7">7. Projectile motion</h2>
             <p style="margin:0 0 9px;">A projectile's horizontal and vertical motions are <strong>independent</strong>. Horizontally there's no acceleration (constant \(v_x\)); vertically it's just free fall.</p>
             <ul style="margin:0; padding-left:20px;">
               <li style="margin-bottom:5px;">Horizontal: \(x = v_0\cos\theta \cdot t\)</li>
@@ -425,84 +432,84 @@
             <p style="margin:9px 0 0;">Launch angle sets the trade-off between range and height — explore it in the launcher below.</p>
           </section>
 
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;" id="c8">8. Vectors in two dimensions</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c8">8. Vectors in two dimensions</h2>
             <p style="margin:0 0 9px;">A <strong>vector</strong> has magnitude and direction; a <strong>scalar</strong> (like distance or speed) has only magnitude. Any 2D vector splits into perpendicular components:</p>
             <p style="margin:0 0 9px;">$$A_x = A\cos\theta, \qquad A_y = A\sin\theta$$</p>
             <p style="margin:0;">Add vectors by adding components separately, then recombine with \(A = \sqrt{A_x^2 + A_y^2}\) and \(\theta = \tan^{-1}(A_y/A_x)\). This component method is the backbone of every 2D problem in the course.</p>
           </section>
 
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;" id="c9">9. Reference frames &amp; relative motion</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c9">9. Reference frames &amp; relative motion</h2>
             <p style="margin:0 0 9px;">Velocity is measured relative to a <strong>reference frame</strong>. To convert between frames, add velocities as vectors: the velocity of A relative to C is</p>
             <p style="margin:0 0 9px;">$$\vec v_{A/C} = \vec v_{A/B} + \vec v_{B/C}$$</p>
             <p style="margin:0;">A swimmer crossing a river, or a person walking on a moving train, are classic examples — the ground-frame velocity is the vector sum of the two motions. Try it in the <strong>relative-motion</strong> sim below.</p>
           </section>
 
           <!-- ===== SIMULATIONS ===== -->
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;">
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 6px; display:flex; align-items:center; gap:11px;">
             <span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulations
           </h2>
-          <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Drag the sliders — the physics recalculates and replays in real time.</p>
+          <p style="font-size:14.5px; color:#64748b; margin:0 0 18px;">Drag the sliders — the physics recalculates and replays in real time.</p>
 
           <!-- Projectile launcher -->
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 20px 50px -34px rgba(0,0,0,.8);">
-            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5f7385; letter-spacing:.05em; margin-bottom:10px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 10px 26px -18px rgba(15,23,42,.22);">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#64748b; letter-spacing:.05em; margin-bottom:10px;">
               <span>FIG. B — PROJECTILE LAUNCHER</span>
-              <span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:0 0 8px #5eead4; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span>
+              <span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span>
             </div>
-            <canvas id="sim-proj" style="display:block; width:100%; height:300px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
+            <canvas id="sim-proj" style="display:block; width:100%; height:300px; background:#0b1220; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 26px; margin-top:14px;">
               <div>
-                <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Launch speed v₀</span><span id="lab-pv0" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{pv0}} m/s</span></div>
+                <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Launch speed v₀</span><span id="lab-pv0" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{pv0}} m/s</span></div>
                 <input type="range" min="5" max="45" step="1" defaultvalue="{{pv0}}" oninput="{{onPv0}}" style="width:100%;">
               </div>
               <div>
-                <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Launch angle θ</span><span id="lab-pang" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{pang}}°</span></div>
+                <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Launch angle θ</span><span id="lab-pang" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{pang}}°</span></div>
                 <input type="range" min="10" max="80" step="1" defaultvalue="{{pang}}" oninput="{{onPang}}" style="width:100%;">
               </div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">RANGE</div><div id="ro-range" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">MAX HEIGHT</div><div id="ro-apex" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">FLIGHT TIME</div><div id="ro-time" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">CURRENT SPEED</div><div id="ro-speed" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">RANGE</div><div id="ro-range" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">MAX HEIGHT</div><div id="ro-apex" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">FLIGHT TIME</div><div id="ro-time" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">CURRENT SPEED</div><div id="ro-speed" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
             </div>
           </div>
 
           <!-- Motion graph -->
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 20px 50px -34px rgba(0,0,0,.8);">
-            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5f7385; letter-spacing:.05em; margin-bottom:10px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 10px 26px -18px rgba(15,23,42,.22);">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#64748b; letter-spacing:.05em; margin-bottom:10px;">
               <span>FIG. C — MOTION GRAPHS · CONSTANT ACCELERATION</span>
-              <span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:0 0 8px #5eead4; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span>
+              <span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span>
             </div>
-            <canvas id="sim-mograph" style="display:block; width:100%; height:320px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
+            <canvas id="sim-mograph" style="display:block; width:100%; height:320px; background:#0b1220; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 26px; margin-top:14px;">
               <div>
-                <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Initial velocity v₀</span><span id="lab-mv0" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{mv0}} m/s</span></div>
+                <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Initial velocity v₀</span><span id="lab-mv0" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{mv0}} m/s</span></div>
                 <input type="range" min="-6" max="10" step="0.5" defaultvalue="{{mv0}}" oninput="{{onMv0}}" style="width:100%;">
               </div>
               <div>
-                <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Acceleration a</span><span id="lab-ma" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{ma}} m/s²</span></div>
+                <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Acceleration a</span><span id="lab-ma" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{ma}} m/s²</span></div>
                 <input type="range" min="-4" max="4" step="0.5" defaultvalue="{{ma}}" oninput="{{onMa}}" style="width:100%;">
               </div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">TIME t</div><div id="ro-mt" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">VELOCITY v</div><div id="ro-mv" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">DISPLACEMENT Δx</div><div id="ro-mx" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">TIME t</div><div id="ro-mt" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">VELOCITY v</div><div id="ro-mv" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">DISPLACEMENT Δx</div><div id="ro-mx" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
             </div>
-            <p style="font-size:12.5px; color:#5f7385; margin:12px 2px 0;">The shaded region under the <span style="color:#38bdf8;">v–t line</span> is the displacement — watch it fill as time advances.</p>
+            <p style="font-size:12.5px; color:#64748b; margin:12px 2px 0;">The shaded region under the <span style="color:#38bdf8;">v–t line</span> is the displacement — watch it fill as time advances.</p>
           </div>
 
           <!-- ===== WORKED EXAMPLES ===== -->
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;">
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 6px; display:flex; align-items:center; gap:11px;">
             <span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions
           </h2>
-          <p style="font-size:14.5px; color:#7c91a0; margin:0 0 16px;">Click any example to expand the full worked solution.</p>
+          <p style="font-size:14.5px; color:#64748b; margin:0 0 16px;">Click any example to expand the full worked solution.</p>
 
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
-            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
               <span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span>
               <span id="x1">Example 1 — Constant acceleration from rest</span>
             </summary>
@@ -515,8 +522,8 @@
             </ol>
           </details>
 
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
-            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
               <span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span>
               <span id="x2">Example 2 — Free fall: a ball thrown straight up</span>
             </summary>
@@ -529,8 +536,8 @@
             </ol>
           </details>
 
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
-            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
               <span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span>
               <span id="x3">Example 3 — Projectile range &amp; height</span>
             </summary>
@@ -543,8 +550,8 @@
             </ol>
           </details>
 
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
-            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
               <span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span>
               <span id="x4">Example 4 — Displacement from a v–t graph</span>
             </summary>
@@ -557,8 +564,8 @@
             </ol>
           </details>
 
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
-            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
               <span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span>
               <span id="x5">Example 5 — Stopping distance</span>
             </summary>
@@ -575,42 +582,42 @@
 
         <!-- ============ UNIT 2: FORCES ============ -->
         <sc-if value="{{isUnit2}}">
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">1. Newton's three laws</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">1. Newton's three laws</h2>
             <ul style="margin:0; padding-left:20px;">
               <li style="margin-bottom:5px;"><strong>1st (inertia):</strong> an object keeps its velocity unless a net force acts on it.</li>
               <li style="margin-bottom:5px;"><strong>2nd:</strong> \(\vec F_{net} = m\vec a\) — net force sets acceleration.</li>
               <li><strong>3rd:</strong> forces come in equal-and-opposite pairs on different objects.</li>
             </ul>
           </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">2. Free-body diagrams &amp; friction</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">2. Free-body diagrams &amp; friction</h2>
             <p style="margin:0 0 8px;">Draw every force as an arrow leaving the object: weight \(mg\) down, normal \(N\) perpendicular to the surface, friction along it, plus any tension or applied force. Then add them as vectors.</p>
             <p style="margin:0;">Kinetic friction opposes sliding: \(f_k = \mu_k N\). Static friction adjusts itself up to a maximum \(f_{s,\max} = \mu_s N\) — nothing moves until you exceed it.</p>
           </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">3. Inclined planes</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">3. Inclined planes</h2>
             <p style="margin:0;">Tilt your axes along the ramp. Gravity splits into a part <em>along</em> the surface, \(mg\sin\theta\) (what pulls it down the slope), and a part <em>into</em> it, \(mg\cos\theta\). The normal force balances the second: \(N = mg\cos\theta\).</p>
           </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">4. Systems &amp; center of mass</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">4. Systems &amp; center of mass</h2>
             <p style="margin:0 0 8px;">Treating several objects as one <strong>system</strong> lets you ignore internal forces and track just the <strong>center of mass</strong> — the average position of the mass:</p>
             <p style="margin:0 0 8px;">$$x_{cm} = \frac{m_1 x_1 + m_2 x_2 + \dots}{m_1 + m_2 + \dots}$$</p>
             <p style="margin:0;">The center of mass accelerates as if the net external force acted on the total mass there — internal forces never move it on their own.</p>
           </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">5. Gravitational &amp; spring forces</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">5. Gravitational &amp; spring forces</h2>
             <p style="margin:0 0 8px;">Near Earth, weight is \(F_g = mg\). More generally, any two masses attract with Newton's law of gravitation: \(F_g = \dfrac{G m_1 m_2}{r^2}\).</p>
             <p style="margin:0;">A spring resists being stretched or compressed with <strong>Hooke's law</strong>: \(F_s = -kx\), where \(k\) is the spring constant and \(x\) the displacement from its natural length. The minus sign means the force always points back toward equilibrium.</p>
           </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">6. Uniform circular motion</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">6. Uniform circular motion</h2>
             <p style="margin:0 0 8px;">An object moving in a circle at constant speed is still <em>accelerating</em>, because its direction keeps changing. That <strong>centripetal acceleration</strong> points toward the center:</p>
             <p style="margin:0 0 8px;">$$a_c = \frac{v^2}{r}, \qquad F_c = \frac{mv^2}{r}$$</p>
             <p style="margin:0;">The centripetal force isn't a new kind of force — it's whatever real force (tension, gravity, friction, the normal force) happens to point inward. Remove it and the object flies off along the tangent. Explore this in the circular-motion sim.</p>
           </section>
-          <section style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#e7f1f8;">7. Connected systems &amp; tension</h2>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid {{activeColor}}; border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">7. Connected systems &amp; tension</h2>
             <p style="margin:0 0 8px;">When objects are linked by a rope over a pulley, they share the same <strong>magnitude</strong> of acceleration, and the rope tension is the same throughout (ideal massless rope). Two classic setups:</p>
             <ul style="margin:0; padding-left:20px;">
               <li style="margin-bottom:5px;"><strong>Atwood machine</strong> — two hanging masses; the heavier side falls with \(a = \dfrac{(m_2-m_1)g}{m_1+m_2}\).</li>
@@ -618,51 +625,51 @@
             </ul>
           </section>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
-          <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Change the angle, mass, and friction — see whether the block slides and how hard.</p>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 20px 50px -34px rgba(0,0,0,.8);">
-            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5f7385; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 02 — INCLINED PLANE</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:0 0 8px #5eead4; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
-            <canvas id="sim-incline" style="display:block; width:100%; height:280px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
+          <p style="font-size:14.5px; color:#64748b; margin:0 0 18px;">Change the angle, mass, and friction — see whether the block slides and how hard.</p>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 10px 26px -18px rgba(15,23,42,.22);">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#64748b; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 02 — INCLINED PLANE</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
+            <canvas id="sim-incline" style="display:block; width:100%; height:280px; background:#0b1220; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
             <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px 22px; margin-top:14px;">
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Angle θ</span><span id="lab-inA" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{inAngle}}°</span></div><input type="range" min="0" max="60" step="1" defaultvalue="{{inAngle}}" oninput="{{onInA}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Mass m</span><span id="lab-inM" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{inMass}} kg</span></div><input type="range" min="1" max="10" step="0.5" defaultvalue="{{inMass}}" oninput="{{onInM}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Friction μ</span><span id="lab-inU" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{inMu}}</span></div><input type="range" min="0" max="1" step="0.05" defaultvalue="{{inMu}}" oninput="{{onInU}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Angle θ</span><span id="lab-inA" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{inAngle}}°</span></div><input type="range" min="0" max="60" step="1" defaultvalue="{{inAngle}}" oninput="{{onInA}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Mass m</span><span id="lab-inM" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{inMass}} kg</span></div><input type="range" min="1" max="10" step="0.5" defaultvalue="{{inMass}}" oninput="{{onInM}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Friction μ</span><span id="lab-inU" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{inMu}}</span></div><input type="range" min="0" max="1" step="0.05" defaultvalue="{{inMu}}" oninput="{{onInU}}" style="width:100%;"></div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
-              <div style="flex:1; min-width:120px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">NET FORCE</div><div id="ro-inNet" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:120px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">ACCELERATION</div><div id="ro-inAcc" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:120px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">STATE</div><div id="ro-inState" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
+              <div style="flex:1; min-width:120px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">NET FORCE</div><div id="ro-inNet" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:120px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">ACCELERATION</div><div id="ro-inAcc" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:120px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">STATE</div><div id="ro-inState" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
             </div>
           </div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 1 — Net force on a flat surface</span></summary><p style="margin:2px 0 8px;">A \(3\ \text{kg}\) box is pushed with \(20\ \text{N}\) against \(5\ \text{N}\) of friction. Find its acceleration.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Net force: \(F_{net} = 20 - 5 = 15\ \text{N}\).</li><li style="margin-bottom:6px;">Newton's 2nd law: \(a = \dfrac{F_{net}}{m} = \dfrac{15}{3}\).</li><li>Answer: \(\boxed{5\ \text{m/s}^2}\).</li></ol></details>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 2 — Frictionless incline</span></summary><p style="margin:2px 0 8px;">A block slides down a frictionless ramp tilted at \(\theta = 30^\circ\). Find its acceleration.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Only the along-ramp gravity acts: \(F = mg\sin\theta\).</li><li style="margin-bottom:6px;">Divide by \(m\): \(a = g\sin\theta = 9.8\sin 30^\circ\).</li><li>Answer: \(a = 9.8(0.5) = \boxed{4.9\ \text{m/s}^2}\).</li></ol></details>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 3 — Will it slide?</span></summary><p style="margin:2px 0 8px;">A block sits on a \(20^\circ\) incline with \(\mu_s = 0.5\). Does it start to slide?</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Driving force: \(mg\sin 20^\circ = 0.342\,mg\).</li><li style="margin-bottom:6px;">Max static friction: \(\mu_s mg\cos 20^\circ = 0.5(0.940)mg = 0.470\,mg\).</li><li>Since \(0.342 &lt; 0.470\), friction wins — \(\boxed{\text{it stays put}}\).</li></ol></details>
-          <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 4 — Car on a flat curve</span></summary><p style="margin:2px 0 8px;">A \(1000\ \text{kg}\) car rounds a flat curve of radius \(50\ \text{m}\) at \(15\ \text{m/s}\). What centripetal force is needed, and what minimum \(\mu_s\) supplies it?</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Force needed: \(F_c = \dfrac{mv^2}{r} = \dfrac{1000(15)^2}{50} = \boxed{4500\ \text{N}}\).</li><li style="margin-bottom:6px;">Friction must supply it: \(\mu_s mg \ge F_c\).</li><li>So \(\mu_s \ge \dfrac{4500}{1000(9.8)} = \boxed{0.46}\).</li></ol></details>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 1 — Net force on a flat surface</span></summary><p style="margin:2px 0 8px;">A \(3\ \text{kg}\) box is pushed with \(20\ \text{N}\) against \(5\ \text{N}\) of friction. Find its acceleration.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Net force: \(F_{net} = 20 - 5 = 15\ \text{N}\).</li><li style="margin-bottom:6px;">Newton's 2nd law: \(a = \dfrac{F_{net}}{m} = \dfrac{15}{3}\).</li><li>Answer: \(\boxed{5\ \text{m/s}^2}\).</li></ol></details>
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 2 — Frictionless incline</span></summary><p style="margin:2px 0 8px;">A block slides down a frictionless ramp tilted at \(\theta = 30^\circ\). Find its acceleration.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Only the along-ramp gravity acts: \(F = mg\sin\theta\).</li><li style="margin-bottom:6px;">Divide by \(m\): \(a = g\sin\theta = 9.8\sin 30^\circ\).</li><li>Answer: \(a = 9.8(0.5) = \boxed{4.9\ \text{m/s}^2}\).</li></ol></details>
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 3 — Will it slide?</span></summary><p style="margin:2px 0 8px;">A block sits on a \(20^\circ\) incline with \(\mu_s = 0.5\). Does it start to slide?</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Driving force: \(mg\sin 20^\circ = 0.342\,mg\).</li><li style="margin-bottom:6px;">Max static friction: \(\mu_s mg\cos 20^\circ = 0.5(0.940)mg = 0.470\,mg\).</li><li>Since \(0.342 &lt; 0.470\), friction wins — \(\boxed{\text{it stays put}}\).</li></ol></details>
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#38bdf8; font-size:11px; margin-top:4px;">▶</span><span>Example 4 — Car on a flat curve</span></summary><p style="margin:2px 0 8px;">A \(1000\ \text{kg}\) car rounds a flat curve of radius \(50\ \text{m}\) at \(15\ \text{m/s}\). What centripetal force is needed, and what minimum \(\mu_s\) supplies it?</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Force needed: \(F_c = \dfrac{mv^2}{r} = \dfrac{1000(15)^2}{50} = \boxed{4500\ \text{N}}\).</li><li style="margin-bottom:6px;">Friction must supply it: \(\mu_s mg \ge F_c\).</li><li>So \(\mu_s \ge \dfrac{4500}{1000(9.8)} = \boxed{0.46}\).</li></ol></details>
         </sc-if>
 
         <!-- ============ UNIT 3: ENERGY ============ -->
         <sc-if value="{{isUnit3}}">
           <div class="lesson" data-lesson="3-concepts" style="--ua:{{activeColor}};"></div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
-          <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Watch kinetic and potential energy trade off as the ball rolls. Add friction to drain the total.</p>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 20px 50px -34px rgba(0,0,0,.8);">
-            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5f7385; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 03 — ENERGY SKATE PARK</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:0 0 8px #5eead4; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
-            <canvas id="sim-energy" style="display:block; width:100%; height:300px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
+          <p style="font-size:14.5px; color:#64748b; margin:0 0 18px;">Watch kinetic and potential energy trade off as the ball rolls. Add friction to drain the total.</p>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 10px 26px -18px rgba(15,23,42,.22);">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#64748b; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 03 — ENERGY SKATE PARK</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
+            <canvas id="sim-energy" style="display:block; width:100%; height:300px; background:#0b1220; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 22px; margin-top:14px;">
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Drop height h</span><span id="lab-enH" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{enH}} m</span></div><input type="range" min="1" max="6" step="0.5" defaultvalue="{{enH}}" oninput="{{onEnH}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Friction</span><span id="lab-enF" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{enF}}</span></div><input type="range" min="0" max="1" step="0.1" defaultvalue="{{enF}}" oninput="{{onEnF}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Drop height h</span><span id="lab-enH" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{enH}} m</span></div><input type="range" min="1" max="6" step="0.5" defaultvalue="{{enH}}" oninput="{{onEnH}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Friction</span><span id="lab-enF" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{enF}}</span></div><input type="range" min="0" max="1" step="0.1" defaultvalue="{{enF}}" oninput="{{onEnF}}" style="width:100%;"></div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">SPEED</div><div id="ro-enV" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">KINETIC</div><div id="ro-enKE" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">POTENTIAL</div><div id="ro-enPE" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#38bdf8;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">SPEED</div><div id="ro-enV" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">KINETIC</div><div id="ro-enKE" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">POTENTIAL</div><div id="ro-enPE" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#38bdf8;">—</div></div>
             </div>
           </div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
           <div class="lesson" data-lesson="3-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
@@ -670,24 +677,24 @@
         <sc-if value="{{isUnit4}}">
           <div class="lesson" data-lesson="4-concepts" style="--ua:{{activeColor}};"></div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
-          <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Collide two carts. Watch total momentum stay fixed while kinetic energy changes with the bounciness.</p>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 20px 50px -34px rgba(0,0,0,.8);">
-            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5f7385; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 04 — COLLISION LAB</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:0 0 8px #5eead4; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
-            <canvas id="sim-collide" style="display:block; width:100%; height:260px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
+          <p style="font-size:14.5px; color:#64748b; margin:0 0 18px;">Collide two carts. Watch total momentum stay fixed while kinetic energy changes with the bounciness.</p>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 10px 26px -18px rgba(15,23,42,.22);">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#64748b; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 04 — COLLISION LAB</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
+            <canvas id="sim-collide" style="display:block; width:100%; height:260px; background:#0b1220; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 22px; margin-top:14px;">
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Mass A</span><span id="lab-coM1" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{coM1}} kg</span></div><input type="range" min="1" max="6" step="0.5" defaultvalue="{{coM1}}" oninput="{{onCoM1}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Mass B</span><span id="lab-coM2" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{coM2}} kg</span></div><input type="range" min="1" max="6" step="0.5" defaultvalue="{{coM2}}" oninput="{{onCoM2}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Speed of A</span><span id="lab-coV1" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{coV1}} m/s</span></div><input type="range" min="1" max="6" step="0.5" defaultvalue="{{coV1}}" oninput="{{onCoV1}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Bounciness e</span><span id="lab-coE" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{coE}}</span></div><input type="range" min="0" max="1" step="0.1" defaultvalue="{{coE}}" oninput="{{onCoE}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Mass A</span><span id="lab-coM1" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{coM1}} kg</span></div><input type="range" min="1" max="6" step="0.5" defaultvalue="{{coM1}}" oninput="{{onCoM1}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Mass B</span><span id="lab-coM2" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{coM2}} kg</span></div><input type="range" min="1" max="6" step="0.5" defaultvalue="{{coM2}}" oninput="{{onCoM2}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Speed of A</span><span id="lab-coV1" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{coV1}} m/s</span></div><input type="range" min="1" max="6" step="0.5" defaultvalue="{{coV1}}" oninput="{{onCoV1}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Bounciness e</span><span id="lab-coE" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{coE}}</span></div><input type="range" min="0" max="1" step="0.1" defaultvalue="{{coE}}" oninput="{{onCoE}}" style="width:100%;"></div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
-              <div style="flex:1; min-width:130px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">TOTAL MOMENTUM</div><div id="ro-coP" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:130px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">KINETIC ENERGY</div><div id="ro-coKE" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
+              <div style="flex:1; min-width:130px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">TOTAL MOMENTUM</div><div id="ro-coP" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:130px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">KINETIC ENERGY</div><div id="ro-coKE" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
             </div>
           </div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
           <div class="lesson" data-lesson="4-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
@@ -695,25 +702,25 @@
         <sc-if value="{{isUnit5}}">
           <div class="lesson" data-lesson="5-concepts" style="--ua:{{activeColor}};"></div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
-          <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Move the masses in and out — balance the see-saw by matching the torques on each side.</p>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 20px 50px -34px rgba(0,0,0,.8);">
-            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5f7385; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 05 — TORQUE BALANCE</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:0 0 8px #5eead4; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
-            <canvas id="sim-torque" style="display:block; width:100%; height:260px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
+          <p style="font-size:14.5px; color:#64748b; margin:0 0 18px;">Move the masses in and out — balance the see-saw by matching the torques on each side.</p>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 10px 26px -18px rgba(15,23,42,.22);">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#64748b; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 05 — TORQUE BALANCE</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
+            <canvas id="sim-torque" style="display:block; width:100%; height:260px; background:#0b1220; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 22px; margin-top:14px;">
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Left mass</span><span id="lab-tqM1" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{tqM1}} kg</span></div><input type="range" min="1" max="8" step="0.5" defaultvalue="{{tqM1}}" oninput="{{onTqM1}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Left distance</span><span id="lab-tqD1" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{tqD1}} m</span></div><input type="range" min="0.5" max="3" step="0.25" defaultvalue="{{tqD1}}" oninput="{{onTqD1}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Right mass</span><span id="lab-tqM2" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{tqM2}} kg</span></div><input type="range" min="1" max="8" step="0.5" defaultvalue="{{tqM2}}" oninput="{{onTqM2}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Right distance</span><span id="lab-tqD2" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{tqD2}} m</span></div><input type="range" min="0.5" max="3" step="0.25" defaultvalue="{{tqD2}}" oninput="{{onTqD2}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Left mass</span><span id="lab-tqM1" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{tqM1}} kg</span></div><input type="range" min="1" max="8" step="0.5" defaultvalue="{{tqM1}}" oninput="{{onTqM1}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Left distance</span><span id="lab-tqD1" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{tqD1}} m</span></div><input type="range" min="0.5" max="3" step="0.25" defaultvalue="{{tqD1}}" oninput="{{onTqD1}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Right mass</span><span id="lab-tqM2" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{tqM2}} kg</span></div><input type="range" min="1" max="8" step="0.5" defaultvalue="{{tqM2}}" oninput="{{onTqM2}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Right distance</span><span id="lab-tqD2" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{tqD2}} m</span></div><input type="range" min="0.5" max="3" step="0.25" defaultvalue="{{tqD2}}" oninput="{{onTqD2}}" style="width:100%;"></div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">LEFT TORQUE</div><div id="ro-tqL" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#38bdf8;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">RIGHT TORQUE</div><div id="ro-tqR" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#38bdf8;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">STATE</div><div id="ro-tqNet" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">LEFT TORQUE</div><div id="ro-tqL" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#38bdf8;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">RIGHT TORQUE</div><div id="ro-tqR" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#38bdf8;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">STATE</div><div id="ro-tqNet" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
             </div>
           </div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
           <div class="lesson" data-lesson="5-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
@@ -721,23 +728,23 @@
         <sc-if value="{{isUnit6}}">
           <div class="lesson" data-lesson="6-concepts" style="--ua:{{activeColor}};"></div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
-          <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Pull the masses toward the axis. Angular momentum stays fixed — watch the spin rate jump.</p>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 20px 50px -34px rgba(0,0,0,.8);">
-            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5f7385; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 06 — ANGULAR MOMENTUM</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:0 0 8px #5eead4; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
-            <canvas id="sim-angular" style="display:block; width:100%; height:280px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
+          <p style="font-size:14.5px; color:#64748b; margin:0 0 18px;">Pull the masses toward the axis. Angular momentum stays fixed — watch the spin rate jump.</p>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 10px 26px -18px rgba(15,23,42,.22);">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#64748b; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 06 — ANGULAR MOMENTUM</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
+            <canvas id="sim-angular" style="display:block; width:100%; height:280px; background:#0b1220; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
             <div style="display:grid; grid-template-columns:1fr; gap:18px 22px; margin-top:14px; max-width:420px;">
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Mass radius r</span><span id="lab-agR" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{agR}} m</span></div><input type="range" min="0.4" max="2" step="0.1" defaultvalue="{{agR}}" oninput="{{onAgR}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Mass radius r</span><span id="lab-agR" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{agR}} m</span></div><input type="range" min="0.4" max="2" step="0.1" defaultvalue="{{agR}}" oninput="{{onAgR}}" style="width:100%;"></div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
-              <div style="flex:1; min-width:100px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">INERTIA I</div><div id="ro-agI" style="font-family:'IBM Plex Mono',monospace; font-size:15px; color:#38bdf8;">—</div></div>
-              <div style="flex:1; min-width:100px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">SPIN ω</div><div id="ro-agW" style="font-family:'IBM Plex Mono',monospace; font-size:15px; color:#fbbf24;">—</div></div>
-              <div style="flex:1; min-width:100px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">MOMENTUM L</div><div id="ro-agL" style="font-family:'IBM Plex Mono',monospace; font-size:15px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:100px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">ENERGY KE</div><div id="ro-agKE" style="font-family:'IBM Plex Mono',monospace; font-size:15px; color:#f472b6;">—</div></div>
+              <div style="flex:1; min-width:100px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">INERTIA I</div><div id="ro-agI" style="font-family:'IBM Plex Mono',monospace; font-size:15px; color:#38bdf8;">—</div></div>
+              <div style="flex:1; min-width:100px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">SPIN ω</div><div id="ro-agW" style="font-family:'IBM Plex Mono',monospace; font-size:15px; color:#fbbf24;">—</div></div>
+              <div style="flex:1; min-width:100px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">MOMENTUM L</div><div id="ro-agL" style="font-family:'IBM Plex Mono',monospace; font-size:15px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:100px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">ENERGY KE</div><div id="ro-agKE" style="font-family:'IBM Plex Mono',monospace; font-size:15px; color:#f472b6;">—</div></div>
             </div>
           </div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
           <div class="lesson" data-lesson="6-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
@@ -745,22 +752,22 @@
         <sc-if value="{{isUnit7}}">
           <div class="lesson" data-lesson="7-concepts" style="--ua:{{activeColor}};"></div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
-          <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Lengthen the pendulum and watch the period grow — change the amplitude and notice it barely matters.</p>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 20px 50px -34px rgba(0,0,0,.8);">
-            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5f7385; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 07 — PENDULUM</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:0 0 8px #5eead4; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
-            <canvas id="sim-pendulum" style="display:block; width:100%; height:280px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
+          <p style="font-size:14.5px; color:#64748b; margin:0 0 18px;">Lengthen the pendulum and watch the period grow — change the amplitude and notice it barely matters.</p>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 10px 26px -18px rgba(15,23,42,.22);">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#64748b; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 07 — PENDULUM</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
+            <canvas id="sim-pendulum" style="display:block; width:100%; height:280px; background:#0b1220; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 22px; margin-top:14px;">
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Length L</span><span id="lab-peL" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{peL}} m</span></div><input type="range" min="0.5" max="4" step="0.25" defaultvalue="{{peL}}" oninput="{{onPeL}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Amplitude θ₀</span><span id="lab-peA" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{peA}}°</span></div><input type="range" min="5" max="45" step="1" defaultvalue="{{peA}}" oninput="{{onPeA}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Length L</span><span id="lab-peL" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{peL}} m</span></div><input type="range" min="0.5" max="4" step="0.25" defaultvalue="{{peL}}" oninput="{{onPeL}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Amplitude θ₀</span><span id="lab-peA" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{peA}}°</span></div><input type="range" min="5" max="45" step="1" defaultvalue="{{peA}}" oninput="{{onPeA}}" style="width:100%;"></div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
-              <div style="flex:1; min-width:130px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">PERIOD T</div><div id="ro-peT" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
-              <div style="flex:1; min-width:130px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">CURRENT ANGLE</div><div id="ro-peAng" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
+              <div style="flex:1; min-width:130px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">PERIOD T</div><div id="ro-peT" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:130px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">CURRENT ANGLE</div><div id="ro-peAng" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
             </div>
           </div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
           <div class="lesson" data-lesson="7-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
@@ -768,59 +775,59 @@
         <sc-if value="{{isUnit8}}">
           <div class="lesson" data-lesson="8-concepts" style="--ua:{{activeColor}};"></div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
-          <p style="font-size:14.5px; color:#7c91a0; margin:0 0 18px;">Tune the block and fluid densities — see how much sinks below the waterline, or whether it drops to the bottom.</p>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 20px 50px -34px rgba(0,0,0,.8);">
-            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5f7385; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 08 — BUOYANCY TANK</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:0 0 8px #5eead4; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
-            <canvas id="sim-buoyancy" style="display:block; width:100%; height:280px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 6px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#5eead4;"></span>Interactive simulation</h2>
+          <p style="font-size:14.5px; color:#64748b; margin:0 0 18px;">Tune the block and fluid densities — see how much sinks below the waterline, or whether it drops to the bottom.</p>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; margin-bottom:18px; box-shadow:0 10px 26px -18px rgba(15,23,42,.22);">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#64748b; letter-spacing:.05em; margin-bottom:10px;"><span>FIG. 08 — BUOYANCY TANK</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
+            <canvas id="sim-buoyancy" style="display:block; width:100%; height:280px; background:#0b1220; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 22px; margin-top:14px;">
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Block density</span><span id="lab-buB" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{buB}} kg/m³</span></div><input type="range" min="200" max="1400" step="50" defaultvalue="{{buB}}" oninput="{{onBuB}}" style="width:100%;"></div>
-              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#9fb3c2;">Fluid density</span><span id="lab-buF" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{buF}} kg/m³</span></div><input type="range" min="600" max="1300" step="50" defaultvalue="{{buF}}" oninput="{{onBuF}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Block density</span><span id="lab-buB" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{buB}} kg/m³</span></div><input type="range" min="200" max="1400" step="50" defaultvalue="{{buB}}" oninput="{{onBuB}}" style="width:100%;"></div>
+              <div><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span style="color:#475569;">Fluid density</span><span id="lab-buF" style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{buF}} kg/m³</span></div><input type="range" min="600" max="1300" step="50" defaultvalue="{{buF}}" oninput="{{onBuF}}" style="width:100%;"></div>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;">
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">SUBMERGED</div><div id="ro-buSub" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#38bdf8;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">WEIGHT</div><div id="ro-buW" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
-              <div style="flex:1; min-width:110px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">STATE</div><div id="ro-buState" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">SUBMERGED</div><div id="ro-buSub" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#38bdf8;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">WEIGHT</div><div id="ro-buW" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#fbbf24;">—</div></div>
+              <div style="flex:1; min-width:110px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">STATE</div><div id="ro-buState" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:#5eead4;">—</div></div>
             </div>
           </div>
 
-          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#e7f1f8; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:#0f172a; margin:42px 0 16px; display:flex; align-items:center; gap:11px;"><span style="width:12px; height:12px; border-radius:3px; background:#fbbf24;"></span>Step-by-step solutions</h2>
           <div class="lesson" data-lesson="8-examples" style="--ua:{{activeColor}};"></div>
         </sc-if>
 
         <!-- shared prev / next nav -->
         <div style="display:flex; justify-content:space-between; align-items:center; gap:14px; margin-top:28px;">
-          <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:7px; padding:11px 18px; background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:12.5px; color:#7c91a0;" style-hover="border-color:#38bdf8;">← INDEX</button>
+          <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:7px; padding:11px 18px; background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:12.5px; color:#64748b;" style-hover="border-color:#38bdf8;">← INDEX</button>
           <div style="display:flex; gap:10px;">
-            <sc-if value="{{hasPrev}}"><button onclick="{{goPrev}}" style="display:inline-flex; align-items:center; gap:7px; padding:11px 18px; background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:12.5px; color:#7c91a0;" style-hover="border-color:#38bdf8;">← UNIT {{prevNum}}</button></sc-if>
-            <sc-if value="{{hasNext}}"><button onclick="{{goNext}}" style="display:inline-flex; align-items:center; gap:7px; padding:11px 18px; background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:12.5px; color:#38bdf8;" style-hover="border-color:#38bdf8;">UNIT {{nextNum}}: {{nextTitle}} →</button></sc-if>
+            <sc-if value="{{hasPrev}}"><button onclick="{{goPrev}}" style="display:inline-flex; align-items:center; gap:7px; padding:11px 18px; background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:12.5px; color:#64748b;" style-hover="border-color:#38bdf8;">← UNIT {{prevNum}}</button></sc-if>
+            <sc-if value="{{hasNext}}"><button onclick="{{goNext}}" style="display:inline-flex; align-items:center; gap:7px; padding:11px 18px; background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:12.5px; color:#38bdf8;" style-hover="border-color:#38bdf8;">UNIT {{nextNum}}: {{nextTitle}} →</button></sc-if>
           </div>
         </div>
       </sc-if>
 
       <!-- ============ SIM LAB ============ -->
       <sc-if value="{{isSimLab}}">
-        <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:8px; margin:30px 0 16px; background:#0c1722; border:1px solid rgba(56,189,248,.3); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#9fb3c2; padding:10px 18px;" style-hover="border-color:#38bdf8; color:#38bdf8; background:#0e1c2a;"><span style="font-size:14px;">←</span> ALL UNITS &amp; INDEX</button>
-        <header style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-left:4px solid #5eead4; border-radius:14px; padding:26px 32px; margin-bottom:8px;">
+        <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:8px; margin:30px 0 16px; background:#ffffff; border:1px solid rgba(56,189,248,.3); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#475569; padding:10px 18px;" style-hover="border-color:#38bdf8; color:#38bdf8; background:#e6eef9;"><span style="font-size:14px;">←</span> ALL UNITS &amp; INDEX</button>
+        <header style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-left:4px solid #5eead4; border-radius:14px; padding:26px 32px; margin-bottom:8px;">
           <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#5eead4; letter-spacing:.06em;">RESOURCE</div>
-          <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1.1; margin:8px 0 0; color:#eaf3fa;">Sim Lab</h1>
+          <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1.1; margin:8px 0 0; color:#0f172a;">Sim Lab</h1>
         </header>
         <!-- LIBRARY -->
         <sc-if value="{{labList}}" hint-placeholder-val="{{true}}">
-          <p style="font-size:14.5px; color:#7c91a0; margin:14px 2px 24px;">A library of <strong style="color:#cfe2ee;">21 playable simulations</strong> across all eight units. Pick one to open it full-size with live controls — no need to dig through a lesson.</p>
+          <p style="font-size:14.5px; color:#64748b; margin:14px 2px 24px;">A library of <strong style="color:#1e293b;">21 playable simulations</strong> across all eight units. Pick one to open it full-size with live controls — no need to dig through a lesson.</p>
           <sc-for list="{{labGroups}}" as="g" hint-placeholder-count="8">
             <div style="margin-bottom:26px;">
               <div style="display:flex; align-items:center; gap:10px; margin:0 2px 12px;">
                 <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:{{g.color}};">UNIT {{g.label}}</span>
-                <span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#cfe2ee;">{{g.title}}</span>
+                <span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#1e293b;">{{g.title}}</span>
                 <span style="flex:1; height:1px; background:rgba(56,189,248,.14);"></span>
               </div>
               <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:13px;">
                 <sc-for list="{{g.sims}}" as="s" hint-placeholder-count="2">
-                  <button onclick="{{s.go}}" style="position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:7px; text-align:left; cursor:pointer; padding:18px; background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:3px solid {{s.color}}; border-radius:12px; min-height:128px;" style-hover="border-color:rgba(56,189,248,.4); transform:translateY(-3px);">
-                    <span style="display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.05em; color:#5eead4;"><span style="width:6px; height:6px; border-radius:50%; background:#5eead4; box-shadow:0 0 6px #5eead4;"></span>LIVE SIM</span>
-                    <span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; color:#e7f1f8; line-height:1.22;">{{s.title}}</span>
-                    <span style="font-size:12.5px; color:#7c91a0; line-height:1.45;">{{s.desc}}</span>
+                  <button onclick="{{s.go}}" style="position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:7px; text-align:left; cursor:pointer; padding:18px; background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:3px solid {{s.color}}; border-radius:12px; min-height:128px;" style-hover="border-color:rgba(56,189,248,.4); transform:translateY(-3px);">
+                    <span style="display:flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.05em; color:#5eead4;"><span style="width:6px; height:6px; border-radius:50%; background:#5eead4; box-shadow:none;"></span>LIVE SIM</span>
+                    <span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; color:#0f172a; line-height:1.22;">{{s.title}}</span>
+                    <span style="font-size:12.5px; color:#64748b; line-height:1.45;">{{s.desc}}</span>
                   </button>
                 </sc-for>
               </div>
@@ -830,27 +837,27 @@
 
         <!-- PLAYER -->
         <sc-if value="{{labActive}}">
-          <button onclick="{{labBack}}" style="display:inline-flex; align-items:center; gap:8px; margin:6px 0 18px; background:#0c1722; border:1px solid rgba(94,234,212,.4); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#5eead4; padding:10px 18px;" style-hover="border-color:#5eead4; background:#0e2220;"><span style="font-size:14px;">←</span> BACK TO SIM LIBRARY</button>
+          <button onclick="{{labBack}}" style="display:inline-flex; align-items:center; gap:8px; margin:6px 0 18px; background:#ffffff; border:1px solid rgba(94,234,212,.4); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#5eead4; padding:10px 18px;" style-hover="border-color:#5eead4; background:#e9f6f1;"><span style="font-size:14px;">←</span> BACK TO SIM LIBRARY</button>
           <div style="display:flex; align-items:baseline; gap:12px; margin:0 2px 4px;">
             <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:{{labColor}};">UNIT {{labUnitLabel}}</span>
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:24px; color:#eaf3fa; margin:0;">{{labTitle}}</h2>
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:24px; color:#0f172a; margin:0;">{{labTitle}}</h2>
           </div>
-          <p style="font-size:14px; color:#7c91a0; margin:0 2px 18px; max-width:640px;">{{labDesc}}</p>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; box-shadow:0 20px 50px -34px rgba(0,0,0,.8);">
-            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5f7385; letter-spacing:.05em; margin-bottom:10px;"><span>SIMULATION</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:0 0 8px #5eead4; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
-            <canvas id="lab-canvas" style="display:block; width:100%; height:360px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
+          <p style="font-size:14px; color:#64748b; margin:0 2px 18px; max-width:640px;">{{labDesc}}</p>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:13px; padding:16px 18px; box-shadow:0 10px 26px -18px rgba(15,23,42,.22);">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#64748b; letter-spacing:.05em; margin-bottom:10px;"><span>SIMULATION</span><span style="display:flex; align-items:center; gap:6px; color:#5eead4;"><span style="width:7px; height:7px; border-radius:50%; background:#5eead4; box-shadow:none; animation:pulseDot 1.6s ease-in-out infinite;"></span>LIVE</span></div>
+            <canvas id="lab-canvas" style="display:block; width:100%; height:360px; background:#0b1220; border:1px solid rgba(56,189,248,.14); border-radius:8px;"></canvas>
             <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px 24px; margin-top:16px;">
               <sc-for list="{{labControls}}" as="c" hint-placeholder-count="2">
                 <div>
-                  <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:6px;"><span style="color:#9fb3c2;">{{c.label}}</span><span style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{c.valTxt}}</span></div>
+                  <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:6px;"><span style="color:#475569;">{{c.label}}</span><span style="font-family:'IBM Plex Mono',monospace; color:#38bdf8;">{{c.valTxt}}</span></div>
                   <input type="range" min="{{c.min}}" max="{{c.max}}" step="{{c.step}}" value="{{c.val}}" oninput="{{c.on}}" style="width:100%;">
                 </div>
               </sc-for>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;">
               <sc-for list="{{labReadouts}}" as="r" hint-placeholder-count="3">
-                <div style="flex:1; min-width:120px; background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;">
-                  <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5f7385;">{{r.label}}</div>
+                <div style="flex:1; min-width:120px; background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:10px 12px;">
+                  <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#64748b;">{{r.label}}</div>
                   <div id="labro-{{r.k}}" style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:{{r.color}};">—</div>
                 </div>
               </sc-for>
@@ -861,17 +868,17 @@
 
       <!-- ============ CHEAT SHEET ============ -->
       <sc-if value="{{isCheat}}">
-        <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:8px; margin:30px 0 16px; background:#0c1722; border:1px solid rgba(56,189,248,.3); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#9fb3c2; padding:10px 18px;" style-hover="border-color:#38bdf8; color:#38bdf8; background:#0e1c2a;"><span style="font-size:14px;">←</span> ALL UNITS &amp; INDEX</button>
-        <header style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-left:4px solid #fbbf24; border-radius:14px; padding:26px 32px; margin-bottom:8px;">
+        <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:8px; margin:30px 0 16px; background:#ffffff; border:1px solid rgba(56,189,248,.3); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#475569; padding:10px 18px;" style-hover="border-color:#38bdf8; color:#38bdf8; background:#e6eef9;"><span style="font-size:14px;">←</span> ALL UNITS &amp; INDEX</button>
+        <header style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-left:4px solid #fbbf24; border-radius:14px; padding:26px 32px; margin-bottom:8px;">
           <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#fbbf24; letter-spacing:.06em;">QUICK REFERENCE</div>
-          <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1.1; margin:8px 0 0; color:#eaf3fa;">Cheat Sheet</h1>
+          <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1.1; margin:8px 0 0; color:#0f172a;">Cheat Sheet</h1>
         </header>
-        <p style="font-size:14.5px; color:#7c91a0; margin:14px 2px 22px;">Every key equation, organized by the eight units of the 2024 CED.</p>
+        <p style="font-size:14.5px; color:#64748b; margin:14px 2px 22px;">Every key equation, organized by the eight units of the 2024 CED.</p>
         <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px;">
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #38bdf8; border-radius:12px; padding:20px 22px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #38bdf8; border-radius:12px; padding:20px 22px;">
             <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#7cc7f0;">1 · Kinematics</h2>
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5f7385; margin-bottom:12px;">MOTION IN 1D &amp; 2D</div>
-            <div style="font-size:13.5px; color:#bccadb; display:flex; flex-direction:column; gap:9px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">MOTION IN 1D &amp; 2D</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
               <div>\(v = v_0 + at\)</div>
               <div>\(\Delta x = v_0 t + \tfrac12 a t^2\)</div>
               <div>\(v^2 = v_0^2 + 2a\,\Delta x\)</div>
@@ -880,10 +887,10 @@
               <div>Relative: \(\vec v_{A/C}=\vec v_{A/B}+\vec v_{B/C}\)</div>
             </div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #5eead4; border-radius:12px; padding:20px 22px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #5eead4; border-radius:12px; padding:20px 22px;">
             <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#5eead4;">2 · Force &amp; Dynamics</h2>
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5f7385; margin-bottom:12px;">NEWTON'S LAWS, CIRCULAR, GRAVITY</div>
-            <div style="font-size:13.5px; color:#bccadb; display:flex; flex-direction:column; gap:9px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">NEWTON'S LAWS, CIRCULAR, GRAVITY</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
               <div>\(\vec F_{net} = m\vec a\)</div>
               <div>\(f_s \le \mu_s N,\quad f_k = \mu_k N\)</div>
               <div>Incline: \(F_\parallel = mg\sin\theta,\ N = mg\cos\theta\)</div>
@@ -892,30 +899,30 @@
               <div>Spring: \(F_s = -kx\)</div>
             </div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #34d399; border-radius:12px; padding:20px 22px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #34d399; border-radius:12px; padding:20px 22px;">
             <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#34d399;">3 · Work, Energy &amp; Power</h2>
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5f7385; margin-bottom:12px;">CONSERVATION OF ENERGY</div>
-            <div style="font-size:13.5px; color:#bccadb; display:flex; flex-direction:column; gap:9px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">CONSERVATION OF ENERGY</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
               <div>\(W = Fd\cos\theta = \Delta KE\)</div>
               <div>\(KE = \tfrac12 m v^2\)</div>
               <div>\(PE_g = mgh,\quad PE_s = \tfrac12 k x^2\)</div>
               <div>\(P = \dfrac{W}{t} = Fv\)</div>
             </div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #fbbf24; border-radius:12px; padding:20px 22px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #fbbf24; border-radius:12px; padding:20px 22px;">
             <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#fbbf24;">4 · Linear Momentum</h2>
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5f7385; margin-bottom:12px;">COLLISIONS &amp; IMPULSE</div>
-            <div style="font-size:13.5px; color:#bccadb; display:flex; flex-direction:column; gap:9px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">COLLISIONS &amp; IMPULSE</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
               <div>\(\vec p = m\vec v\)</div>
               <div>Impulse: \(\vec J = \vec F\,\Delta t = \Delta \vec p\)</div>
               <div>Conservation: \(\sum \vec p_i = \sum \vec p_f\)</div>
               <div>Center of mass: \(x_{cm} = \dfrac{\sum m_i x_i}{\sum m_i}\)</div>
             </div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #f472b6; border-radius:12px; padding:20px 22px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #f472b6; border-radius:12px; padding:20px 22px;">
             <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#f472b6;">5 · Torque &amp; Rotation</h2>
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5f7385; margin-bottom:12px;">ROTATIONAL DYNAMICS</div>
-            <div style="font-size:13.5px; color:#bccadb; display:flex; flex-direction:column; gap:9px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">ROTATIONAL DYNAMICS</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
               <div>\(\tau = rF\sin\theta = I\alpha\)</div>
               <div>\(\omega = \omega_0 + \alpha t\)</div>
               <div>\(\theta = \omega_0 t + \tfrac12 \alpha t^2\)</div>
@@ -923,10 +930,10 @@
               <div>Equilibrium: \(\sum \tau = 0\)</div>
             </div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #a78bfa; border-radius:12px; padding:20px 22px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #a78bfa; border-radius:12px; padding:20px 22px;">
             <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#a78bfa;">6 · Rotating Systems</h2>
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5f7385; margin-bottom:12px;">ANGULAR MOMENTUM &amp; ORBITS</div>
-            <div style="font-size:13.5px; color:#bccadb; display:flex; flex-direction:column; gap:9px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">ANGULAR MOMENTUM &amp; ORBITS</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
               <div>\(L = I\omega\)</div>
               <div>Conservation: \(I_0\omega_0 = I_1\omega_1\)</div>
               <div>\(KE_{rot} = \tfrac12 I\omega^2\)</div>
@@ -934,20 +941,20 @@
               <div>Orbit: \(v = \sqrt{\dfrac{GM}{r}}\)</div>
             </div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #2dd4bf; border-radius:12px; padding:20px 22px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #2dd4bf; border-radius:12px; padding:20px 22px;">
             <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#2dd4bf;">7 · Oscillations</h2>
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5f7385; margin-bottom:12px;">SIMPLE HARMONIC MOTION</div>
-            <div style="font-size:13.5px; color:#bccadb; display:flex; flex-direction:column; gap:9px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">SIMPLE HARMONIC MOTION</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
               <div>\(F = -kx\)</div>
               <div>\(T_{spring} = 2\pi\sqrt{\dfrac{m}{k}}\)</div>
               <div>\(T_{pendulum} = 2\pi\sqrt{\dfrac{L}{g}}\)</div>
               <div>\(f = \dfrac{1}{T}\)</div>
             </div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #60a5fa; border-radius:12px; padding:20px 22px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #60a5fa; border-radius:12px; padding:20px 22px;">
             <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#60a5fa;">8 · Fluids</h2>
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5f7385; margin-bottom:12px;">PRESSURE, BUOYANCY &amp; FLOW</div>
-            <div style="font-size:13.5px; color:#bccadb; display:flex; flex-direction:column; gap:9px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">PRESSURE, BUOYANCY &amp; FLOW</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
               <div>\(\rho = \dfrac{m}{V},\quad P = \dfrac{F}{A}\)</div>
               <div>\(P = P_0 + \rho g h\)</div>
               <div>Buoyancy: \(F_b = \rho g V\)</div>
@@ -955,10 +962,10 @@
               <div>Bernoulli: \(P + \tfrac12 \rho v^2 + \rho g y = \text{const}\)</div>
             </div>
           </div>
-          <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-top:4px solid #5f7385; border-radius:12px; padding:20px 22px;">
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#9fb3c2;">Constants</h2>
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5f7385; margin-bottom:12px;">PROVIDED ON THE EXAM</div>
-            <div style="font-size:13.5px; color:#bccadb; display:flex; flex-direction:column; gap:9px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #5f7385; border-radius:12px; padding:20px 22px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#475569;">Constants</h2>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">PROVIDED ON THE EXAM</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
               <div>\(g = 9.8\ \text{m/s}^2\)</div>
               <div>\(G = 6.67\times10^{-11}\ \mathrm{N{\cdot}m^2/kg^2}\)</div>
               <div>\(\rho_{water} = 1000\ \text{kg/m}^3\)</div>
@@ -970,15 +977,15 @@
 
       <!-- ============ PRACTICE ============ -->
       <sc-if value="{{isPractice}}">
-        <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:8px; margin:30px 0 16px; background:#0c1722; border:1px solid rgba(56,189,248,.3); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#9fb3c2; padding:10px 18px;" style-hover="border-color:#38bdf8; color:#38bdf8; background:#0e1c2a;"><span style="font-size:14px;">←</span> ALL UNITS &amp; INDEX</button>
-        <header style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-left:4px solid #fb7185; border-radius:14px; padding:26px 32px; margin-bottom:18px;">
+        <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:8px; margin:30px 0 16px; background:#ffffff; border:1px solid rgba(56,189,248,.3); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#475569; padding:10px 18px;" style-hover="border-color:#38bdf8; color:#38bdf8; background:#e6eef9;"><span style="font-size:14px;">←</span> ALL UNITS &amp; INDEX</button>
+        <header style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-left:4px solid #fb7185; border-radius:14px; padding:26px 32px; margin-bottom:18px;">
           <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#fb7185; letter-spacing:.06em;">EXAM PREP</div>
-          <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1.1; margin:8px 0 0; color:#eaf3fa;">Practice Problems</h1>
-          <p style="font-size:14.5px; color:#9fb3c2; margin:12px 0 0; max-width:560px;">Exam-style questions written to match the AP Physics 1 format. Multiple choice with instant feedback, and free-response with full scoring guidelines.</p>
+          <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1.1; margin:8px 0 0; color:#0f172a;">Practice Problems</h1>
+          <p style="font-size:14.5px; color:#475569; margin:12px 0 0; max-width:560px;">Exam-style questions written to match the AP Physics 1 format. Multiple choice with instant feedback, and free-response with full scoring guidelines.</p>
         </header>
 
         <!-- mode toggle -->
-        <div style="display:inline-flex; gap:4px; background:#0c1722; border:1px solid rgba(56,189,248,.2); border-radius:11px; padding:5px; margin-bottom:8px;">
+        <div style="display:inline-flex; gap:4px; background:#ffffff; border:1px solid rgba(56,189,248,.2); border-radius:11px; padding:5px; margin-bottom:8px;">
           <button onclick="{{setMcq}}" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; padding:9px 20px; border-radius:8px; border:none; cursor:pointer; background:{{mcqTabBg}}; color:{{mcqTabColor}};">MULTIPLE CHOICE</button>
           <button onclick="{{setFrq}}" style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; padding:9px 20px; border-radius:8px; border:none; cursor:pointer; background:{{frqTabBg}}; color:{{frqTabColor}};">FREE RESPONSE</button>
         </div>
@@ -986,32 +993,32 @@
         <!-- ===== MCQ ===== -->
         <sc-if value="{{showMcq}}" hint-placeholder-val="{{true}}">
           <div style="display:flex; align-items:center; justify-content:space-between; gap:14px; margin:14px 2px 18px;">
-            <p style="font-size:13.5px; color:#7c91a0; margin:0;">Pick an answer to check it instantly. {{mcqCount}} questions across all units.</p>
+            <p style="font-size:13.5px; color:#64748b; margin:0;">Pick an answer to check it instantly. {{mcqCount}} questions across all units.</p>
             <div style="display:flex; align-items:center; gap:12px;">
               <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#5eead4;">SCORE {{mcqScore}}/{{mcqAnswered}}</span>
-              <button onclick="{{resetMcq}}" style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.04em; color:#7c91a0; background:none; border:1px solid rgba(56,189,248,.2); border-radius:7px; padding:6px 12px; cursor:pointer;" style-hover="border-color:#fb7185; color:#fb7185;">RESET</button>
+              <button onclick="{{resetMcq}}" style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.04em; color:#64748b; background:none; border:1px solid rgba(56,189,248,.2); border-radius:7px; padding:6px 12px; cursor:pointer;" style-hover="border-color:#fb7185; color:#fb7185;">RESET</button>
             </div>
           </div>
           <sc-for list="{{mcqList}}" as="q" hint-placeholder-count="3">
-            <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:13px; padding:22px 24px; margin-bottom:14px;">
+            <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:13px; padding:22px 24px; margin-bottom:14px;">
               <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
                 <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; color:#fb7185; border:1px solid rgba(251,113,133,.35); border-radius:5px; padding:3px 8px;">Q{{q.num}}</span>
-                <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; color:#5f7385;">UNIT {{q.unit}} · {{q.topic}}</span>
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; color:#64748b;">UNIT {{q.unit}} · {{q.topic}}</span>
               </div>
-              <div style="font-size:15px; color:#e7f1f8; line-height:1.55; margin-bottom:16px;" class="prac-q">{{q.stem}}</div>
+              <div style="font-size:15px; color:#0f172a; line-height:1.55; margin-bottom:16px;" class="prac-q">{{q.stem}}</div>
               <div style="display:flex; flex-direction:column; gap:9px;">
                 <sc-for list="{{q.options}}" as="opt" hint-placeholder-count="4">
                   <button onclick="{{opt.pick}}" style="display:flex; align-items:flex-start; gap:12px; width:100%; text-align:left; cursor:pointer; padding:13px 16px; border-radius:9px; border:1px solid {{opt.border}}; background:{{opt.bg}}; font-family:'IBM Plex Sans',sans-serif;" style-hover="border-color:rgba(56,189,248,.4);">
                     <span style="flex:none; width:24px; height:24px; border-radius:6px; border:1px solid {{opt.tagBorder}}; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; color:{{opt.tagColor}};">{{opt.letter}}</span>
-                    <span style="flex:1; font-size:14px; color:#cdd9e3; line-height:1.5; padding-top:2px;" class="prac-opt">{{opt.text}}</span>
+                    <span style="flex:1; font-size:14px; color:#334155; line-height:1.5; padding-top:2px;" class="prac-opt">{{opt.text}}</span>
                     <span style="flex:none; font-size:15px; color:{{opt.markColor}}; padding-top:1px;">{{opt.mark}}</span>
                   </button>
                 </sc-for>
               </div>
               <sc-if value="{{q.answered}}">
-                <div style="margin-top:14px; padding:14px 16px; background:#091019; border:1px solid {{q.explBorder}}; border-left:3px solid {{q.explAccent}}; border-radius:9px;">
+                <div style="margin-top:14px; padding:14px 16px; background:#f3f6fb; border:1px solid {{q.explBorder}}; border-left:3px solid {{q.explAccent}}; border-radius:9px;">
                   <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; color:{{q.explAccent}}; margin-bottom:6px;">{{q.verdict}}</div>
-                  <div style="font-size:13.5px; color:#9fb3c2; line-height:1.6;" class="prac-expl">{{q.explanation}}</div>
+                  <div style="font-size:13.5px; color:#475569; line-height:1.6;" class="prac-expl">{{q.explanation}}</div>
                 </div>
               </sc-if>
             </div>
@@ -1020,21 +1027,21 @@
 
         <!-- ===== FRQ ===== -->
         <sc-if value="{{showFrq}}">
-          <p style="font-size:13.5px; color:#7c91a0; margin:14px 2px 18px;">Work each part on paper first, then reveal the scoring guidelines — written like the real AP rubric, point by point.</p>
+          <p style="font-size:13.5px; color:#64748b; margin:14px 2px 18px;">Work each part on paper first, then reveal the scoring guidelines — written like the real AP rubric, point by point.</p>
           <sc-for list="{{frqList}}" as="f" hint-placeholder-count="2">
-            <div style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:13px; padding:24px 26px; margin-bottom:16px;">
+            <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:13px; padding:24px 26px; margin-bottom:16px;">
               <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
                 <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; color:#fb7185; border:1px solid rgba(251,113,133,.35); border-radius:5px; padding:3px 8px;">FRQ {{f.num}}</span>
-                <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; color:#5f7385;">{{f.kind}} · UNIT {{f.unit}} · {{f.points}} PTS</span>
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; color:#64748b;">{{f.kind}} · UNIT {{f.unit}} · {{f.points}} PTS</span>
               </div>
-              <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; color:#eaf3fa; margin-bottom:8px;">{{f.title}}</div>
-              <div style="font-size:14px; color:#bccadb; line-height:1.6; margin-bottom:16px;" class="prac-q">{{f.scenario}}</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; color:#0f172a; margin-bottom:8px;">{{f.title}}</div>
+              <div style="font-size:14px; color:#334155; line-height:1.6; margin-bottom:16px;" class="prac-q">{{f.scenario}}</div>
               <sc-for list="{{f.parts}}" as="p" hint-placeholder-count="3">
-                <details style="background:#091019; border:1px solid rgba(56,189,248,.14); border-radius:10px; margin-bottom:10px; padding:2px 18px;">
+                <details style="background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:10px; margin-bottom:10px; padding:2px 18px;">
                   <summary style="cursor:pointer; padding:13px 0; display:flex; gap:11px; align-items:flex-start;">
                     <span class="sol-caret" style="color:#fb7185; font-size:11px; margin-top:4px;">▶</span>
-                    <span style="flex:1;"><span style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; color:#fb7185;">({{p.label}})</span> <span style="font-size:14px; color:#e7f1f8;" class="prac-q">{{p.prompt}}</span></span>
-                    <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#5f7385; flex:none; padding-top:2px;">{{p.pts}} pt</span>
+                    <span style="flex:1;"><span style="font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; color:#fb7185;">({{p.label}})</span> <span style="font-size:14px; color:#0f172a;" class="prac-q">{{p.prompt}}</span></span>
+                    <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#64748b; flex:none; padding-top:2px;">{{p.pts}} pt</span>
                   </summary>
                   <div style="padding:2px 0 14px 22px;">
                     <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; color:#5eead4; margin-bottom:10px;">SCORING GUIDELINES</div>
@@ -1042,7 +1049,7 @@
                       <sc-for list="{{p.lines}}" as="ln" hint-placeholder-count="2">
                         <div style="display:flex; gap:11px; align-items:flex-start;">
                           <span style="flex:none; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; color:#34d399; background:rgba(52,211,153,.12); border:1px solid rgba(52,211,153,.3); border-radius:5px; padding:3px 7px; margin-top:1px;">{{ln.pts}}</span>
-                          <span style="flex:1; font-size:13.5px; color:#bccadb; line-height:1.6;" class="prac-sol">{{ln.text}}</span>
+                          <span style="flex:1; font-size:13.5px; color:#334155; line-height:1.6;" class="prac-sol">{{ln.text}}</span>
                         </div>
                       </sc-for>
                     </div>
@@ -1056,32 +1063,32 @@
 
       <!-- ============ FAQ ============ -->
       <sc-if value="{{isFaq}}">
-        <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:8px; margin:30px 0 16px; background:#0c1722; border:1px solid rgba(56,189,248,.3); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#9fb3c2; padding:10px 18px;" style-hover="border-color:#38bdf8; color:#38bdf8; background:#0e1c2a;"><span style="font-size:14px;">←</span> ALL UNITS &amp; INDEX</button>
-        <header style="background:#0c1722; border:1px solid rgba(56,189,248,.2); border-left:4px solid #a78bfa; border-radius:14px; padding:26px 32px; margin-bottom:8px;">
+        <button onclick="{{goHome}}" style="display:inline-flex; align-items:center; gap:8px; margin:30px 0 16px; background:#ffffff; border:1px solid rgba(56,189,248,.3); border-radius:9px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px; letter-spacing:.04em; color:#475569; padding:10px 18px;" style-hover="border-color:#38bdf8; color:#38bdf8; background:#e6eef9;"><span style="font-size:14px;">←</span> ALL UNITS &amp; INDEX</button>
+        <header style="background:#ffffff; border:1px solid rgba(56,189,248,.2); border-left:4px solid #a78bfa; border-radius:14px; padding:26px 32px; margin-bottom:8px;">
           <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#a78bfa; letter-spacing:.06em;">RESOURCE</div>
-          <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1.1; margin:8px 0 0; color:#eaf3fa;">FAQ</h1>
+          <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1.1; margin:8px 0 0; color:#0f172a;">FAQ</h1>
         </header>
-        <p style="font-size:14.5px; color:#7c91a0; margin:14px 2px 22px;">Common questions about the AP Physics 1 exam.</p>
+        <p style="font-size:14.5px; color:#64748b; margin:14px 2px 22px;">Common questions about the AP Physics 1 exam.</p>
 
-        <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
-          <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#a78bfa; font-size:11px; margin-top:4px;">▶</span><span>What score do I need?</span></summary>
-          <p style="margin:4px 0 14px; font-size:14.5px; color:#9fb3c2;">The exam is scored <strong style="color:#cfe2ee;">1–5</strong>. A <strong>3</strong> is "qualified" and generally passing; many colleges grant credit for a <strong>4</strong> or <strong>5</strong>. Always check the policy of the college you're aiming for.</p>
+        <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+          <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#a78bfa; font-size:11px; margin-top:4px;">▶</span><span>What score do I need?</span></summary>
+          <p style="margin:4px 0 14px; font-size:14.5px; color:#475569;">The exam is scored <strong style="color:#1e293b;">1–5</strong>. A <strong>3</strong> is "qualified" and generally passing; many colleges grant credit for a <strong>4</strong> or <strong>5</strong>. Always check the policy of the college you're aiming for.</p>
         </details>
-        <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
-          <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#a78bfa; font-size:11px; margin-top:4px;">▶</span><span>How is the exam structured?</span></summary>
-          <p style="margin:4px 0 14px; font-size:14.5px; color:#9fb3c2;">Two sections, each worth <strong>50%</strong>: 40 multiple-choice questions (80 min) and 4 free-response questions (100 min). A calculator and a formula sheet are provided for both sections.</p>
+        <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+          <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#a78bfa; font-size:11px; margin-top:4px;">▶</span><span>How is the exam structured?</span></summary>
+          <p style="margin:4px 0 14px; font-size:14.5px; color:#475569;">Two sections, each worth <strong>50%</strong>: 40 multiple-choice questions (80 min) and 4 free-response questions (100 min). A calculator and a formula sheet are provided for both sections.</p>
         </details>
-        <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
-          <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#a78bfa; font-size:11px; margin-top:4px;">▶</span><span>Is it algebra-based or calculus-based?</span></summary>
-          <p style="margin:4px 0 14px; font-size:14.5px; color:#9fb3c2;"><strong>Algebra-based.</strong> You won't need calculus — just algebra, trigonometry, and clear reasoning. The calculus-based courses are AP Physics C (Mechanics and E&amp;M).</p>
+        <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+          <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#a78bfa; font-size:11px; margin-top:4px;">▶</span><span>Is it algebra-based or calculus-based?</span></summary>
+          <p style="margin:4px 0 14px; font-size:14.5px; color:#475569;"><strong>Algebra-based.</strong> You won't need calculus — just algebra, trigonometry, and clear reasoning. The calculus-based courses are AP Physics C (Mechanics and E&amp;M).</p>
         </details>
-        <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
-          <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#a78bfa; font-size:11px; margin-top:4px;">▶</span><span>Do I need to memorize formulas?</span></summary>
-          <p style="margin:4px 0 14px; font-size:14.5px; color:#9fb3c2;">A formula sheet is provided, so raw memorization matters less than in some courses. What matters is knowing <strong>which</strong> equation applies and <strong>why</strong> — exactly what the simulations are built to teach.</p>
+        <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+          <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#a78bfa; font-size:11px; margin-top:4px;">▶</span><span>Do I need to memorize formulas?</span></summary>
+          <p style="margin:4px 0 14px; font-size:14.5px; color:#475569;">A formula sheet is provided, so raw memorization matters less than in some courses. What matters is knowing <strong>which</strong> equation applies and <strong>why</strong> — exactly what the simulations are built to teach.</p>
         </details>
-        <details style="background:#0c1722; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
-          <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#e7f1f8; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#a78bfa; font-size:11px; margin-top:4px;">▶</span><span>What's the hardest part for most students?</span></summary>
-          <p style="margin:4px 0 14px; font-size:14.5px; color:#9fb3c2;">The free-response and the <strong>experimental-design / reasoning</strong> questions — they ask you to explain physics in words and design experiments, not just compute. Practice writing clear, step-by-step justifications.</p>
+        <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+          <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#a78bfa; font-size:11px; margin-top:4px;">▶</span><span>What's the hardest part for most students?</span></summary>
+          <p style="margin:4px 0 14px; font-size:14.5px; color:#475569;">The free-response and the <strong>experimental-design / reasoning</strong> questions — they ask you to explain physics in words and design experiments, not just compute. Practice writing clear, step-by-step justifications.</p>
         </details>
       </sc-if>
 
