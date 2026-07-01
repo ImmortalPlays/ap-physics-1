@@ -353,3 +353,302 @@
 
 <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#0284c7; font-size:11px; margin-top:4px;">▶</span><span>Example 5 — Fraction of a floating block submerged</span></summary><p style="margin:2px 0 8px;">A block of wood with density \(\rho_{obj}=700\ \mathrm{kg/m^3}\) floats in water (\(\rho_{water}=1000\ \mathrm{kg/m^3}\)). What fraction of the block's volume is below the surface?</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Floating means buoyant force balances weight: \(\rho_{water}\, g\, V_{sub} = \rho_{obj}\, g\, V_{obj}\).</li><li style="margin-bottom:6px;">Cancel \(g\) and solve for the submerged fraction: \(\dfrac{V_{sub}}{V_{obj}} = \dfrac{\rho_{obj}}{\rho_{water}}\).</li><li style="margin-bottom:6px;">\(\dfrac{V_{sub}}{V_{obj}} = \dfrac{700}{1000} = 0.70\).</li><li>\(\boxed{0.70}\) — 70% of the block sits below the waterline, which is why most of an iceberg is hidden underwater.</li></ol></details>
 </div>
+
+
+<!-- ===== Units 1-2 + Cheat Sheet (moved out of index.html during refactor) ===== -->
+
+<div data-lesson="1-concepts">
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c1">1. What kinematics describes</h2>
+            <p style="margin:0;">Kinematics is the study of <strong style="color:#1e293b;">how things move</strong> — position, velocity and acceleration — without yet asking <em>why</em> (that's forces, in Unit 2). The three quantities you track are <strong>position</strong> \(x\), <strong>displacement</strong> \(\Delta x = x_f - x_i\) (a vector — direction matters), and <strong>distance</strong> (the total path length, always positive).</p>
+          </section>
+
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c2">2. Velocity &amp; speed</h2>
+            <p style="margin:0 0 9px;"><strong>Average velocity</strong> is displacement over time; <strong>instantaneous velocity</strong> is the velocity at a single instant — the slope of the position–time graph.</p>
+            <p style="margin:0 0 9px;">$$v_{avg} = \frac{\Delta x}{\Delta t}$$</p>
+            <p style="margin:0;"><strong>Speed</strong> is the magnitude of velocity (no direction). On an \(x\)–\(t\) graph, a steeper slope means a faster object; a negative slope means it's moving backward.</p>
+          </section>
+
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c3">3. Acceleration</h2>
+            <p style="margin:0 0 9px;"><strong>Acceleration</strong> is the rate of change of velocity — the slope of the velocity–time graph:</p>
+            <p style="margin:0 0 9px;">$$a = \frac{\Delta v}{\Delta t}$$</p>
+            <p style="margin:0;">If \(a\) points the same way as \(v\), the object speeds up; if it points opposite, it slows down. A negative acceleration does <em>not</em> always mean "slowing down" — it depends on the direction of motion.</p>
+          </section>
+
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 10px; color:#0f172a;" id="c4">4. The kinematic equations</h2>
+            <p style="margin:0 0 10px;">When acceleration is <strong>constant</strong>, these four equations connect displacement, velocity, acceleration and time. Pick the one that's missing the variable you don't have.</p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <div style="background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$v = v_0 + at$$</div>
+              <div style="background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$\Delta x = v_0 t + \tfrac{1}{2}a t^2$$</div>
+              <div style="background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$v^2 = v_0^2 + 2a\,\Delta x$$</div>
+              <div style="background:#f3f6fb; border:1px solid rgba(56,189,248,.14); border-radius:8px; padding:12px 14px;">$$\Delta x = \tfrac{1}{2}(v_0 + v)\,t$$</div>
+            </div>
+          </section>
+
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c5">5. Motion graphs</h2>
+            <ul style="margin:0; padding-left:20px;">
+              <li style="margin-bottom:6px;"><strong>Slope of \(x\)–\(t\)</strong> gives velocity.</li>
+              <li style="margin-bottom:6px;"><strong>Slope of \(v\)–\(t\)</strong> gives acceleration.</li>
+              <li><strong>Area under \(v\)–\(t\)</strong> gives displacement. (The motion-graph simulation below shades this area live.)</li>
+            </ul>
+          </section>
+
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c6">6. Free fall</h2>
+            <p style="margin:0;">Near Earth's surface, gravity gives every object the same downward acceleration \(g \approx 9.8\ \text{m/s}^2\), regardless of mass. Going up, gravity slows the object; coming down, it speeds it up. The motion is symmetric: time up equals time down, and speed at a height matches on the way up and the way down.</p>
+          </section>
+
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c7">7. Projectile motion</h2>
+            <p style="margin:0 0 9px;">A projectile's horizontal and vertical motions are <strong>independent</strong>. Horizontally there's no acceleration (constant \(v_x\)); vertically it's just free fall.</p>
+            <ul style="margin:0; padding-left:20px;">
+              <li style="margin-bottom:5px;">Horizontal: \(x = v_0\cos\theta \cdot t\)</li>
+              <li>Vertical: \(y = v_0\sin\theta \cdot t - \tfrac{1}{2}g t^2\)</li>
+            </ul>
+            <p style="margin:9px 0 0;">Launch angle sets the trade-off between range and height — explore it in the launcher below.</p>
+          </section>
+
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c8">8. Vectors in two dimensions</h2>
+            <p style="margin:0 0 9px;">A <strong>vector</strong> has magnitude and direction; a <strong>scalar</strong> (like distance or speed) has only magnitude. Any 2D vector splits into perpendicular components:</p>
+            <p style="margin:0 0 9px;">$$A_x = A\cos\theta, \qquad A_y = A\sin\theta$$</p>
+            <p style="margin:0;">Add vectors by adding components separately, then recombine with \(A = \sqrt{A_x^2 + A_y^2}\) and \(\theta = \tan^{-1}(A_y/A_x)\). This component method is the backbone of every 2D problem in the course.</p>
+          </section>
+
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;" id="c9">9. Reference frames &amp; relative motion</h2>
+            <p style="margin:0 0 9px;">Velocity is measured relative to a <strong>reference frame</strong>. To convert between frames, add velocities as vectors: the velocity of A relative to C is</p>
+            <p style="margin:0 0 9px;">$$\vec v_{A/C} = \vec v_{A/B} + \vec v_{B/C}$$</p>
+            <p style="margin:0;">A swimmer crossing a river, or a person walking on a moving train, are classic examples — the ground-frame velocity is the vector sum of the two motions. Try it in the <strong>relative-motion</strong> sim below.</p>
+          </section>
+</div>
+
+<div data-lesson="1-examples">
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
+              <span class="sol-caret" style="color:#0284c7; font-size:11px; margin-top:4px;">▶</span>
+              <span id="x1">Example 1 — Constant acceleration from rest</span>
+            </summary>
+            <p style="margin:2px 0 8px;">A car starts from rest and accelerates at \(a = 3\ \text{m/s}^2\) for \(t = 5\ \text{s}\). Find its final velocity and the distance traveled.</p>
+            <ol style="margin:0 0 14px; padding-left:24px;">
+              <li style="margin-bottom:6px;">List knowns: \(v_0 = 0,\ a = 3,\ t = 5\).</li>
+              <li style="margin-bottom:6px;">Velocity: \(v = v_0 + at = 0 + 3(5) = \boxed{15\ \text{m/s}}\).</li>
+              <li style="margin-bottom:6px;">Distance: \(\Delta x = v_0 t + \tfrac12 a t^2 = 0 + \tfrac12(3)(5)^2\).</li>
+              <li>Simplify: \(\tfrac12(3)(25) = \boxed{37.5\ \text{m}}\).</li>
+            </ol>
+          </details>
+
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
+              <span class="sol-caret" style="color:#0284c7; font-size:11px; margin-top:4px;">▶</span>
+              <span id="x2">Example 2 — Free fall: a ball thrown straight up</span>
+            </summary>
+            <p style="margin:2px 0 8px;">A ball is thrown upward at \(v_0 = 20\ \text{m/s}\). How high does it go, and how long until it reaches the top? Use \(g = 9.8\ \text{m/s}^2\).</p>
+            <ol style="margin:0 0 14px; padding-left:24px;">
+              <li style="margin-bottom:6px;">At the top, velocity is momentarily zero: \(v = 0\).</li>
+              <li style="margin-bottom:6px;">Time up: \(0 = v_0 - g t \Rightarrow t = \dfrac{v_0}{g} = \dfrac{20}{9.8} \approx \boxed{2.04\ \text{s}}\).</li>
+              <li style="margin-bottom:6px;">Max height: \(v^2 = v_0^2 - 2g\,\Delta y \Rightarrow 0 = 20^2 - 2(9.8)\Delta y\).</li>
+              <li>Solve: \(\Delta y = \dfrac{400}{19.6} \approx \boxed{20.4\ \text{m}}\).</li>
+            </ol>
+          </details>
+
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
+              <span class="sol-caret" style="color:#0284c7; font-size:11px; margin-top:4px;">▶</span>
+              <span id="x3">Example 3 — Projectile range &amp; height</span>
+            </summary>
+            <p style="margin:2px 0 8px;">A ball is launched at \(v_0 = 24\ \text{m/s}\) and \(\theta = 50^\circ\). Find the maximum height, time of flight, and range. (Set the launcher above to these values to watch it.)</p>
+            <ol style="margin:0 0 14px; padding-left:24px;">
+              <li style="margin-bottom:6px;">Components: \(v_x = 24\cos 50^\circ \approx 15.4\ \text{m/s}\), \(v_y = 24\sin 50^\circ \approx 18.4\ \text{m/s}\).</li>
+              <li style="margin-bottom:6px;">Max height: \(\dfrac{v_y^2}{2g} = \dfrac{18.4^2}{19.6} \approx \boxed{17.3\ \text{m}}\).</li>
+              <li style="margin-bottom:6px;">Flight time: \(T = \dfrac{2 v_y}{g} = \dfrac{2(18.4)}{9.8} \approx \boxed{3.76\ \text{s}}\).</li>
+              <li>Range: \(v_x \cdot T = 15.4(3.76) \approx \boxed{57.9\ \text{m}}\).</li>
+            </ol>
+          </details>
+
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
+              <span class="sol-caret" style="color:#0284c7; font-size:11px; margin-top:4px;">▶</span>
+              <span id="x4">Example 4 — Displacement from a v–t graph</span>
+            </summary>
+            <p style="margin:2px 0 8px;">An object moves with velocity that rises linearly from \(0\) to \(12\ \text{m/s}\) over \(4\ \text{s}\), then stays constant at \(12\ \text{m/s}\) for \(3\ \text{s}\). Find total displacement.</p>
+            <ol style="margin:0 0 14px; padding-left:24px;">
+              <li style="margin-bottom:6px;">Displacement = area under the \(v\)–\(t\) graph.</li>
+              <li style="margin-bottom:6px;">Triangle (0–4 s): \(\tfrac12 (4)(12) = 24\ \text{m}\).</li>
+              <li style="margin-bottom:6px;">Rectangle (4–7 s): \(12 \times 3 = 36\ \text{m}\).</li>
+              <li>Total: \(24 + 36 = \boxed{60\ \text{m}}\).</li>
+            </ol>
+          </details>
+
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;">
+              <span class="sol-caret" style="color:#0284c7; font-size:11px; margin-top:4px;">▶</span>
+              <span id="x5">Example 5 — Stopping distance</span>
+            </summary>
+            <p style="margin:2px 0 8px;">A car traveling at \(v_0 = 20\ \text{m/s}\) brakes with \(a = -5\ \text{m/s}^2\). How far does it travel before stopping?</p>
+            <ol style="margin:0 0 14px; padding-left:24px;">
+              <li style="margin-bottom:6px;">Final velocity is zero: \(v = 0\). Use \(v^2 = v_0^2 + 2a\,\Delta x\).</li>
+              <li style="margin-bottom:6px;">Substitute: \(0 = 20^2 + 2(-5)\Delta x\).</li>
+              <li style="margin-bottom:6px;">Solve: \(\Delta x = \dfrac{-400}{-10}\).</li>
+              <li>Answer: \(\boxed{40\ \text{m}}\).</li>
+            </ol>
+          </details>
+</div>
+
+<div data-lesson="2-concepts">
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">1. Newton's three laws</h2>
+            <ul style="margin:0; padding-left:20px;">
+              <li style="margin-bottom:5px;"><strong>1st (inertia):</strong> an object keeps its velocity unless a net force acts on it.</li>
+              <li style="margin-bottom:5px;"><strong>2nd:</strong> \(\vec F_{net} = m\vec a\) — net force sets acceleration.</li>
+              <li><strong>3rd:</strong> forces come in equal-and-opposite pairs on different objects.</li>
+            </ul>
+          </section>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">2. Free-body diagrams &amp; friction</h2>
+            <p style="margin:0 0 8px;">Draw every force as an arrow leaving the object: weight \(mg\) down, normal \(N\) perpendicular to the surface, friction along it, plus any tension or applied force. Then add them as vectors.</p>
+            <p style="margin:0;">Kinetic friction opposes sliding: \(f_k = \mu_k N\). Static friction adjusts itself up to a maximum \(f_{s,\max} = \mu_s N\) — nothing moves until you exceed it.</p>
+          </section>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">3. Inclined planes</h2>
+            <p style="margin:0;">Tilt your axes along the ramp. Gravity splits into a part <em>along</em> the surface, \(mg\sin\theta\) (what pulls it down the slope), and a part <em>into</em> it, \(mg\cos\theta\). The normal force balances the second: \(N = mg\cos\theta\).</p>
+          </section>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">4. Systems &amp; center of mass</h2>
+            <p style="margin:0 0 8px;">Treating several objects as one <strong>system</strong> lets you ignore internal forces and track just the <strong>center of mass</strong> — the average position of the mass:</p>
+            <p style="margin:0 0 8px;">$$x_{cm} = \frac{m_1 x_1 + m_2 x_2 + \dots}{m_1 + m_2 + \dots}$$</p>
+            <p style="margin:0;">The center of mass accelerates as if the net external force acted on the total mass there — internal forces never move it on their own.</p>
+          </section>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">5. Gravitational &amp; spring forces</h2>
+            <p style="margin:0 0 8px;">Near Earth, weight is \(F_g = mg\). More generally, any two masses attract with Newton's law of gravitation: \(F_g = \dfrac{G m_1 m_2}{r^2}\).</p>
+            <p style="margin:0;">A spring resists being stretched or compressed with <strong>Hooke's law</strong>: \(F_s = -kx\), where \(k\) is the spring constant and \(x\) the displacement from its natural length. The minus sign means the force always points back toward equilibrium.</p>
+          </section>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">6. Uniform circular motion</h2>
+            <p style="margin:0 0 8px;">An object moving in a circle at constant speed is still <em>accelerating</em>, because its direction keeps changing. That <strong>centripetal acceleration</strong> points toward the center:</p>
+            <p style="margin:0 0 8px;">$$a_c = \frac{v^2}{r}, \qquad F_c = \frac{mv^2}{r}$$</p>
+            <p style="margin:0;">The centripetal force isn't a new kind of force — it's whatever real force (tension, gravity, friction, the normal force) happens to point inward. Remove it and the object flies off along the tangent. Explore this in the circular-motion sim.</p>
+          </section>
+          <section style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-left:3px solid var(--ua); border-radius:11px; padding:18px 24px; margin-bottom:13px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; margin:0 0 8px; color:#0f172a;">7. Connected systems &amp; tension</h2>
+            <p style="margin:0 0 8px;">When objects are linked by a rope over a pulley, they share the same <strong>magnitude</strong> of acceleration, and the rope tension is the same throughout (ideal massless rope). Two classic setups:</p>
+            <ul style="margin:0; padding-left:20px;">
+              <li style="margin-bottom:5px;"><strong>Atwood machine</strong> — two hanging masses; the heavier side falls with \(a = \dfrac{(m_2-m_1)g}{m_1+m_2}\).</li>
+              <li><strong>Modified Atwood</strong> — a cart on a table pulled by one hanging mass. Only the hanging weight drives it, but the <em>whole</em> system has inertia: \(a = \dfrac{m_2 g - \mu m_1 g}{m_1+m_2}\). Try both in the sims.</li>
+            </ul>
+          </section>
+</div>
+
+<div data-lesson="2-examples">
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#0284c7; font-size:11px; margin-top:4px;">▶</span><span>Example 1 — Net force on a flat surface</span></summary><p style="margin:2px 0 8px;">A \(3\ \text{kg}\) box is pushed with \(20\ \text{N}\) against \(5\ \text{N}\) of friction. Find its acceleration.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Net force: \(F_{net} = 20 - 5 = 15\ \text{N}\).</li><li style="margin-bottom:6px;">Newton's 2nd law: \(a = \dfrac{F_{net}}{m} = \dfrac{15}{3}\).</li><li>Answer: \(\boxed{5\ \text{m/s}^2}\).</li></ol></details>
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#0284c7; font-size:11px; margin-top:4px;">▶</span><span>Example 2 — Frictionless incline</span></summary><p style="margin:2px 0 8px;">A block slides down a frictionless ramp tilted at \(\theta = 30^\circ\). Find its acceleration.</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Only the along-ramp gravity acts: \(F = mg\sin\theta\).</li><li style="margin-bottom:6px;">Divide by \(m\): \(a = g\sin\theta = 9.8\sin 30^\circ\).</li><li>Answer: \(a = 9.8(0.5) = \boxed{4.9\ \text{m/s}^2}\).</li></ol></details>
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#0284c7; font-size:11px; margin-top:4px;">▶</span><span>Example 3 — Will it slide?</span></summary><p style="margin:2px 0 8px;">A block sits on a \(20^\circ\) incline with \(\mu_s = 0.5\). Does it start to slide?</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Driving force: \(mg\sin 20^\circ = 0.342\,mg\).</li><li style="margin-bottom:6px;">Max static friction: \(\mu_s mg\cos 20^\circ = 0.5(0.940)mg = 0.470\,mg\).</li><li>Since \(0.342 &lt; 0.470\), friction wins — \(\boxed{\text{it stays put}}\).</li></ol></details>
+          <details style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-radius:11px; margin-bottom:11px; padding:2px 22px;"><summary style="cursor:pointer; font-weight:600; font-size:15px; color:#0f172a; padding:14px 0; display:flex; gap:11px; align-items:flex-start;"><span class="sol-caret" style="color:#0284c7; font-size:11px; margin-top:4px;">▶</span><span>Example 4 — Car on a flat curve</span></summary><p style="margin:2px 0 8px;">A \(1000\ \text{kg}\) car rounds a flat curve of radius \(50\ \text{m}\) at \(15\ \text{m/s}\). What centripetal force is needed, and what minimum \(\mu_s\) supplies it?</p><ol style="margin:0 0 14px; padding-left:24px;"><li style="margin-bottom:6px;">Force needed: \(F_c = \dfrac{mv^2}{r} = \dfrac{1000(15)^2}{50} = \boxed{4500\ \text{N}}\).</li><li style="margin-bottom:6px;">Friction must supply it: \(\mu_s mg \ge F_c\).</li><li>So \(\mu_s \ge \dfrac{4500}{1000(9.8)} = \boxed{0.46}\).</li></ol></details>
+</div>
+
+<div data-lesson="cheat">
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px;">
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #38bdf8; border-radius:12px; padding:20px 22px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#7cc7f0;">1 · Kinematics</h2>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">MOTION IN 1D &amp; 2D</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
+              <div>\(v = v_0 + at\)</div>
+              <div>\(\Delta x = v_0 t + \tfrac12 a t^2\)</div>
+              <div>\(v^2 = v_0^2 + 2a\,\Delta x\)</div>
+              <div>Projectile: \(x=v_0\cos\theta\,t,\ y=v_0\sin\theta\,t-\tfrac12 g t^2\)</div>
+              <div>Vectors: \(A_x=A\cos\theta,\ A_y=A\sin\theta\)</div>
+              <div>Relative: \(\vec v_{A/C}=\vec v_{A/B}+\vec v_{B/C}\)</div>
+            </div>
+          </div>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #5eead4; border-radius:12px; padding:20px 22px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#0d9488;">2 · Force &amp; Dynamics</h2>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">NEWTON'S LAWS, CIRCULAR, GRAVITY</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
+              <div>\(\vec F_{net} = m\vec a\)</div>
+              <div>\(f_s \le \mu_s N,\quad f_k = \mu_k N\)</div>
+              <div>Incline: \(F_\parallel = mg\sin\theta,\ N = mg\cos\theta\)</div>
+              <div>Circular: \(a_c = \dfrac{v^2}{r},\ F_c = \dfrac{mv^2}{r}\)</div>
+              <div>Gravity: \(F_g = \dfrac{G m_1 m_2}{r^2}\)</div>
+              <div>Spring: \(F_s = -kx\)</div>
+            </div>
+          </div>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #34d399; border-radius:12px; padding:20px 22px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#059669;">3 · Work, Energy &amp; Power</h2>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">CONSERVATION OF ENERGY</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
+              <div>\(W = Fd\cos\theta = \Delta KE\)</div>
+              <div>\(KE = \tfrac12 m v^2\)</div>
+              <div>\(PE_g = mgh,\quad PE_s = \tfrac12 k x^2\)</div>
+              <div>\(P = \dfrac{W}{t} = Fv\)</div>
+            </div>
+          </div>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #fbbf24; border-radius:12px; padding:20px 22px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#d97706;">4 · Linear Momentum</h2>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">COLLISIONS &amp; IMPULSE</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
+              <div>\(\vec p = m\vec v\)</div>
+              <div>Impulse: \(\vec J = \vec F\,\Delta t = \Delta \vec p\)</div>
+              <div>Conservation: \(\sum \vec p_i = \sum \vec p_f\)</div>
+              <div>Center of mass: \(x_{cm} = \dfrac{\sum m_i x_i}{\sum m_i}\)</div>
+            </div>
+          </div>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #f472b6; border-radius:12px; padding:20px 22px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#db2777;">5 · Torque &amp; Rotation</h2>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">ROTATIONAL DYNAMICS</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
+              <div>\(\tau = rF\sin\theta = I\alpha\)</div>
+              <div>\(\omega = \omega_0 + \alpha t\)</div>
+              <div>\(\theta = \omega_0 t + \tfrac12 \alpha t^2\)</div>
+              <div>\(v = r\omega,\quad a_t = r\alpha\)</div>
+              <div>Equilibrium: \(\sum \tau = 0\)</div>
+            </div>
+          </div>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #a78bfa; border-radius:12px; padding:20px 22px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#7c3aed;">6 · Rotating Systems</h2>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">ANGULAR MOMENTUM &amp; ORBITS</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
+              <div>\(L = I\omega\)</div>
+              <div>Conservation: \(I_0\omega_0 = I_1\omega_1\)</div>
+              <div>\(KE_{rot} = \tfrac12 I\omega^2\)</div>
+              <div>Rolling: \(KE = \tfrac12 mv^2 + \tfrac12 I\omega^2\)</div>
+              <div>Orbit: \(v = \sqrt{\dfrac{GM}{r}}\)</div>
+            </div>
+          </div>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #2dd4bf; border-radius:12px; padding:20px 22px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#0d9488;">7 · Oscillations</h2>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">SIMPLE HARMONIC MOTION</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
+              <div>\(F = -kx\)</div>
+              <div>\(T_{spring} = 2\pi\sqrt{\dfrac{m}{k}}\)</div>
+              <div>\(T_{pendulum} = 2\pi\sqrt{\dfrac{L}{g}}\)</div>
+              <div>\(f = \dfrac{1}{T}\)</div>
+            </div>
+          </div>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #60a5fa; border-radius:12px; padding:20px 22px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#2563eb;">8 · Fluids</h2>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">PRESSURE, BUOYANCY &amp; FLOW</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
+              <div>\(\rho = \dfrac{m}{V},\quad P = \dfrac{F}{A}\)</div>
+              <div>\(P = P_0 + \rho g h\)</div>
+              <div>Buoyancy: \(F_b = \rho g V\)</div>
+              <div>Continuity: \(A_1 v_1 = A_2 v_2\)</div>
+              <div>Bernoulli: \(P + \tfrac12 \rho v^2 + \rho g y = \text{const}\)</div>
+            </div>
+          </div>
+          <div style="background:#ffffff; border:1px solid rgba(56,189,248,.16); border-top:4px solid #5f7385; border-radius:12px; padding:20px 22px;">
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; margin:0 0 4px; color:#475569;">Constants</h2>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#64748b; margin-bottom:12px;">PROVIDED ON THE EXAM</div>
+            <div style="font-size:13.5px; color:#334155; display:flex; flex-direction:column; gap:9px;">
+              <div>\(g = 9.8\ \text{m/s}^2\)</div>
+              <div>\(G = 6.67\times10^{-11}\ \mathrm{N{\cdot}m^2/kg^2}\)</div>
+              <div>\(\rho_{water} = 1000\ \text{kg/m}^3\)</div>
+              <div>\(P_{atm} = 1.0\times10^{5}\ \text{Pa}\)</div>
+            </div>
+          </div>
+        </div>
+</div>
